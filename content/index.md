@@ -12,13 +12,9 @@ SORT orden ASC
 
 ```
 
-\* Fuentes
-
-&#x09;- Wikipedia
-
-&#x09;- Discrete Mathematics and Its Applications (Kenneth H. Rosen)
-
-&#x09;- The Abstract Algebra Minute: https://axiomtutor.notion.site/The-Abstract-Algebra-Minute-2794b66370fd8027b386ca4beeed9d93
-
+* Fuentes
+	- Wikipedia
+	- Discrete Mathematics and Its Applications (Kenneth H. Rosen)
+	- The Abstract Algebra Minute: https://axiomtutor.notion.site/The-Abstract-Algebra-Minute-2794b66370fd8027b386ca4beeed9d93
 
 

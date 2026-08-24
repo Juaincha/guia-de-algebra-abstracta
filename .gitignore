@@ -5,6 +5,7 @@ public
 prof
 tsconfig.tsbuildinfo
 .obsidian
+.trash/
 .quartz-cache
 private/
 .replit
@@ -12,3 +13,9 @@ replit.nix
 .quartz/
 quartz/cli/tui/dist/
 .turbo/
+
+# Configuración local de Claude Code (no publicar)
+.claude/
+CLAUDE.md
+CLAUDE-CODE-SETUP.md
+configurar-claude.ps1

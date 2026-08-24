@@ -1,13 +1,14 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: "Guía de Álgebra Abstracta"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
-    provider: plausible
-  locale: en-US
-  baseUrl: Juaincha.github.io/guia-de-algebra-abstracta
+    provider: google
+    tagId: G-TVYFXHZQRG
+  locale: es-ES
+  baseUrl: juaincha.github.io/guia-de-algebra-abstracta
   ignorePatterns:
     - private
     - templates
@@ -147,8 +148,9 @@ plugins:
     enabled: true
   - source: "@quartz-community/og-image"
     enabled: true
+  # Solo necesario con dominio propio: escribe public/CNAME con el host de baseUrl.
   - source: "@quartz-community/cname"
-    enabled: true
+    enabled: false
   - source: "@quartz-community/canvas-page"
     enabled: true
   - source: "@quartz-community/content-page"
@@ -230,8 +232,7 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        Repositorio: https://github.com/juaincha/guia-de-algebra-abstracta
     layout:
       position: footer
       priority: 50
