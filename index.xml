@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Quartz 5</title>
+      <link>https://Juaincha.github.io/guia-de-algebra-abstracta</link>
+      <description>Last 10 notes on Quartz 5</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Untitled</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/untitled.canvas</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/untitled.canvas</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:34:30 GMT</pubDate>
+  </item><item>
+    <title>Tag Index</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/tags/</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/tags/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:34:30 GMT</pubDate>
+  </item><item>
+    <title>Axiomas y Teoremas Básicos</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/axiomas-y-teoremas-b%C3%A1sicos</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/axiomas-y-teoremas-b%C3%A1sicos</guid>
+    <description><![CDATA[ Después de la intuición previa, es momento de definir formalmente qué es un grupo. ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:29:48 GMT</pubDate>
+  </item><item>
+    <title>Guía de Álgebra Abstracta</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/gu%C3%ADa-de-%C3%A1lgebra-abstracta</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/gu%C3%ADa-de-%C3%A1lgebra-abstracta</guid>
+    <description><![CDATA[ ¡Bienvenido a esta guía de álgebra abstracta! Mi nombre es Sebastián Podlech, y diseñé esta guía para que matemáticos autodidactas puedan aprender álgebra abstracta sin tener que saltar de libro en libro y de sitio en sitio. ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:29:48 GMT</pubDate>
+  </item><item>
+    <title>Relaciones de equivalencia y particiones</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/relaciones-de-equivalencia-y-particiones</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/relaciones-de-equivalencia-y-particiones</guid>
+    <description><![CDATA[  Relación de equivalencia Una relación de equivalencia en un conjunto no vacío A es una relación binaria ~ que satisface: Para todo a \in A a \sim a. ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:29:48 GMT</pubDate>
+  </item><item>
+    <title>Relaciones</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/relaciones</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/relaciones</guid>
+    <description><![CDATA[ Una relación es una propiedad que puede ser cierta o falsa respecto a dos objetos. ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:29:48 GMT</pubDate>
+  </item><item>
+    <title>Teoría de Grupos</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/teor%C3%ADa-de-grupos</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/teor%C3%ADa-de-grupos</guid>
+    <description><![CDATA[ Axiomas y Teoremas Básicos. ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:29:48 GMT</pubDate>
+  </item><item>
+    <title>index</title>
+    <link>https://Juaincha.github.io/guia-de-algebra-abstracta/</link>
+    <guid>https://Juaincha.github.io/guia-de-algebra-abstracta/</guid>
+    <description><![CDATA[ ¡Bienvenido a esta guía de álgebra abstracta! Mi nombre es Sebastián Podlech, y diseñé esta guía para que matemáticos autodidactas puedan aprender álgebra abstracta sin tener que saltar de libro en libro y de sitio en sitio. ]]></description>
+    <pubDate>Mon, 24 Aug 2026 02:29:48 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
