@@ -51,7 +51,7 @@ Pese a que los primeros tres triángulos son diferentes, ya sea por orientación
 Como estas hay muchas más relaciones de equivalencias. A continuación hay algunas relaciones de equivalencias propuestas para demostrar.
 
 >[!ejercicio] Ejercicio
-Demostrar que la paridad es una relación de equivalencia. Es decir, se define ~ como: para todo $a,b \in \mathbb{Z}$, $a \sim b$ $\iff$ ($a$ es par y $b$ es par) o ($a$ es impar y $b$ es impar), luego ~ es una relación de equivalencia.
+>Demostrar que la paridad es una relación de equivalencia. Es decir, se define ~ como: para todo $a,b \in \mathbb{Z}$, $a \sim b$ $\iff$ ($a$ es par y $b$ es par) o ($a$ es impar y $b$ es impar), luego ~ es una relación de equivalencia.
 
 >[!ejercicio] Ejercicio
 >Demostrar que la igualdad en la distancia de dos puntos en el plano al origen es una relación de equivalencia. Es decir, se define $d(P,Q)$ como: para todo par de puntos $P,Q \in \mathbb{R}^2$ con $P=(p_1,p_2)$, $Q=(q_1,q_2)$, $d(P,Q) \iff \sqrt{p_1^2+p_2^2}= \sqrt{q_1^2+q_2^2}$.
@@ -102,7 +102,7 @@ Este teorema tiene muchas capas, ya que hay que demostrar que una relación de e
 >**2.3.** Sean $x,y,z \in A$. Dejemos que $x\sim_P y$ sea cierto y que $y\sim_P z$ sea cierto. Luego existen $A_i,A_j \in P$ tal que $(x\in A_i, y\in A_i)$ y $(y\in A_j, z\in A_j)$. Como $P$ es partición, cada $k\in A$ pertenece a un único $A_l \in P$. Como $y\in A_i, y\in A_j$ entonces $A_i = A_j$. Llamemos $A_i=A_j=N$. Luego $(x\in N, y\in N)$ y $(y\in N, z\in N)$ lo cual es equivalente a $x,y,z \in N$. Esto implica $x \in N$, $z\in N$. Por definición de la relación, $x\sim_P z$. Luego $(x\sim_P y, y\sim_P z) \implies x\sim_P z$. <br>
 >Verificadas las tres condiciones, $\sim_P$ es una relación de equivalencia.
 >
->>Ahora viene la parte ingeniosa.
+>> Ahora viene la parte ingeniosa.
 >
 >3. Sea $\mathcal{R}$ el conjunto de todas las relaciones de equivalencia en un conjunto no vacío $A$, y $\mathcal{P}$ el conjunto de todas las particiones posibles de $A$. Sea $f: \mathcal{R} \to \mathcal{P}$ definida tal que a cada relación de equivalencia $\sim$ le asigna la partición $P_\sim = \{ [x] \ |\ x \in A\}$ de forma que $f(\sim)=P_\sim$. Sea $g: \mathcal{P} \to \mathcal{R}$ definida tal que a cada partición $P$ le asigna la relación $\sim_P$, donde $x \sim_P y \iff$ existe un $A_i \in P$ tal que $x \in A_i, y \in A_i$, de manera que $g(P)=\sim$. En el punto 1 se demostró que $f$ induce una partición para cada relación de equivalencia $\sim$ y en el punto 2 se demostró que $g$ induce una relación de equivalencia para cada partición $P$. Ahora: <br>
 >Consideremos $g \circ f(\sim)$. En primer lugar, $f(\sim) = \{[x] \mid x \in A\} = P_\sim$. Ahora, $g \circ f(\sim) = g(P_\sim)$, lo que establece que $x \sim_{P_\sim} y \iff$ existe un $A_i \in P$ tal que $x \in A_i, y \in A_i$. Sabemos que para todo $x \in A$, $x \in [x]$. Como $P_\sim$ es una partición, $x$ pertenece a un único conjunto en $P_\sim$. Dado que $x \in A_i$ y $x \in [x]$, se tiene que $A_i = [x]$. Luego, $y \in [x]$. Por definición de clase de equivalencia, $y \in [x] \iff x \sim y$. Por lo tanto, $x \sim_{P_\sim} y \implies x \sim y$. Ahora, si $x \sim y$, entonces existe un $[x] \in P_\sim$ tal que $x \in [x] \land y \in [x]$. Luego, $x \sim y \implies x \sim_{P_\sim} y$. Por doble implicación, $x \sim_{P_\sim} y \iff x \sim y$. Es decir, $(g \circ f)(\sim) = \, \sim$.
