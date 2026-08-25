@@ -161,6 +161,83 @@ plugins:
     enabled: true
   - source: "@quartz-community/explorer"
     enabled: true
+    options:
+      # Ordena la barra lateral igual que el indice de cada carpeta.
+      # El contentIndex guarda los enlaces de cada pagina en orden de aparicion,
+      # asi que el orden de los hijos de una carpeta sale de los wikilinks de su
+      # index.md. Lo que el index no enlace cae al final, alfabeticamente.
+      # Esta funcion se serializa y se ejecuta en el navegador (ver el atributo
+      # data-data-fns del explorer), por eso va como string.
+      sortFn: |
+        (function () {
+          var W = window
+          if (!W.__ordenIndice) {
+            W.__ordenIndice = {}
+            W.__reordenarExplorer = function () {
+              var base = (document.body && document.body.dataset.basepath) || ""
+              var slugDe = function (li) {
+                var f = li.querySelector(":scope > .folder-container")
+                if (f) return f.dataset.folderpath || ""
+                var a = li.querySelector(":scope > a")
+                return a ? a.getAttribute("href").slice(base.length).replace(/^\//, "") : ""
+              }
+              document
+                .querySelectorAll(".explorer-ul, .explorer-content ul.content")
+                .forEach(function (ul) {
+                  var cab = ul.parentElement && ul.parentElement.previousElementSibling
+                  var padre =
+                    cab && cab.dataset && cab.dataset.folderpath
+                      ? cab.dataset.folderpath.replace(/(^|\/)index$/, "")
+                      : ""
+                  var fin = ul.querySelector(":scope > .overflow-end")
+                  Array.prototype.filter
+                    .call(ul.children, function (li) {
+                      return li !== fin
+                    })
+                    .map(function (li, i) {
+                      var r = W.__ordenIndice[padre + "|" + slugDe(li)]
+                      return { li: li, r: r === undefined ? Infinity : r, i: i }
+                    })
+                    .sort(function (x, y) {
+                      return x.r === y.r ? x.i - y.i : x.r - y.r
+                    })
+                    .forEach(function (x) {
+                      ul.insertBefore(x.li, fin)
+                    })
+                })
+            }
+            fetchData.then(function (d) {
+              var c = d.content || d
+              var m = {}
+              Object.keys(c).forEach(function (k) {
+                if (!/(^|\/)index$/.test(k)) return
+                var padre = k.replace(/(^|\/)index$/, "")
+                ;(c[k].links || []).forEach(function (l, i) {
+                  m[padre + "|" + l.replace(/\/$/, "/index")] = i
+                })
+              })
+              W.__ordenIndice = m
+              // En la primera carga el explorer ya se pinto antes de que este
+              // JSON estuviera disponible, asi que hay que reordenar el DOM.
+              // Las navegaciones posteriores ya salen ordenadas de esta funcion.
+              queueMicrotask(W.__reordenarExplorer)
+              setTimeout(W.__reordenarExplorer, 0)
+            })
+          }
+          return function (a, b) {
+            var padre = a.slugSegments.slice(0, -1).join("/")
+            var ra = W.__ordenIndice[padre + "|" + a.slug]
+            var rb = W.__ordenIndice[padre + "|" + b.slug]
+            if (ra !== undefined && rb !== undefined) return ra - rb
+            if (ra !== undefined) return -1
+            if (rb !== undefined) return 1
+            if (a.isFolder !== b.isFolder) return a.isFolder ? -1 : 1
+            return (a.displayName || "").localeCompare(b.displayName || "", undefined, {
+              numeric: true,
+              sensitivity: "base",
+            })
+          }
+        })()
     layout:
       position: left
       priority: 50
