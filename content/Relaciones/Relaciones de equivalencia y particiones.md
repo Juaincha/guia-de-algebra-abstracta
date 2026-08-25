@@ -110,9 +110,10 @@ Este teorema tiene muchas capas, ya que hay que demostrar que una relación de e
 Con esta intuición, podemos hablar de la relación de equivalencia determinada por una partición, o por la partición determinada por la relación de equivalencia. En la demostración anterior, se definió el concepto de **clase de equivalencia.** Como se demostró que el conjunto de todas las clases de equivalencia de $A$ define la partición de $A$ determinada por una cierta relación de equivalencia, ahora podemos afirmar:
 
 >[!definicion] Definición
- Sea $A$ un conjunto no vacío con $x \in A$ y con una relación de equivalencia $\sim$. Luego, la clase de equivalencia $[x]$ de $\sim$ es el miembro de la partición $P_\sim$ determinada por $\sim$ que incluye a $x$. Es decir: <br> $[x]\coloneqq \{y\in A |\ x \sim y \}$ de manera que $P_\sim=\{[x]\ |\ x \in A \}$.
+Sea $A$ un conjunto no vacío con $x \in A$ y con una relación de equivalencia $\sim$. Luego, la clase de equivalencia $[x]$ de $\sim$ es el miembro de la partición $P_\sim$ determinada por $\sim$ que incluye a $x$. Es decir: <br>
+>$[x]\coloneqq \{y\in A |\ x \sim y \}$ de manera que $P_\sim=\{[x]\ |\ x \in A \}$.
 
-Para aterrizar esto, podemos pensar en la relación de equivalencia $≡\ (mod\ 5)$. Como $0≡5\ (mod\ 5)$, $0≡10\ (mod\ 5)$, $0≡15\ (mod\ 5)$, etc., podemos establecer: $[0]= \{0,5,10,15,...\}$. Además, $0≡5k\ (mod\ 5)$ , $1≡5k+1\ (mod\ 5)$, $2≡5k+2\ (mod\ 5)$, $3≡5k+3\ (mod\ 5)$ y $4≡5k+4\ (mod\ 5)$ para todo $k\in \mathbb{Z}$, y todo número entero se puede escribir como una de estas cinco formas. Luego todo entero pertenece a $[0],[1],[2],[3]$ o $[4]$. Con esto concluímos que la partición determinada por $≡\ (mod\ 5)$ es $\{ [0],[1],[2],[3],[4] \}$.
+Para aterrizar esto, podemos pensar en la relación de equivalencia $≡\ (mod\ 5)$. Como $0≡5\ (mod\ 5)$, $0≡10\ (mod\ 5)$, $0≡15\ (mod\ 5)$, etc., podemos establecer: $[0]= \{0,5,10,15,...\}$. Además, $0≡5k\ (mod\ 5)$ , $1≡5k+1\ (mod\ 5)$, $2≡5k+2\ (mod\ 5)$, $3≡5k+3\ (mod\ 5)$ y $4≡5k+4\ (mod\ 5)$ para todo $k\in \mathbb{Z}$, y todo número entero se puede escribir como una de estas cinco formas. Luego todo entero pertenece a $[0],[1],[2],[3]$ o $[4]$. Con esto concluimos que la partición determinada por $≡\ (mod\ 5)$ es $\{ [0],[1],[2],[3],[4] \}$.
 
 
 
