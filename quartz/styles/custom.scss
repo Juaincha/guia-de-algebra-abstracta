@@ -92,3 +92,21 @@ body .callout[data-callout="general"] {
 //   font-weight: 600;
 //   color: var(--color);
 // }
+
+// ═══════════════════════════════════════════════════════════════════
+//  Listado automático de las páginas de carpeta
+//
+//  El plugin folder-page agrega, al final de cada index.md de carpeta,
+//  un bloque con "N artículos en esta carpeta" y la lista de notas con
+//  su fecha. No tiene opción para desactivarlo, así que lo ocultamos:
+//  cada index.md ya trae su propio índice curado, escrito a mano.
+//
+//  Ojo: el mismo bloque .page-listing lo usan las páginas de tag. Hoy
+//  ninguna nota tiene tags, así que la regla no afecta nada más; si
+//  algún día se empiezan a usar, hay que acotar este selector o las
+//  páginas de tag quedarán vacías.
+// ═══════════════════════════════════════════════════════════════════
+
+.popover-hint > .page-listing {
+  display: none;
+}
