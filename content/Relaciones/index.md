@@ -1,5 +1,6 @@
 ---
-orden: 1
+title: Relaciones
+description: Qué es una relación, cómo se representa en diagramas y qué tipos existen.
 ---
 
 Una relación es una propiedad que puede ser cierta o falsa respecto a dos objetos. Por ejemplo, "2 es menor a 4" es verdadera, y la relación es "es menor que". Otro ejemplo es "Mario es hermano de Luigi" siendo verdadera, donde la relación es "es hermano de". Las relaciones se pueden representar en diagramas:

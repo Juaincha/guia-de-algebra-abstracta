@@ -1,3 +1,94 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// ═══════════════════════════════════════════════════════════════════
+//  Callouts personalizados
+//
+//  Colores e iconos calcados de la configuración del plugin Callout
+//  Manager de Obsidian (.obsidian/plugins/callout-manager/data.json),
+//  para que un artículo se vea igual en Obsidian y en el sitio.
+//
+//  Si agregas un callout nuevo en Obsidian, replícalo aquí: Quartz
+//  pasa cualquier [!loquesea] al HTML como data-callout="loquesea",
+//  pero sin CSS propio lo pinta con el azul por defecto.
+// ═══════════════════════════════════════════════════════════════════
+
+.callout {
+  --callout-icon-definicion: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 5v16" /><path d="M16 13h2" /><path d="M16 9h2" /><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /><path d="M6 13h2" /><path d="M6 9h2" /></svg>');
+  --callout-icon-teorema: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M10 2v8l3-3 3 3V2" /><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /></svg>');
+  --callout-icon-demostracion: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 5h.01" /><path d="M3 12h.01" /><path d="M3 19h.01" /><path d="M8 5h13" /><path d="M8 12h13" /><path d="M8 19h13" /></svg>');
+  --callout-icon-general: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 5v16" /><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></svg>');
+}
+
+// Definición
+body .callout[data-callout="definicion"] {
+  --color: #53dfdd;
+  --border: #53dfdd44;
+  --bg: #53dfdd10;
+  --callout-color: #53dfdd; // el tema (@quartz-themes/default) usa esta variable
+  --callout-icon: var(--callout-icon-definicion);
+  border-color: #53dfdd44;
+  background-color: #53dfdd10;
+}
+
+// Teorema
+body .callout[data-callout="teorema"] {
+  --color: #448aff;
+  --border: #448aff44;
+  --bg: #448aff10;
+  --callout-color: #448aff; // el tema (@quartz-themes/default) usa esta variable
+  --callout-icon: var(--callout-icon-teorema);
+  border-color: #448aff44;
+  background-color: #448aff10;
+}
+
+// Demostración
+body .callout[data-callout="demostracion"] {
+  --color: #44cf6e;
+  --border: #44cf6e44;
+  --bg: #44cf6e10;
+  --callout-color: #44cf6e; // el tema (@quartz-themes/default) usa esta variable
+  --callout-icon: var(--callout-icon-demostracion);
+  border-color: #44cf6e44;
+  background-color: #44cf6e10;
+}
+
+// Ejercicio
+body .callout[data-callout="ejercicio"] {
+  --color: #e9973f;
+  --border: #e9973f44;
+  --bg: #e9973f10;
+  --callout-color: #e9973f; // el tema (@quartz-themes/default) usa esta variable
+  border-color: #e9973f44;
+  background-color: #e9973f10;
+}
+
+// General
+body .callout[data-callout="general"] {
+  --color: #c7c7c7;
+  --border: #c7c7c744;
+  --bg: #c7c7c710;
+  --callout-color: #c7c7c7; // el tema (@quartz-themes/default) usa esta variable
+  --callout-icon: var(--callout-icon-general);
+  border-color: #c7c7c744;
+  background-color: #c7c7c710;
+}
+
+// El título del callout hereda el color del tipo, como en Obsidian.
+body .callout[data-callout="definicion"],
+body .callout[data-callout="teorema"],
+body .callout[data-callout="demostracion"],
+body .callout[data-callout="ejercicio"],
+body .callout[data-callout="general"] {
+  & > .callout-title {
+    color: var(--color);
+  }
+}
+
+// Opcional: marca de fin de demostración (∎), como en un libro de texto.
+// Descomenta el bloque para activarla.
+//
+// body .callout[data-callout="demostracion"] > .callout-content > :last-child::after {
+//   content: " ∎";
+//   font-weight: 600;
+//   color: var(--color);
+// }

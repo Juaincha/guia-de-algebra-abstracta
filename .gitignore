@@ -18,4 +18,5 @@ quartz/cli/tui/dist/
 .claude/
 CLAUDE.md
 CLAUDE-CODE-SETUP.md
+PENDIENTES.md
 configurar-claude.ps1
