@@ -110,3 +110,122 @@ body .callout[data-callout="general"] {
 .popover-hint > .page-listing {
   display: none;
 }
+
+// ═══════════════════════════════════════════════════════════════════
+//  Enlaces internos sin resaltador amarillo
+//
+//  Quartz pinta los enlaces entre notas con
+//  `a.internal { background-color: var(--highlight) }`. El tema
+//  @quartz-themes/default REDEFINE esa variable como
+//  `--highlight: var(--text-highlight-bg, rgba(255,208,0,.4))`, o sea
+//  el amarillo del marcador de texto, y ademas agrega su propia regla
+//  `body a.internal-link { background-color: rgb(from var(--highlight) ...) }`.
+//
+//  Esa ultima regla del tema queda FUERA de su @layer, asi que no basta
+//  con estar sin capa: hay que ganarle tambien en especificidad. De ahi
+//  el `html body` y el selector doble (Quartz pone AMBAS clases,
+//  `internal` e `internal-link`, en cada enlace).
+//
+//  Se excluyen los .tag-link: el tema les da forma de pildora y sin
+//  fondo quedarian rotos el dia que se empiecen a usar etiquetas.
+//
+//  El resaltado ==asi== de Obsidian NO se ve afectado: usa <mark>.
+// ═══════════════════════════════════════════════════════════════════
+
+html body a.internal:not(.tag-link),
+html body a.internal-link:not(.tag-link) {
+  background-color: transparent;
+  padding: 0;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  Boton "Siguiente articulo" y bloque de comentarios plegable
+//
+//  Los componentes que los generan estan en quartz.ts, pero sus estilos
+//  van AQUI a proposito: el CSS que se declara en un componente se emite
+//  dentro de @layer quartz-base, y el tema @quartz-themes/default le gana
+//  sin importar la especificidad. custom.scss se emite SIN capa, asi que
+//  gana siempre. El prefijo `html body` es para desempatar contra las
+//  reglas del tema que tambien quedaron fuera de su capa.
+//
+//  El gris es un rgb() neutro con alfa, no una variable del tema: al
+//  componerse sobre el fondo funciona igual en claro y en oscuro. No se
+//  usa --lightgray porque el tema lo redefine a un tono practicamente
+//  identico al fondo (#f6f6f6 sobre #ffffff), y color-mix() con las
+//  variables del tema no resolvia de forma fiable en modo oscuro.
+// ═══════════════════════════════════════════════════════════════════
+
+html body .siguiente-articulo {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0 1rem 0;
+}
+
+html body .siguiente-articulo > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 999px;
+  background-color: rgb(128 128 128 / 13%);
+  border: 1px solid rgb(128 128 128 / 30%);
+  color: var(--darkgray);
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+html body .siguiente-articulo > a:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+html body .siguiente-articulo-etiqueta {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+}
+
+html body .siguiente-articulo-titulo {
+  font-weight: 600;
+}
+
+html body details.comentarios {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgb(128 128 128 / 25%);
+  padding-top: 1rem;
+}
+
+html body details.comentarios > summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--darkgray);
+  list-style: none;
+  user-select: none;
+}
+
+html body details.comentarios > summary::-webkit-details-marker {
+  display: none;
+}
+
+html body details.comentarios > summary::before {
+  content: "\25B8";
+  display: inline-block;
+  color: var(--gray);
+  transition: transform 0.15s ease;
+}
+
+html body details.comentarios[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+html body details.comentarios > .giscus {
+  margin-top: 1rem;
+}

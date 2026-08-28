@@ -313,7 +313,7 @@ plugins:
         strict: true
         lang: es
         inputPosition: bottom
-        reactionsEnabled: true
+        reactionsEnabled: false
     layout:
       position: afterBody
       priority: 10
