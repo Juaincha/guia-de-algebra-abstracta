@@ -113,9 +113,9 @@ function plegarComentarios(componentes: unknown[]): unknown[] {
 
 type Capa = Record<string, unknown>
 
-function conSiguiente(capa: Capa): Capa {
+function ajustarAfterBody(capa: Capa, conBoton: boolean): Capa {
   const previos = plegarComentarios((capa.afterBody ?? []) as unknown[])
-  return { ...capa, afterBody: [SiguienteArticulo, ...previos] }
+  return { ...capa, afterBody: conBoton ? [SiguienteArticulo, ...previos] : previos }
 }
 
 // `loadQuartzConfig` ya construyo internamente el PageTypeDispatcher con el
@@ -123,11 +123,14 @@ function conSiguiente(capa: Capa): Capa {
 // archivo NO se usa (es herencia de v4), asi que para inyectar un componente
 // propio hay que reemplazar ese emitter por uno con el layout modificado.
 const layoutConSiguiente = {
-  defaults: conSiguiente(layoutBase.defaults as Capa),
+  defaults: ajustarAfterBody(layoutBase.defaults as Capa, true),
   byPageType: Object.fromEntries(
     Object.entries(layoutBase.byPageType).map(([tipo, capa]) => [
       tipo,
-      tipo === "content" ? conSiguiente(capa as Capa) : capa,
+      // Los comentarios se pliegan en TODOS los tipos de pagina: las de
+      // seccion y las de etiqueta tambien los llevan. El boton en cambio
+      // solo tiene sentido en articulos.
+      ajustarAfterBody(capa as Capa, tipo === "content"),
     ]),
   ),
 }

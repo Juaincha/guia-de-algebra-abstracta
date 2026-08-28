@@ -229,3 +229,63 @@ html body details.comentarios[open] > summary::before {
 html body details.comentarios > .giscus {
   margin-top: 1rem;
 }
+
+// ═══════════════════════════════════════════════════════════════════
+//  Separador sobrante en las paginas de seccion
+//
+//  Quartz pone un <hr> entre el cuerpo de la pagina y el pie. En un
+//  articulo separa el texto del boton y los comentarios, y esta bien.
+//  En una pagina de carpeta el listado automatico que iria justo antes
+//  esta oculto, asi que ese <hr> queda pegado a la lista de articulos y
+//  se suma al borde superior del bloque de comentarios: dos lineas casi
+//  juntas.
+//
+//  El selector se ancla en la existencia del propio listado, no en el
+//  slug: `:has(> .page-listing)` solo es cierto en las paginas que
+//  genera folder-page (y en las de etiqueta), que son exactamente
+//  aquellas donde sobra.
+// ═══════════════════════════════════════════════════════════════════
+
+html body .popover-hint:has(> .page-listing) + hr {
+  display: none;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  Recuperar el ancho de la barra lateral derecha
+//
+//  La rejilla de escritorio de Quartz es `320px auto 320px`: barra
+//  izquierda, contenido, barra derecha. Al desactivar los plugins de la
+//  derecha esa columna quedaba vacia pero seguia ocupando sus 320px.
+//  Aqui se redefine la rejilla a dos columnas.
+//
+//  El contenido no se estira hasta el borde: se limita a 62rem y se
+//  centra. Asi gana ancho respecto de los 790px anteriores (las formulas
+//  en bloque y los diagramas tenian poco aire) sin llegar a lineas de
+//  texto demasiado largas, que cansan al leer.
+//
+//  Solo aplica en escritorio (>=1200px, el breakpoint $desktop de
+//  Quartz). En tablet y movil la rejilla ya no tiene columna derecha.
+// ═══════════════════════════════════════════════════════════════════
+
+@media all and (min-width: 1200px) {
+  html body .page > #quartz-body {
+    grid-template-columns: 320px auto;
+    grid-template-areas:
+      "grid-sidebar-left grid-header"
+      "grid-sidebar-left grid-center"
+      "grid-sidebar-left grid-footer";
+  }
+
+  html body .sidebar.right {
+    display: none;
+  }
+
+  // La regla base de Quartz es `.page > #quartz-body .center { min-width: 100% }`
+  // y lleva un ID, asi que hay que igualar ese selector para ganarle.
+  // El min-width es lo que impedia que el max-width hiciera efecto.
+  html body .page > #quartz-body .center {
+    max-width: 62rem;
+    min-width: 0;
+    margin-inline: auto;
+  }
+}
