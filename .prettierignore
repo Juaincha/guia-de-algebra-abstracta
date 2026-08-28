@@ -1,3 +1,6 @@
 public
 node_modules
 .quartz-cache
+
+# KaTeX autohospedado: assets minificados copiados tal cual desde node_modules.
+quartz/static/katex

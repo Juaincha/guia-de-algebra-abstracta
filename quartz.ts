@@ -2,10 +2,59 @@ import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/conf
 import { PageTypes } from "./quartz/plugins"
 import { resolveRelative } from "@quartz-community/utils"
 import type { FullSlug } from "@quartz-community/types"
+import type { BuildCtx } from "./quartz/util/ctx"
 import { h } from "preact"
 
 const config = await loadQuartzConfig()
 const layoutBase = await loadQuartzLayout()
+
+// ════════════════════════════════════════════════════════════════════════
+//  KaTeX autohospedado
+//
+//  El plugin `@quartz-community/latex` trae las URLs de jsDelivr a fuego en
+//  su `externalResources()`: no hay opcion de configuracion para cambiarlas.
+//  Si la red del lector bloquea ese CDN (firewall de colegio o universidad)
+//  las formulas pierden las fuentes y quedan en sans-serif, ilegibles como
+//  matematica. Asi que servimos KaTeX desde el propio sitio.
+//
+//  Los archivos viven en quartz/static/katex/ (copiados de node_modules a
+//  mano, ver la devDependency `katex`, que DEBE ser la misma version que
+//  pide el plugin: 0.16.11). quartz/static/ se copia entero a
+//  public/static/ en el build.
+//
+//  La carpeta fonts/ tiene que quedar hermana del .css porque el CSS
+//  referencia url(fonts/KaTeX_*.woff2) relativo a si mismo.
+// ════════════════════════════════════════════════════════════════════════
+
+const KATEX_CSS = "static/katex/katex.min.css"
+const KATEX_COPY_TEX = "static/katex/copy-tex.min.js"
+
+const latex = config.plugins.transformers.find((t) => t.name === "Latex")
+if (latex) {
+  latex.externalResources = (ctx: BuildCtx) => {
+    // El href de un <link> se resuelve contra la URL de la PAGINA, no contra
+    // la hoja de estilos, y hay paginas anidadas (/relaciones/particiones).
+    // Una ruta relativa se romperia ahi, asi que armamos una absoluta con el
+    // basePath, igual que quartz/components/renderPage.tsx. Con --serve el
+    // servidor local sirve desde la raiz, sin la subruta de baseUrl.
+    const cfg = ctx.cfg.configuration
+    const basePath =
+      ctx.argv.serve || !cfg.baseUrl
+        ? ""
+        : new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "")
+
+    return {
+      css: [{ content: `${basePath}/${KATEX_CSS}` }],
+      js: [
+        {
+          src: `${basePath}/${KATEX_COPY_TEX}`,
+          loadTime: "afterDOMReady",
+          contentType: "external",
+        },
+      ],
+    }
+  }
+}
 
 // ════════════════════════════════════════════════════════════════════════
 //  Componente "Siguiente artículo"
