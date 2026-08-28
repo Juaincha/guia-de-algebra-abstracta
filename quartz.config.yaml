@@ -298,10 +298,22 @@ plugins:
       priority: 5
       condition: not-index
   - source: "@quartz-community/comments"
-    enabled: false
+    enabled: true
     options:
       provider: giscus
-      options: {}
+      options:
+        repo: Juaincha/guia-de-algebra-abstracta
+        repoId: R_kgDOUCH8hA
+        category: Comentarios
+        categoryId: DIC_kwDOUCH8hM4DEWHf
+        # pathname: el hilo se asocia a la ruta de la pagina, no a la URL
+        # completa. Sobrevive a un cambio de dominio; se rompe si se mueve
+        # el articulo de carpeta. Ver PENDIENTES/CLAUDE.md.
+        mapping: pathname
+        strict: true
+        lang: es
+        inputPosition: bottom
+        reactionsEnabled: true
     layout:
       position: afterBody
       priority: 10
