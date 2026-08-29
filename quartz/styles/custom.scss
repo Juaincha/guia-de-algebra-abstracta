@@ -289,3 +289,24 @@ html body .popover-hint:has(> .page-listing) + hr {
     margin-inline: auto;
   }
 }
+
+// ═══════════════════════════════════════════════════════════════════
+//  Simbolos matematicos: devolverles la fuente de KaTeX
+//
+//  El tema @quartz-themes/default declara
+//      html[saved-theme] body .katex > .katex-html { font-family: var(--font-text) }
+//  y eso pisa la fuente propia de KaTeX. Las LETRAS se salvan porque
+//  KaTeX les pone su propia clase (.mord.mathnormal -> KaTeX_Math), pero
+//  todos los SIMBOLOS ( = , \cap , \emptyset , \implies , la barra de
+//  \neq ...) heredaban la tipografia del cuerpo. Resultado: simbolos con
+//  otra forma, y \neq como cuadrito de glifo ausente.
+//
+//  `inherit` devuelve la herencia a .katex, que KaTeX define como
+//  KaTeX_Main. No se fija una familia concreta a proposito: asi cada
+//  trozo conserva la que KaTeX le asigna (KaTeX_Math para la cursiva,
+//  KaTeX_Size* para los delimitadores grandes, AMS, etc.).
+// ═══════════════════════════════════════════════════════════════════
+
+html body .katex > .katex-html {
+  font-family: inherit;
+}

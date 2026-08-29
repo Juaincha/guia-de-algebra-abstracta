@@ -26,13 +26,12 @@ Hasta ahora no se ha demostrado ninguna de estas afirmaciones. Para demostrar la
 
 >[!demostracion] Demostración
 > Representemos $P$ en el plano complejo. Situemos un vértice, al cual llamaremos vértice principal, en $1$. Representaremos el polígono de manera tal que todos sus vértices yacen en el círculo unitario con fórmula  $z=e^{i\theta}$, donde $\theta$ es de la forma $\frac{2\pi k}{n}$, con $0 \leq k \leq n-1$. Decimos que la posición del vértice es $k$. Definimos $R_{360º/n}: \mathbb{C} \rightarrow \mathbb{C}$ tal que para todo $z \in \mathbb{C}$,  $R_{360º/n}(z)=z·e^{2\pi i/n}$. Esto efectivamente es una rotación, ya que si $z=e^{2\pi ik/n}$, entonces $R_{360º/n}=e^{2\pi ik/n}·e^{2\pi i/n}=e^{2\pi(k+1) i/n}$. Para  $0 \leq k \leq n-2$, cada $k+1$ representa el vértice en la siguiente posición. Para $k=n-1$, $e^{2\pi(k+1) i/n}=e^{2\pi n i/n}=e^{2\pi i}=e^{0i}$, por lo que va a $k=0$. Es decir, cada vértice va a la posición siguiente en sentido antihorario. <br>
+> Luego, si definimos $R_i$
 > Ahora, definimos $S: \mathbb{C} \rightarrow \mathbb{C}$ como para todo $z \in \mathbb{C}$, $S(z)=e^{-i\theta}$, donde donde $\theta$ es el ángulo polar de $z$. Esto corresponde a una reflexión a través del eje formado por el vértice principal y el origen, es decir el eje horizontal, porque:  $e^{-i\theta}=cos(-\theta)+isen(-\theta)=cos(\theta)-isen(\theta)$. Como obtenemos el negativo del componente imaginario, estamos reflejando respecto al eje real. Con estas dos funciones:  <br>
 >1. Sea $P(s): ({R_{360º/n}})^s=z·e^{2\pi is/n}$. $P(1): ({R_{360º/n}})=z·e^{2\pi i/n}$, por lo que $P(1)$ es verdadera. Sea $P(s)$ verdadera. Luego, $({R_{360º/n}})^s=z·e^{2\pi is/n}$. Multiplicando ambos lados por $R_{360º/n}$, obtenemos  $({R_{360º/n}})^{s+1}=z·e^{2\pi is/n}·e^{2\pi i/n}=z·e^{2\pi i(s+1)/n}$, por lo tanto $({R_{360º/n}})^{s+1}=z·e^{2\pi i(s+1)/n}$, que es igual a $P(s+1)$. Como $P(1)$ es verdadera y $P(s) \implies P(s+1)$, por inducción, para todo $s\in \mathbb{N}$, $({R_{360º/n}})^s=z·e^{2\pi is/n}$. Con esta identidad, tenemos: $({R_{360º/n}})^n=z·e^{2\pi in/n}=z·e^{2\pi i}=z$. Luego $({R_{360º/n}})^n$ deja constante cada vértice, por lo que $({R_{360º/n}})^n=e$.
 ><br>
 >2. $S^2=S \circ S(z)$. Sea $z=e^{i\theta}$. Luego, $S(z)=e^{-i\theta}=S(z)=e^{i(-\theta)}$. Como $S(z)$ es de la forma $e^{i\alpha}$ con $\alpha=-\theta$, $S \circ S(z)=e^{-i\alpha}=e^{-i(-\theta)}=e^{i\theta}=z$. Como $S^2$ deja constante cada vértice, $S^2=e$.
 ><br>
->3.  $SR_{360º/n}S=S \circ R_{360º/n} \circ S(z)$. Sea $z=e^{i\theta}$. Luego, $S \circ R_{360º/n} \circ S(z) = S \circ R_{360º/n}(e^{-i\theta})=S(e^{-i\theta}·e^{2\pi i/n})=S(e^{i((2\pi /n)-\theta)})$$=e^{-i((2\pi /n)-\theta)}=e^{i((\theta-2\pi /n))}$. 
-
-
-$S(e^{-i\theta}·e^{2\pi i/n})=S(e^{}$
-
+>3.  $SR_{360º/n}S=S \circ R_{360º/n} \circ S(z)$. Sea $z=e^{i\theta}$. Luego, $S \circ R_{360º/n} \circ S(z) = S \circ R_{360º/n}(e^{-i\theta})=S(e^{-i\theta}·e^{2\pi i/n})=S(e^{i((2\pi /n)-\theta)})=e^{-i((2\pi /n)-\theta)}=e^{i((\theta-2\pi /n))}=z·e^{-i2\pi /n}$. Para verificar que es el inverso, podemos componer con $R_{360º/n}$.  $SR_{360º/n}S \circ R_{360º/n}(z)=SR_{360º/n}S(e^{i\theta}·e^{2\pi i/n})= SR_{360º/n} S(e^{i((2\pi /n)+\theta)})=e^{i((2\pi /n)+\theta)}·e^{-i2\pi /n}=e^{i((2\pi /n)+\theta -(2\pi /n))}=e^{i\theta}=z$. Luego $(SR_{360º/n}S) R_{360º/n}=e$, por lo que $SR_{360º/n}S=(R_{360º/n})^{-1}$.<br>
+>
+> Con esto, se obtiene $({R_{360º/n}})^n=e$, $S^2=e$ y $SR_{360º/n}S=(R_{360º/n})^{-1}$.
