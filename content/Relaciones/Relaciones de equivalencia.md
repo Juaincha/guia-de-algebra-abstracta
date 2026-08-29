@@ -25,13 +25,14 @@ Pese a que los primeros tres triángulos son diferentes, ya sea por orientación
 >>La semejanza de triángulos $\sim$ en el conjunto de triángulos en el plano es una relación de equivalencia.
 >
 >>[!demostracion] Demostración
->>Definamos la semejanza de triángulos como $\triangle ABC \sim \triangle A'B'C' \Longleftrightarrow \alpha = \alpha', \beta = \beta', \gamma = \gamma'$ como se muestra en la imagen. ![[Pasted image 20260823154241.png]]
+>>Definamos la semejanza de triángulos como $\triangle ABC \sim \triangle A'B'C' \Longleftrightarrow \alpha = \alpha', \beta = \beta', \gamma = \gamma'$ como se muestra en la imagen.
+>>![[Pasted image 20260823154241.png]]
 >>1. Sea $\triangle ABC$ triángulo en el plano. Sea $\alpha$ el ángulo en $A$, $\beta$ el ángulo en $B$ y $\gamma$ el ángulo en $C$. Como $\alpha = \alpha, \beta = \beta, \gamma = \gamma$, por definición de la relación $\triangle ABC \sim \triangle ABC$.
->><br>
+>>
 >>2. Sean $\triangle ABC$, $\triangle DEF$ triángulos en el plano. Sea $\alpha$ el ángulo en $A$, $\beta$ el ángulo en $B$, $\gamma$ el ángulo en $C$, $\delta$ el ángulo en $D$, $\varepsilon$ el ángulo en $E$ y $\eta$ el ángulo en $F$. Dejemos que $\triangle ABC \sim \triangle DEF$ sea cierto. Luego por definición: $\alpha = \delta, \beta = \varepsilon, \gamma = \eta$. Por **simería** de la igualdad, lo cual se justifica porque la igualdad es una relación de equivalencia, tenemos: $\delta =\alpha, \varepsilon=\beta, \eta=\gamma$. Por último, nuevamente por definición obtenemos $\triangle DEF \sim \triangle ABC.$ Luego $\triangle ABC \sim \triangle DEF \implies \triangle DEF \sim \triangle ABC.$
->><br>
+>>
 >>3. Sean $\triangle ABC$, $\triangle DEF$, $\triangle GHI$ triángulos en el plano. Sea $\alpha$ el ángulo en $A$, $\beta$ el ángulo en $B$, $\gamma$ el ángulo en $C$, $\delta$ el ángulo en $D$, $\varepsilon$ el ángulo en $E$, $\eta$ el ángulo en $F$, $\theta$ el ángulo en $G$, $\lambda$ el ángulo en $H$ y $\iota$ el ángulo en $I$. Dejemos que $\triangle ABC \sim \triangle DEF$ sea cierto y $\triangle DEF \sim \triangle HIJ$ sea cierto. Luego por definición:  $\alpha = \delta, \beta = \varepsilon, \gamma = \eta$, $\delta =\theta, \varepsilon=\lambda, \eta=\iota$. Por **transitividad** de la igualdad, lo cual se justifica porque la igualdad es una relación de equivalencia, tenemos: $(\alpha = \delta, \delta =\theta) \implies \alpha=\theta$, $(\beta = \varepsilon, \varepsilon=\lambda) \implies \beta=\lambda$, $(\gamma = \eta, \eta=\iota) \implies \gamma=\iota$. Luego tenemos $\alpha=\theta, \beta=\lambda$ y $\gamma=\iota$. Por definición, $\triangle ABC \sim \triangle GHI$. Luego ( $\triangle ABC \sim \triangle DEF$, $\triangle DEF \sim \triangle GHI$)$\implies \triangle ABC \sim \triangle GHI$.
->><br>
+>>
 >>Reunidas las tres condiciones, la semejanza de triángulos en el plano es una relación de equivalencia.
 
 >[!general] Congruencia módulo n $≡\ (mod\ n)$
@@ -42,10 +43,11 @@ Pese a que los primeros tres triángulos son diferentes, ya sea por orientación
 >>[!demostracion] Demostración
 >>Sean $a,b,n \in \mathbb{Z}$. Definimos $≡\ (mod\ n)$ como $a≡b\ (mod\ n) \Longleftrightarrow b-a=kn$, con $k \in \mathbb{Z}$. Luego:
 >>1. Sea $a\in \mathbb{Z}$. Como $a-a=0$ y $0=kn$ con $k=0$, luego $a≡a\ (mod\ n)$.
->><br>
+>>
 >>2. Sean $a,b\in \mathbb{Z}$. Dejemos que $a≡b\ (mod\ n)$ sea cierto. Luego existe un $k \in \mathbb{Z}$ tal que $b-a=kn$. Dejemos $c=-k$. Como $k \in \mathbb{Z}$, $c \in \mathbb{Z}$. Sustituyendo $k=-c$ en $b-a=kn$, obtenemos $b-a=-cn$. Multiplicando por $-1$ a ambos lados se obtiene $a-b=cn$, con $c \in \mathbb{Z}$. Por definición, $b≡a\ (mod\ n)$. Luego $a≡b\ (mod\ n) \implies b≡a\ (mod\ n)$.
->><br>
->>3. Sean $a,b,c\in \mathbb{Z}$. Dejemos que $a≡b\ (mod\ n)$ sea cierto y que $b≡c\ (mod\ n)$ sea cierto. Por definición, existen $p,q \in \mathbb{Z}$ tal que $b-a=pn$ y $c-b=qn$. Despejando $b$ en la primera ecuación, obtenemos $b=a+pn$. Sustituyendo en la segunda ecuación, obtenemos $c-a-pn=qn$. Sumando a ambos lados $pn$ y factorizando por $n$, obtenemos. $c-a=(p+q)n$. Sea $k=p+q$. Como $p,q \in \mathbb{Z}$, luego $k \in \mathbb{Z}$. Sustituyendo, obtenemos $c-a=kn$. Luego por definición $a≡c\ (mod\ n)$. Es decir, ($a≡b\ (mod\ n), b≡c\ (mod\ n)$) $\implies a≡c\ (mod\ n)$.<br>
+>>
+>>3. Sean $a,b,c\in \mathbb{Z}$. Dejemos que $a≡b\ (mod\ n)$ sea cierto y que $b≡c\ (mod\ n)$ sea cierto. Por definición, existen $p,q \in \mathbb{Z}$ tal que $b-a=pn$ y $c-b=qn$. Despejando $b$ en la primera ecuación, obtenemos $b=a+pn$. Sustituyendo en la segunda ecuación, obtenemos $c-a-pn=qn$. Sumando a ambos lados $pn$ y factorizando por $n$, obtenemos. $c-a=(p+q)n$. Sea $k=p+q$. Como $p,q \in \mathbb{Z}$, luego $k \in \mathbb{Z}$. Sustituyendo, obtenemos $c-a=kn$. Luego por definición $a≡c\ (mod\ n)$. Es decir, ($a≡b\ (mod\ n), b≡c\ (mod\ n)$) $\implies a≡c\ (mod\ n)$.
+>>
 >>Reunidas las tres condiciones, la congruencia módulo n es una relación de equivalencia.
 
 Como estas hay muchas más relaciones de equivalencias. A continuación hay algunas relaciones de equivalencias propuestas para demostrar.

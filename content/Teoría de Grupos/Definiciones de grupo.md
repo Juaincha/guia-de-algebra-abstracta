@@ -3,7 +3,7 @@
 > 1.  Para todo $a,b \in G$ tenemos $a·b \in G$. Esta propiedad se conoce como **clausura.**
 > 2. Para todo $a,b,c \in G$ se cumple$(a·b)·c=a·(b·c)$. Esta propiedad se llama **asociatividad.**
 > 3. Existe un $e \in G$ para todo $a \in G$ tal que $e·a=a$. A $e$ se le conoce como **elemento neutro.**
-> 4. Para todo $a \in G$ existe un $b \in G$ tal que $b·a=e$, donde $e$ está dado por el axioma anterior. $b$ se denota $a^{-1}$ y se conoce como **inverso.** <br>
+> 4. Para todo $a \in G$ existe un $b \in G$ tal que $b·a=e$, donde $e$ está dado por el axioma anterior. $b$ se denota $a^{-1}$ y se conoce como **inverso.**
 
 Una operación binaria es simplemente una operación que toma dos elementos y devuelve un tercero. Cuando el grupo es $G$ y la operación es ·, el grupo se denota $(G,·)$. Generalmente cuando el grupo es abstracto · se llama multiplicación o simplemente operación.Tomando esta definición, se desprenden varias propiedades. Es muy importante considerar que si $a=b$, entonces podemos aplicar la regla de sustitución ya que son exactamente el mismo objeto, y también podemos realizar la misma operación a ambos lados. Ahora, las propiedades fundamentales de los grupos son:
 
@@ -30,7 +30,7 @@ Hasta ahora, estoy asumiendo que la axiomatización con inverso y neutro por la 
 > 1.  Para todo $a,b \in G$, $a·b \in G$.
 > 2. Para todo $a,b,c \in G$, $(a·b)·c=a·(b·c)$.
 > 3. Existe un $e \in G$ para todo $a \in G$ tal que $a·e=a$.
-> 4. Para todo $a \in G$ existe un $b \in G$ tal que $a·b=e$.<br>
+> 4. Para todo $a \in G$ existe un $b \in G$ tal que $a·b=e$.
 >
  >Demuestra que bajo esta definición se puede demostrar la bilateralidad del inverso y del neutro.
 

@@ -57,7 +57,7 @@ if (latex) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-//  Componente "Siguiente artículo"
+//  Componente de navegación entre artículos (anterior / siguiente)
 //
 //  El orden de lectura de cada sección son los wikilinks de su index.md.
 //  Quartz guarda esos enlaces, ya ordenados por aparición, en `links` de
@@ -65,7 +65,8 @@ if (latex) {
 //  JavaScript en el navegador ni una lista que mantener aparte.
 //
 //  - Solo aparece en artículos, no en las páginas de índice de sección.
-//  - El último artículo de una sección no lleva enlace.
+//  - El primer artículo de una sección no lleva "Anterior"; el último
+//    no lleva "Siguiente".
 //  - Se renderiza antes que los comentarios (ver el orden de afterBody).
 //
 //  Si reordenas los wikilinks de un index.md, los enlaces se reacomodan
@@ -100,22 +101,45 @@ const SiguienteArticulo = (props: Record<string, unknown>) => {
   const pos = orden.indexOf(slug)
   if (pos < 0) return null
 
-  const siguiente = orden[pos + 1]
-  if (!siguiente) return null
+  const buscar = (s: string | undefined) => (s ? allFiles.find((f) => f.slug === s) : undefined)
+  const slugAnterior = orden[pos - 1]
+  const slugSiguiente = orden[pos + 1]
+  const anterior = buscar(slugAnterior)
+  const siguiente = buscar(slugSiguiente)
+  if (!anterior && !siguiente) return null
 
-  const destino = allFiles.find((f) => f.slug === siguiente)
-  if (!destino) return null
+  const enlace = (
+    destinoSlug: string,
+    destino: Record<string, unknown>,
+    sentido: "anterior" | "siguiente",
+  ) => {
+    const etiqueta = h(
+      "span",
+      { class: "nav-articulos-etiqueta" },
+      sentido === "anterior" ? "Anterior" : "Siguiente",
+    )
+    const titulo = h("span", { class: "nav-articulos-titulo" }, tituloDe(destino, destinoSlug))
+    const flecha = h(
+      "span",
+      { class: "nav-articulos-flecha", "aria-hidden": "true" },
+      sentido === "anterior" ? "\u2190" : "\u2192",
+    )
+    return h(
+      "a",
+      {
+        class: `nav-articulos-enlace nav-articulos-${sentido}`,
+        href: resolveRelative(slug as FullSlug, destinoSlug as FullSlug),
+      },
+      // La flecha va del lado hacia donde apunta la navegacion.
+      ...(sentido === "anterior" ? [flecha, etiqueta, titulo] : [etiqueta, titulo, flecha]),
+    )
+  }
 
   return h(
     "nav",
-    { class: "siguiente-articulo", "aria-label": "Navegación entre artículos" },
-    h(
-      "a",
-      { href: resolveRelative(slug as FullSlug, siguiente as FullSlug) },
-      h("span", { class: "siguiente-articulo-etiqueta" }, "Siguiente"),
-      h("span", { class: "siguiente-articulo-titulo" }, tituloDe(destino, siguiente)),
-      h("span", { class: "siguiente-articulo-flecha", "aria-hidden": "true" }, "→"),
-    ),
+    { class: "nav-articulos", "aria-label": "Navegación entre artículos" },
+    anterior ? enlace(slugAnterior, anterior, "anterior") : null,
+    siguiente ? enlace(slugSiguiente, siguiente, "siguiente") : null,
   )
 }
 

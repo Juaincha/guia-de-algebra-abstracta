@@ -139,29 +139,34 @@ html body a.internal-link:not(.tag-link) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-//  Boton "Siguiente articulo" y bloque de comentarios plegable
+//  Navegacion entre articulos (anterior / siguiente) y comentarios
 //
-//  Los componentes que los generan estan en quartz.ts, pero sus estilos
-//  van AQUI a proposito: el CSS que se declara en un componente se emite
-//  dentro de @layer quartz-base, y el tema @quartz-themes/default le gana
-//  sin importar la especificidad. custom.scss se emite SIN capa, asi que
-//  gana siempre. El prefijo `html body` es para desempatar contra las
-//  reglas del tema que tambien quedaron fuera de su capa.
+//  El componente que los genera esta en quartz.ts, pero sus estilos van
+//  AQUI a proposito: el CSS declarado en un componente se emite dentro de
+//  @layer quartz-base, y el tema @quartz-themes/default le gana sin
+//  importar la especificidad. custom.scss se emite SIN capa, asi que gana
+//  siempre. El prefijo `html body` desempata contra las reglas del tema
+//  que tambien quedaron fuera de su capa.
 //
 //  El gris es un rgb() neutro con alfa, no una variable del tema: al
 //  componerse sobre el fondo funciona igual en claro y en oscuro. No se
-//  usa --lightgray porque el tema lo redefine a un tono practicamente
-//  identico al fondo (#f6f6f6 sobre #ffffff), y color-mix() con las
-//  variables del tema no resolvia de forma fiable en modo oscuro.
+//  usa --lightgray porque el tema lo redefine a un tono casi identico al
+//  fondo (#f6f6f6 sobre #ffffff).
+//
+//  Los dos botones van centrados como pareja. Cuando solo hay uno (primer
+//  o ultimo articulo de la seccion) queda centrado el solo, igual que
+//  antes.
 // ═══════════════════════════════════════════════════════════════════
 
-html body .siguiente-articulo {
+html body .nav-articulos {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin: 2.5rem 0 1rem 0;
 }
 
-html body .siguiente-articulo > a {
+html body .nav-articulos-enlace {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -178,19 +183,19 @@ html body .siguiente-articulo > a {
     color 0.15s ease;
 }
 
-html body .siguiente-articulo > a:hover {
+html body .nav-articulos-enlace:hover {
   border-color: var(--secondary);
   color: var(--secondary);
 }
 
-html body .siguiente-articulo-etiqueta {
+html body .nav-articulos-etiqueta {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--gray);
 }
 
-html body .siguiente-articulo-titulo {
+html body .nav-articulos-titulo {
   font-weight: 600;
 }
 
@@ -309,4 +314,118 @@ html body .popover-hint:has(> .page-listing) + hr {
 
 html body .katex > .katex-html {
   font-family: inherit;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  Sin icono de enlace en los encabezados
+//
+//  El plugin github-flavored-markdown agrega a cada encabezado un
+//  <a role="anchor"> con un icono de cadena que aparece al pasar el
+//  raton y cuya unica funcion es poner el ancla en la barra de
+//  direcciones. Se oculta.
+//
+//  Se hace por CSS y NO con la opcion `linkHeadings: false` del plugin a
+//  proposito: esa opcion desactiva tambien rehype-slug, con lo que los
+//  encabezados perderian su atributo id. Sin id no hay enlaces profundos
+//  a una seccion (/pagina#seccion), no funcionarian los wikilinks del
+//  tipo [[Nota#Seccion]], y el plugin table-of-contents quedaria inutil
+//  si algun dia se reactiva. El ancla ya es aria-hidden y tabindex="-1",
+//  asi que ocultarla no afecta a lectores de pantalla ni al tabulador.
+// ═══════════════════════════════════════════════════════════════════
+
+html body .center a[role="anchor"] {
+  display: none;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  Listas dentro del articulo: mismo color, misma tipografia y
+//  separacion real entre items
+//
+//  1) COLOR. El tema pinta los parrafos con --text-muted
+//     (html[saved-theme] body p) pero los items de lista con
+//     --text-normal (html[saved-theme] body ol > li). Dentro de un
+//     callout eso salta a la vista: el parrafo es gris y la numeracion
+//     de al lado, negra.
+//
+//  2) TIPOGRAFIA. Misma historia: el tema manda los parrafos a
+//     --font-interface mientras que un <li> hereda --font-text del
+//     blockquote. Son dos familias distintas, una pegada a la otra.
+//
+//     En los dos casos se alinea la LISTA al parrafo, no al reves,
+//     para no tocar la tipografia ni el tono del cuerpo del sitio.
+//
+//  3) SEPARACION. Cuando un item se separa del siguiente con una linea
+//     en blanco, Markdown produce una lista "suelta" y envuelve cada
+//     item en <p>. Pero el CSS base de Quartz trae
+//         .page article li > * { margin-top: 0; margin-bottom: 0 }
+//     que anula justamente esos margenes, asi que la lista se veia
+//     igual de apretada que una lista normal y la linea en blanco no
+//     servia de nada. Se le devuelve el margen.
+//
+//     El `:has(> p)` distingue una lista suelta de una apretada: solo
+//     las sueltas llevan <p> dentro del <li>. Asi, una numeracion
+//     escrita sin lineas en blanco sigue compacta, y solo se separan
+//     las que se pidieron separadas.
+//
+//     Entre items va 1.25rem, algo mas que la separacion entre dos
+//     parrafos del cuerpo (1rem): un item numerado ya trae su marcador
+//     a la izquierda y necesita mas aire para leerse como un bloque
+//     aparte. Lo que va DENTRO de un mismo item va a 1rem, para que el
+//     corte grande sea siempre el de entre items.
+//     >> Si quieres mas o menos aire, cambia ese 1.25rem y nada mas.
+// ═══════════════════════════════════════════════════════════════════
+
+html body article :is(ol, ul) > li {
+  color: var(--text-muted);
+  font-family: var(--font-interface);
+}
+
+html body article :is(ol, ul) > li:has(> p) + li {
+  margin-top: 1.25rem;
+}
+
+// Cualquier bloque que siga a otro DENTRO de un mismo item lleva aire:
+// un segundo parrafo, la sublista que cuelga del item, o el parrafo de
+// cierre que va despues de la sublista. El `li > *` del CSS base los
+// dejaba a todos pegados.
+html body article li > * + * {
+  margin-top: 1rem;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  Numeracion jerarquica: 1. -> 1.1. -> 1.1.1.
+//
+//  Una sublista numerada se muestra por defecto como "1. 2. 3." otra
+//  vez, sin relacion visible con el paso del que cuelga. En una
+//  demostracion por casos eso se pierde: interesa leer "1.2." y saber
+//  de inmediato que es el segundo sub-paso del primer paso.
+//
+//  `counters()` (en plural) concatena todas las instancias del
+//  contador que estan abiertas en ese punto del arbol, separadas por
+//  el punto: una sublista dentro del item 1 da "1.1", "1.2"...
+//
+//  Se aplica SOLO a listas que realmente tienen sublista
+//  (`ol:has(ol)`) y a las sublistas mismas. Una lista numerada normal
+//  conserva su marcador nativo, y con el su atributo `start` -- que
+//  los contadores CSS ignoran y que aparece cuando un parrafo del
+//  medio parte la lista en dos.
+//
+//  Consecuencia al escribir: cada demostracion tiene que ser UNA sola
+//  lista. Los parrafos intermedios (un "Verificadas las tres
+//  condiciones...") van indentados dentro del item al que pertenecen,
+//  no al margen; si quedan al margen parten la lista y la numeracion
+//  vuelve a empezar en 1.
+// ═══════════════════════════════════════════════════════════════════
+
+html body article ol:has(ol),
+html body article ol ol {
+  counter-reset: item-lista;
+}
+
+html body article :is(ol:has(ol), ol ol) > li {
+  counter-increment: item-lista;
+}
+
+html body article :is(ol:has(ol), ol ol) > li::marker {
+  content: counters(item-lista, ".") ". ";
 }

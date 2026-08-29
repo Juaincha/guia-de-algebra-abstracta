@@ -49,7 +49,8 @@ De esta forma, $a^n=a·a·a···a$, $n$ veces. Para demostrar las propiedades d
 >> Para todo $a\in G$, $n \in \mathbb{N}$,  ${(a^{-1})}^n={(a^n)}^{-1}$.
 >
 >>[!demostracion] Demostración
->>Sea $a\in G$ y $P(n):{(a^{-1})}^n={(a^n)}^{-1}$. Luego, $P(1): {(a^{-1})}^1={(a^1)}^{-1}$. Por definición, $a^1=a$, ${(a^{-1})}^1=a^{-1}$. Luego $P(1): a^{-1}=a^{-1}$. Por lo tanto, $P(1)$ es verdadera. <br>
+>>Sea $a\in G$ y $P(n):{(a^{-1})}^n={(a^n)}^{-1}$. Luego, $P(1): {(a^{-1})}^1={(a^1)}^{-1}$. Por definición, $a^1=a$, ${(a^{-1})}^1=a^{-1}$. Luego $P(1): a^{-1}=a^{-1}$. Por lo tanto, $P(1)$ es verdadera.
+>>
 >> Sea $P(k)$ verdadera, con $k\in \mathbb{N}$. Tengamos ${(a^{-1})}^{k+1}$. Por definición, ${(a^{-1})}^{k+1}=a^{-1}·{(a^{-1})}^k$. Como $P(k)$ es verdadera, ${(a^{-1})}^k={(a^k)}^{-1}$. Sustituyendo, $a^{-1}·{(a^k)}^{-1}$. Por el inverso del producto, $a^{-1}·{(a^k)}^{-1}={(a^k·a)}^{-1}$. Por suma de exponentes, ${(a^k·a)}^{-1}={(a^{k+1})}^{-1}$. Por lo tanto obtenemos ${(a^{-1})}^{k+1}={(a^{k+1})}^{-1}$, por lo que $P(k+1)$ es verdadera. Como $P(1)$ es verdadera y $P(k) \implies P(k+1)$, por inducción: para todo $a\in G$, $n \in \mathbb{N}$,  ${(a^{-1})}^n={(a^n)}^{-1}$.
 
 Con estas dos propiedades es natural extender los exponentes a todos los enteros de la siguiente forma:
