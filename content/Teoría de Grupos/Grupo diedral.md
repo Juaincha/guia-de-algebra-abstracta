@@ -2,7 +2,7 @@ El grupo diedral $(D_n,\circ)$ consiste en el grupo de simetrías de un polígon
 
 ![[file_00000000c140820ea282cff9fd083d8a.png|400]]
 
- Para hacer múltiples simetrías, podemos considerar que cada simetría es una función que toma como entrada el polígono y da como salida el polígono con los vértices alterados. Por esto, la composición de simetrías se hace de derecha a izquierda, igual que la composición de funciones. Por ejemplo. hacer la simetría $a$ y después la simetría $b$ es igual a hacer la simetría $b \circ a$. Si llamamos $r$ a la rotación más pequeña en sentido antihorario que preserva la forma del polígono, notamos que esta mueve cada vértice 1 posición en sentido antihorario. Si hacemos dos veces esta rotación, $r \circ r=r^2$ mueve cada vértice 2 pocisiones en sentido antihorario. De esta forma, $r^k$ mueve cada vértice k posiciones en sentido antihorario. Como el polígono tiene n vértices, $r^n$ es equivalente a no hacer nada. Si llamamos $e$ a la simetría de no hacer nada, tenemos  $r^n=e$. Además, como rotar en sentido antihorario y rotar en sentido horario no hace nada, podemos decir que rotar en sentido horario es $r^{-1}$.
+ Para hacer múltiples simetrías, podemos considerar que cada simetría es una función que toma como entrada el polígono y da como salida el polígono con los vértices alterados. Por esto, la composición de simetrías se hace de derecha a izquierda, igual que la composición de funciones. Por ejemplo. hacer la simetría $a$ y después la simetría $b$ es igual a hacer la simetría $b \circ a$. Si llamamos $r$ a la rotación más pequeña en sentido antihorario que preserva la forma del polígono, notamos que esta mueve cada vértice 1 posición en sentido antihorario. Si hacemos dos veces esta rotación, $r \circ r=r^2$ mueve cada vértice 2 pocisiones en sentido antihorario. De esta forma, $r^k$ mueve cada vértice k posiciones en sentido antihorario. Como el polígono tiene n vértices, $r^n$ es equivalente a no hacer nada. Si llamamos $e$ a la simetría de no hacer nada, tenemos  $r^n=e$. Además, como rotar en sentido antihorario y rotar en sentido horario no hace nada, podemos decir que rotar en sentido horario es $r^{-1}$. Pero como $r^n=e$, $r^{n-1}\circ r=e$ y por lo tanto $r^{-1}=r^{n-1}$.
 
 Ahora, si llamamos $s_A$ a la reflexión que pasa por el vértice $A$ y el centro, notamos que reflejar dos veces no hace nada. Es decir, $s_A^2=e$. Lo mismo para cada vértice, es decir $s_B^2=e$, $s_C^2=e$, etc. Ahora una observación importante es que reflejar a través de $B$ es equivalente reflejar a través de $A$ y rotar en sentido antihorario. Es decir: $s_B = s_A \circ r$. Para evitar trabajar con tantos símbolos, no se escribe la composición y se asume que si dos elementos están juntos es porque hay que hacer su composición. Luego tenemos $s_B=s_A \: r$. Con la misma lógica, obtenemos $s_C =s_A \: r^2$, etc. Por lo tanto todas las reflexiones se pueden escribir como combinación de rotaciones y $s_A$. Por lo tanto, lo que se suele hacer es olvidar el resto de reflexiones y llamar $s_A=s$.
 
@@ -41,9 +41,34 @@ Hasta ahora no se ha demostrado ninguna de estas afirmaciones. Para demostrar la
 Ahora viene la parte más importante: demostrar que con estas tres propiedades es suficiente para describir completamente el grupo diedral.
 
 >[!teorema] Teorema
-> Sea $D_n=\{r,r^2,...r^{n-1},s,sr,sr^2,...sr^{n-1}\}$ tal que $r^n=e$, $s^2=e$, $srs=r^{-1}$ y la operación es la composición. Luego, $(D_n,\circ)$ es un grupo.
+> Sea $D_n=\{e,r,r^2,...r^{n-1},s,sr,sr^2,...sr^{n-1}\}$ tal que se cumple:
+> 1. Existe una operación asociativa en $D_n$, denotada $\circ$ o por yuxtaposición.
+> 2. Para todo $a\in D_n$, $ea=a$.  
+> 3.$r^n=e$, $s^2=e$, $srs=r^{n-1}$ y la operación es la composición. Luego, $(D_n,\circ)$ es un grupo.
 
 >[!demostracion] Demostración
 > Sea $D_n=\{r,r^2,...r^{n-1},s,sr,sr^2,...sr^{n-1}\}$ y $r^n=e$, $s^2=e$, $srs=r^{-1}$ bajo composición. Queremos mostrar que se cumplen los 4 axiomas de grupo.
 > 1. Para la clausura, queremos demostrar que la operación de dos elementos cualquiera de $D_n$ resulta en un elemento de $D_n$. Como todo elemento de $D_n$ se puede escribir como $r^k$ o $sr^k$ con $0\leq k \leq n-1$, podemos separar el problema en casos:
-> 1.1. 
+>
+> 1.0. Primero demostraremos una propiedad que será útil en un momento. Como $srs=r^{-1}$, multiplicando por $s$ a la izquierda y a la derecha a ambos lados, $s^2rs^2=sr^{-1}s$, por lo tanto $r=sr^{-1}s$. Sea $P(z):r^z=sr^{-z}s$. $P(1): r^1=sr^{-1}s$ que por lo anterior es verdadera. Sea $P(w)$ verdadera. Luego: $r^w=sr^{-w}s$. Multiplicando por la izquierda por $r$ al lado izquierdo y por $sr^{-1}s$ al lado derecho, lo cual es válido porque son equivalentes: $rr^w=sr^{-1}ssr^{-w}s$, luego $r^{w+1}=sr^{-1}r^{-w}s$, y por lo tanto $r^{w+1}=sr^{-(w+1)}s$. Luego $P(w) \implies P(w+1)$. Por inducción, para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$.
+>
+> 1.1. Sean $p,q \in [0,n-1]$. Luego, $r^p \circ r^q=r^{p+q}$. Sea $p+q=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{p+q}=r^{kn+c}=r^{kn}·r^c=(r^n)^k·r^c$. Como $r^n=e$, sustituyendo: $(r^n)^k·r^c=(e)^k·r^c=r^c$. Como $c \in [1,n-1]$, $r^c \in D_n$. Por lo tanto $r^p \circ r^q \in D_n$.
+>
+> 1.2. Sean $p,q \in [0,n-1]$. Tengamos $r^p \circ sr^q$. Como se demostró previamente, para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $r^p \circ sr^q$, obtenemos $sr^{-p}ssr^q=sr^{-p}r^q=sr^{q-p}$. Sea $p-q=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego $sr^{q-p}=sr^{kn+c}=s(r^n)^kr^c=sr^c$. Como $c \in [1,n-1]$, $sr^c \in D_n$. Por lo tanto $r^p\circ sr^q \in D_n$.
+>
+> 1.3. Sean $p,q \in [0,n-1]$. Tengamos $sr^p \circ r^q$. Sabemos que para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $sr^p \circ r^q$, obtenemos $ssr^{-p}sr^q=r^{-p}sr^q$. Sea $-p=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{-p}sr^q=r^{kn+c}sr^q=(r^n)^kr^csr^q=r^csr^q$. Como $c,q \in [1,n-1]$, en el caso anterior se demostró $r^c\circ sr^q \in D_n$. Por lo tanto $sr^p \circ r^q \in D_n$.
+>
+> 1.4. Sean $p,q \in [0,n-1]$. Tengamos $sr^p \circ sr^q$. Sabemos que para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $sr^p \circ sr^q$, obtenemos $ssr^{-p}ssr^q=r^{-p}r^q$. Sea $-p=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{-p}r^q=r^{kn+c}r^q=(r^n)^kr^cr^q=r^cr^q$. Como $c,q \in [1,n-1]$, en el primer caso se demostró $r^c\circ r^q \in D_n$. Por lo tanto $sr^p \circ sr^q \in D_n$.
+>
+> Como se han descrito todos los casos de operación de dos elementos del conjunto, queda demostrada la clausura en $(D_n,\circ)$.
+>
+> 2. Por hipótesis, la operación $\circ$ es asociativa, por lo tanto hay asociatividad en $(D_n,\circ)$.
+>
+> 3. Para el neutro, por hipótesis $e$ es el neutro.
+>
+> 4. Para el inverso, podemos dividir los miembros de $D_n$ en dos casos:
+>
+> 4.1. Sea 
+>
+>4.2.
+ 
