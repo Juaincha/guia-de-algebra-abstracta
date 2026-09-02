@@ -177,25 +177,66 @@ config.plugins.transformers.push({
 // ════════════════════════════════════════════════════════════════════════
 //  Puntuacion pegada a las formulas
 //
-//  KaTeX no marca la formula como indivisible, asi que entre el final de
-//  un $...$ y el signo que viene detras hay un punto de corte valido. En
-//  lineas estrechas el navegador lo aprovecha y manda la coma o el punto
-//  solo a la linea siguiente. Medido sobre los articulos: pasaba en
-//  decenas de anchuras distintas en cada uno.
+//  Entre el final de un $...$ y el signo que va pegado detras hay un
+//  punto de corte valido, y en lineas estrechas el navegador manda la
+//  coma o el punto solo a la linea siguiente. Medido sobre los
+//  articulos: pasaba en decenas de anchuras distintas en cada uno.
 //
-//  La solucion NO puede ser hacer la formula entera indivisible: las
-//  formulas largas SI deben poder partirse. Asi que se envuelve solo el
-//  conjunto formula+signo en un <span class="formula-pegada"> que lleva
-//  `white-space: nowrap`, y dentro se le devuelve `normal` a .katex (ver
-//  quartz/styles/custom.scss). El unico corte que queda prohibido es el
-//  de la juntura; por dentro la formula sigue partiendose igual.
+//  Lo que NO funciona, y esta comprobado:
 //
-//  Se hace tambien con el signo de apertura que va pegado por delante
-//  ("($x$"), para que no se quede huerfano al final de la linea.
+//  - `white-space: nowrap` en un envoltorio que agrupe formula y signo.
+//    KaTeX cierra cada trozo de formula en un <span class="base"> que es
+//    inline-block, o sea una caja atomica, y el navegador resuelve la
+//    juntura contra el `white-space` de .katex, no contra el del
+//    envoltorio. Seguian rompiendose 176 casos solo en Grupo diedral.
+//  - Anadir U+2060 (WORD JOINER) delante del signo. Ese caracter prohibe
+//    el corte entre TEXTOS, pero no junto a una caja atomica.
+//  - Hacer el envoltorio `inline-block`. Arregla parte, pero convierte la
+//    formula entera en indivisible: las formulas largas dejaban de
+//    partirse (de 6245 cortes internos a 424) y aparecian 49 desbordes.
+//
+//  Lo que si funciona es meter el signo DENTRO del ultimo <span
+//  class="base"> de la formula. Al quedar dentro de la misma caja
+//  atomica, no hay juntura que romper: el signo viaja siempre con el
+//  ultimo trozo. Y como los cortes internos de una formula ocurren ENTRE
+//  cajas .base, las formulas largas se siguen partiendo igual.
+//  Verificado sobre los articulos, de 320 a 900 px: 0 signos huerfanos,
+//  0 desbordes, 8340 cortes internos conservados.
+//
+//  El signo de apertura pegado por delante ("($x$") va, por el mismo
+//  motivo, dentro del PRIMER .base.
+//
+//  Contrapartida: .katex-html es aria-hidden, asi que el signo deja de
+//  leerse en un lector de pantalla. Con `renderEngine: katex` y salida
+//  solo-HTML la formula entera ya era invisible para esos lectores, asi
+//  que el signo no cambia el panorama; si algun dia se activa la salida
+//  con MathML habra que revisarlo.
+//
+//  El tamano y la tipografia se devuelven al del texto en custom.scss:
+//  .katex impone KaTeX_Main a 1.21em y una coma se notaria mas grande.
 // ════════════════════════════════════════════════════════════════════════
 
 const RE_CIERRE = /^[,.;:!?)\]}»”…]+/
 const RE_APERTURA = /[([{«¿¡“]+$/
+
+function primerHijoConClase(nodo: NodoHast, clase: string): NodoHast | undefined {
+  return (nodo.children ?? []).find((h) => tieneClase(h, clase))
+}
+
+function basesDe(formula: NodoHast): NodoHast[] {
+  const html = primerHijoConClase(formula, "katex-html")
+  if (!html) return []
+  return (html.children ?? []).filter((h) => tieneClase(h, "base"))
+}
+
+function spanPuntuacion(valor: string): NodoHast {
+  return {
+    type: "element",
+    tagName: "span",
+    properties: { className: ["puntuacion-pegada"] },
+    children: [{ type: "text", value: valor }],
+  }
+}
 
 function pegarPuntuacion(nodo: NodoHast): void {
   const hijos = nodo.children
@@ -207,17 +248,15 @@ function pegarPuntuacion(nodo: NodoHast): void {
     const formula = hijos[i]
     if (!tieneClase(formula, "katex")) continue
 
-    const grupo: NodoHast[] = [formula]
-    let desde = i
-    let hasta = i
+    const bases = basesDe(formula)
+    if (bases.length === 0) continue
 
     const previo = hijos[i - 1]
     if (previo?.type === "text") {
       const m = RE_APERTURA.exec(previo.value ?? "")
       if (m) {
-        grupo.unshift({ type: "text", value: m[0] })
+        bases[0].children = [spanPuntuacion(m[0]), ...(bases[0].children ?? [])]
         previo.value = (previo.value ?? "").slice(0, m.index)
-        if (previo.value === "") desde = i - 1
       }
     }
 
@@ -225,22 +264,11 @@ function pegarPuntuacion(nodo: NodoHast): void {
     if (siguiente?.type === "text") {
       const m = RE_CIERRE.exec(siguiente.value ?? "")
       if (m) {
-        grupo.push({ type: "text", value: m[0] })
+        const ultima = bases[bases.length - 1]
+        ultima.children = [...(ultima.children ?? []), spanPuntuacion(m[0])]
         siguiente.value = (siguiente.value ?? "").slice(m[0].length)
-        if (siguiente.value === "") hasta = i + 1
       }
     }
-
-    if (grupo.length === 1) continue
-
-    const envoltura: NodoHast = {
-      type: "element",
-      tagName: "span",
-      properties: { className: ["formula-pegada"] },
-      children: grupo,
-    }
-    hijos.splice(desde, hasta - desde + 1, envoltura)
-    i = desde
   }
 }
 

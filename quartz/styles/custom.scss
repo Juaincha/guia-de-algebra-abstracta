@@ -487,21 +487,19 @@ html body .explorer > .explorer-content {
 // ═══════════════════════════════════════════════════════════════════
 //  Puntuacion pegada a las formulas
 //
-//  quartz.ts envuelve cada formula junto al signo que lleva pegado
-//  (la coma de "$ee=e$," o el parentesis de "($x$") en un
-//  .formula-pegada. El `nowrap` prohibe el unico corte que molestaba:
-//  el de la juntura entre la formula y el signo.
+//  quartz.ts mete el signo que va pegado a una formula (la coma de
+//  "$ee=e$," o el parentesis de "($x$") DENTRO del .base de KaTeX, que
+//  es una caja atomica: asi el signo no puede quedarse solo al final de
+//  la linea. Ver el comentario largo de quartz.ts para por que ni
+//  `nowrap` ni el WORD JOINER servian.
 //
-//  El `normal` de dentro es imprescindible: sin el, el nowrap se
-//  heredaria a toda la formula y una expresion larga dejaria de
-//  partirse, desbordando la caja en pantallas estrechas. Con el, por
-//  dentro se sigue partiendo igual que antes.
+//  Al entrar en .katex, el signo hereda KaTeX_Main a 1.21em. Aqui se le
+//  devuelve la tipografia y el tamano del texto: 1em de .katex son
+//  1.21em del parrafo, asi que dividir por 1.21 deja el signo del mismo
+//  tamano exacto que si estuviera fuera.
 // ═══════════════════════════════════════════════════════════════════
 
-html body article .formula-pegada {
-  white-space: nowrap;
-}
-
-html body article .formula-pegada .katex {
-  white-space: normal;
+html body article .katex .puntuacion-pegada {
+  font-family: var(--font-interface);
+  font-size: calc(1em / 1.21);
 }
