@@ -5,7 +5,7 @@
 > 3. Existe un $e \in G$ para todo $a \in G$ tal que $e·a=a$. A $e$ se le conoce como **elemento neutro.**
 > 4. Para todo $a \in G$ existe un $b \in G$ tal que $b·a=e$, donde $e$ está dado por el axioma anterior. $b$ se denota $a^{-1}$ y se conoce como **inverso.**
 
-Una operación binaria es simplemente una operación que toma dos elementos y devuelve un tercero. Cuando el grupo es $G$ y la operación es ·, el grupo se denota $(G,·)$. Generalmente cuando el grupo es abstracto · se llama multiplicación o simplemente operación.Tomando esta definición, se desprenden varias propiedades. Es muy importante considerar que si $a=b$, entonces podemos aplicar la regla de sustitución ya que son exactamente el mismo objeto, y también podemos realizar la misma operación a ambos lados. Ahora, las propiedades fundamentales de los grupos son:
+Una operación binaria es simplemente una operación que toma dos elementos y devuelve un tercero. Cuando el grupo es $G$ y la operación es ·, el grupo se denota $(G,·)$. Generalmente cuando el grupo es abstracto · se llama multiplicación o simplemente operación. Tomando esta definición, se desprenden varias propiedades. Es muy importante considerar que si $a=b$, entonces podemos aplicar la regla de sustitución ya que son exactamente el mismo objeto, y también podemos realizar la misma operación a ambos lados. Ahora, las propiedades fundamentales de los grupos son:
 
 >[!general] Bilateralidad del inverso
 >>[!teorema] Teorema
@@ -64,20 +64,21 @@ Ahora vamos a practicar demostrar que ciertos conjuntos con operaciones son grup
 >[!ejercicio] Ejercicio
 > Demostrar si $(\mathbb{N}_0,+)$ es un grupo o no.
 >
-> Sabemos que los números naturales con el cero son cerrados bajo suma, ya que la suma de números positivos y el cero siempre resulta en un número positivo o cero. También, sabemos que la suma es asociativa, ya que $(a+b)+c=a+(b+c)$. Además, existe un $e\in  \mathbb{N}_0$ para todo $a \in \mathbb{N}_0$ tal que $a+e=a$, con $e=0$ ya que $a+0=a$. Pero el último axioma falla: no para todo $a \in \mathbb{N}_0$ existe un $b \in \mathbb{N}_0$ tal que $a+b=0$. Sabemos que el único $b \in \mathbb{R}$ que cumple esto es $b=-a$, pero si $a>0$, entonces $-a<0$ y por lo tanto no está en $\mathbb{N}_0$. El único que tiene inverso es $0$, ya que $0+0=0$. Pero como no todos tienen inverso, $(\mathbb{N}_0,+)$ no es un grupo.
+>>[!demostracion]- Solución
+>>Sabemos que los números naturales con el cero son cerrados bajo suma, ya que la suma de números positivos y el cero siempre resulta en un número positivo o cero. También, sabemos que la suma es asociativa, ya que $(a+b)+c=a+(b+c)$. Además, existe un $e\in  \mathbb{N}_0$ para todo $a \in \mathbb{N}_0$ tal que $a+e=a$, con $e=0$ ya que $a+0=a$. Pero el último axioma falla: no para todo $a \in \mathbb{N}_0$ existe un $b \in \mathbb{N}_0$ tal que $a+b=0$. Sabemos que el único $b \in \mathbb{R}$ que cumple esto es $b=-a$, pero si $a>0$, entonces $-a<0$ y por lo tanto no está en $\mathbb{N}_0$. El único que tiene inverso es $0$, ya que $0+0=0$. Pero como no todos tienen inverso, $(\mathbb{N}_0,+)$ no es un grupo.
 
 >[!ejercicio] Ejercicio
 > Demostrar si $(\mathbb{Q},·)$ es un grupo o no. 
->
-> Primero, sabemos que el producto de dos números racionales resulta en otro número racional. Luego, sabemos que en los racionales $(a·b)·c=a·(b·c)$. Ahora, sabemos que existe un $e \in \mathbb{Q}$ para todo $a \in \mathbb{Q}$ tal que $e·a=a$, con $e=1$ ya que $1·a=a$. Pero nuevamente falla el inverso. Sabemos que para todo $a \in \mathbb{Q} \textbackslash \{0\}$ existe un $b \in \mathbb{Q}$ tal que $b·a=1$, donde $b=\frac{1}{a}$.  El problema es $0$: no existe un $b \in \mathbb{Q}$ tal que $b·0=1$. De hecho, sabemos que para todo $b \in \mathbb{Q}$ tenemos $b·0=0$. Como $0$ no tiene inverso multiplicativo, $(\mathbb{Q},·)$ no es un grupo.
+>>[!demostracion]- Solución
+>> Primero, sabemos que el producto de dos números racionales resulta en otro número racional. Luego, sabemos que en los racionales $(a·b)·c=a·(b·c)$. Ahora, sabemos que existe un $e \in \mathbb{Q}$ para todo $a \in \mathbb{Q}$ tal que $e·a=a$, con $e=1$ ya que $1·a=a$. Pero nuevamente falla el inverso. Sabemos que para todo $a \in \mathbb{Q} \setminus \{0\}$ existe un $b \in \mathbb{Q}$ tal que $b·a=1$, donde $b=\frac{1}{a}$.  El problema es $0$: no existe un $b \in \mathbb{Q}$ tal que $b·0=1$. De hecho, sabemos que para todo $b \in \mathbb{Q}$ tenemos $b·0=0$. Como $0$ no tiene inverso multiplicativo, $(\mathbb{Q},·)$ no es un grupo.
 
 >[!ejercicio] Ejercicio
 > Demostrar si $(\mathbb{N},\wedge)$ es un grupo o no.
->
-> Primero, para todo $a,b\in \mathbb{N}$ tenemos $a^b \in \mathbb{N}$. Pero probemos la asociatividad: por un lado, $(a^b)^c=a^{bc}$. Por otro lado, $a^{(b^c)}= a^{b^c}$. Pero además $a^{bc} \neq a^{b^c}$. Como falla la asociatividad, $(\mathbb{N},\wedge)$ no es un grupo.
+>>[!demostracion]- Solución
+>> Primero, para todo $a,b\in \mathbb{N}$ tenemos $a^b \in \mathbb{N}$. Pero probemos la asociatividad: por un lado, $(a^b)^c=a^{bc}$. Por otro lado, $a^{(b^c)}= a^{b^c}$. Pero además $a^{bc} \neq a^{b^c}$. Como falla la asociatividad, $(\mathbb{N},\wedge)$ no es un grupo.
 
 >[!ejercicio] Ejercicio
 > Demostrar si $(\mathbb{Z},+)$ es un grupo o no.
->
-> Sabemos que si $a,b,c \in \mathbb{Z}$ tenemos $a+b \in \mathbb{Z}$, por lo que se cumple la clausura, y $(a+b)+c=a+(b+c)$, por lo que hay asociatividad. Ahora al igual que con $\mathbb{N}_0$, existe un $e \in \mathbb{Z}$ para todo $a \in \mathbb{Z}$ tal que $a+e=a$ con $e=0$. De este modo, existe el neutro. Por último, para todo $a \in \mathbb{Z}$, $-a \in \mathbb{Z}$ por lo que para todo $a \in \mathbb{Z}$ existe un $b \in \mathbb{Z}$ tal que $a+b=0$, con $b=-a$, de modo que existe el inverso. Al satisfacer los axiomas, $(\mathbb{Z},+)$ es un grupo.
+>>[!demostracion]- Solución
+>> Sabemos que si $a,b,c \in \mathbb{Z}$ tenemos $a+b \in \mathbb{Z}$, por lo que se cumple la clausura, y $(a+b)+c=a+(b+c)$, por lo que hay asociatividad. Ahora al igual que con $\mathbb{N}_0$, existe un $e \in \mathbb{Z}$ para todo $a \in \mathbb{Z}$ tal que $a+e=a$ con $e=0$. De este modo, existe el neutro. Por último, para todo $a \in \mathbb{Z}$, $-a \in \mathbb{Z}$ por lo que para todo $a \in \mathbb{Z}$ existe un $b \in \mathbb{Z}$ tal que $a+b=0$, con $b=-a$, de modo que existe el inverso. Al satisfacer los axiomas, $(\mathbb{Z},+)$ es un grupo.
 

@@ -146,8 +146,12 @@ plugins:
       enableRSS: true
   - source: "@quartz-community/favicon"
     enabled: true
+  # Desactivado a proposito: este plugin genera una tarjeta distinta por
+  # pagina (titulo + descripcion + tiempo de lectura) y, mientras esta
+  # activo, Quartz ignora quartz/static/og-image.png. Apagandolo, TODAS
+  # las paginas comparten esa imagen fija como miniatura al compartir.
   - source: "@quartz-community/og-image"
-    enabled: true
+    enabled: false
   # Solo necesario con dominio propio: escribe public/CNAME con el host de baseUrl.
   - source: "@quartz-community/cname"
     enabled: false

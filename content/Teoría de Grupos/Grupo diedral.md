@@ -20,7 +20,7 @@ Hasta ahora no se ha demostrado ninguna de estas afirmaciones. Para demostrar la
 > Sea $P$ un polígono regular de $n$ lados en el plano. Luego:
 > 1. $(R_{360º/n})^n=e$
 > 2. $S^2=e$
-> 3. $SR_{360º/n}S=(R_{360º/n})^{-1}$ <br>
+> 3. $SR_{360º/n}S=(R_{360º/n})^{-1}$
 >
 > Donde $R_{360º/n}$ corresponde a la rotación en sentido antihorario de $\frac{360º}{n}$ grados, $S$ a la reflexión respecto al eje formado por un vértice y el origen, $e$ a la transformación que mantiene constantes todos los vértices, y la operación es la composición de simetrías.
 
@@ -42,33 +42,33 @@ Ahora viene la parte más importante: demostrar que con estas tres propiedades e
 
 >[!teorema] Teorema
 > Sea $D_n=\{e,r,r^2,...r^{n-1},s,sr,sr^2,...sr^{n-1}\}$ tal que se cumple:
-> 1. Existe una operación asociativa en $D_n$, denotada $\circ$ o por yuxtaposición.
+> 1. Existe una operación asociativa en $D_n$, denotada $\circ$ o por yuxtaposición (escribir dos elementos juntos).
 > 2. Para todo $a\in D_n$, $ea=a$.  
-> 3.$r^n=e$, $s^2=e$, $srs=r^{n-1}$ y la operación es la composición. Luego, $(D_n,\circ)$ es un grupo.
+> 3.$r^n=e$, $s^2=e$, $srs=r^{n-1}$ y la operación es la composición.
+> Luego, $(D_n,\circ)$ es un grupo.
 
 >[!demostracion] Demostración
-> Sea $D_n=\{r,r^2,...r^{n-1},s,sr,sr^2,...sr^{n-1}\}$ y $r^n=e$, $s^2=e$, $srs=r^{-1}$ bajo composición. Queremos mostrar que se cumplen los 4 axiomas de grupo.
-> 1. Para la clausura, queremos demostrar que la operación de dos elementos cualquiera de $D_n$ resulta en un elemento de $D_n$. Como todo elemento de $D_n$ se puede escribir como $r^k$ o $sr^k$ con $0\leq k \leq n-1$, podemos separar el problema en casos:
+> Sea $D_n=\{e,r,r^2,...r^{n-1},s,sr,sr^2,...sr^{n-1}\}$ y $r^n=e$, $s^2=e$, $srs=r^{-1}$ bajo composición. Queremos mostrar que se cumplen los 4 axiomas de grupo. Para efectos de esta demostración, $x\in [0,n-1]$ asume que $x$ es entero.
+> 
+> 1. Por hipótesis, la operación $\circ$ es asociativa
+> 2. Para el neutro, por hipótesis $e$ es el neutro.
+> 3. Para el inverso, como todo elemento de $D_n$ se puede escribir como $r^k$ o $sr^k$ con $k \in [0,n-1]$, podemos separar el problema en dos casos:
 >
-> 1.0. Primero demostraremos una propiedad que será útil en un momento. Como $srs=r^{-1}$, multiplicando por $s$ a la izquierda y a la derecha a ambos lados, $s^2rs^2=sr^{-1}s$, por lo tanto $r=sr^{-1}s$. Sea $P(z):r^z=sr^{-z}s$. $P(1): r^1=sr^{-1}s$ que por lo anterior es verdadera. Sea $P(w)$ verdadera. Luego: $r^w=sr^{-w}s$. Multiplicando por la izquierda por $r$ al lado izquierdo y por $sr^{-1}s$ al lado derecho, lo cual es válido porque son equivalentes: $rr^w=sr^{-1}ssr^{-w}s$, luego $r^{w+1}=sr^{-1}r^{-w}s$, y por lo tanto $r^{w+1}=sr^{-(w+1)}s$. Luego $P(w) \implies P(w+1)$. Por inducción, para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$.
+> 	1. Sea $k \in [0,n-1]$. Tengamos $r^k$. Sea $P(t): (r^t)^{-1}=r^{n-t}$. $P(0): (r^0)^{-1}=r^{n-0}$ equivale a $e^{-1}=r^n$. Como $ee=e$, $e^{-1}=e$. Por lo tanto es equivalente a $r^n=e$, por lo que $P(0)$ es verdadera. Ahora, sea $s \in [0,n-1]$
 >
-> 1.1. Sean $p,q \in [0,n-1]$. Luego, $r^p \circ r^q=r^{p+q}$. Sea $p+q=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{p+q}=r^{kn+c}=r^{kn}·r^c=(r^n)^k·r^c$. Como $r^n=e$, sustituyendo: $(r^n)^k·r^c=(e)^k·r^c=r^c$. Como $c \in [1,n-1]$, $r^c \in D_n$. Por lo tanto $r^p \circ r^q \in D_n$.
+> 	2. 
+>4. Para la clausura, queremos demostrar que la operación de dos elementos cualquiera de $D_n$ resulta en un elemento de $D_n$. Como todo elemento de $D_n$ se puede escribir como $r^k$ o $sr^k$ con $0\leq k \leq n-1$, podemos separar el problema en casos:
 >
-> 1.2. Sean $p,q \in [0,n-1]$. Tengamos $r^p \circ sr^q$. Como se demostró previamente, para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $r^p \circ sr^q$, obtenemos $sr^{-p}ssr^q=sr^{-p}r^q=sr^{q-p}$. Sea $p-q=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego $sr^{q-p}=sr^{kn+c}=s(r^n)^kr^c=sr^c$. Como $c \in [1,n-1]$, $sr^c \in D_n$. Por lo tanto $r^p\circ sr^q \in D_n$.
+> 	1. Primero demostraremos una propiedad que será útil en un momento. Como $srs=r^{-1}$, multiplicando por $s$ a la izquierda y a la derecha a ambos lados, $s^2rs^2=sr^{-1}s$, por lo tanto $r=sr^{-1}s$. Sea $P(z):r^z=sr^{-z}s$. $P(1): r^1=sr^{-1}s$ que por lo anterior es verdadera. Sea $P(w)$ verdadera. Luego: $r^w=sr^{-w}s$. Multiplicando por la izquierda por $r$ al lado izquierdo y por $sr^{-1}s$ al lado derecho, lo cual es válido porque son equivalentes: $rr^w=sr^{-1}ssr^{-w}s$, luego $r^{w+1}=sr^{-1}r^{-w}s$, y por lo tanto $r^{w+1}=sr^{-(w+1)}s$. Luego $P(w) \implies P(w+1)$. Por inducción, para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$.
 >
-> 1.3. Sean $p,q \in [0,n-1]$. Tengamos $sr^p \circ r^q$. Sabemos que para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $sr^p \circ r^q$, obtenemos $ssr^{-p}sr^q=r^{-p}sr^q$. Sea $-p=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{-p}sr^q=r^{kn+c}sr^q=(r^n)^kr^csr^q=r^csr^q$. Como $c,q \in [1,n-1]$, en el caso anterior se demostró $r^c\circ sr^q \in D_n$. Por lo tanto $sr^p \circ r^q \in D_n$.
+> 	2. Sean $p,q \in [0,n-1]$. Luego, $r^p \circ r^q=r^{p+q}$. Sea $p+q=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{p+q}=r^{kn+c}=r^{kn}·r^c=(r^n)^k·r^c$. Como $r^n=e$, sustituyendo: $(r^n)^k·r^c=(e)^k·r^c=r^c$. Como $c \in [1,n-1]$, $r^c \in D_n$. Por lo tanto $r^p \circ r^q \in D_n$.
 >
-> 1.4. Sean $p,q \in [0,n-1]$. Tengamos $sr^p \circ sr^q$. Sabemos que para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $sr^p \circ sr^q$, obtenemos $ssr^{-p}ssr^q=r^{-p}r^q$. Sea $-p=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{-p}r^q=r^{kn+c}r^q=(r^n)^kr^cr^q=r^cr^q$. Como $c,q \in [1,n-1]$, en el primer caso se demostró $r^c\circ r^q \in D_n$. Por lo tanto $sr^p \circ sr^q \in D_n$.
+> 	3. Sean $p,q \in [0,n-1]$. Tengamos $r^p \circ sr^q$. Como se demostró previamente, para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $r^p \circ sr^q$, obtenemos $sr^{-p}ssr^q=sr^{-p}r^q=sr^{q-p}$. Sea $p-q=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego $sr^{q-p}=sr^{kn+c}=s(r^n)^kr^c=sr^c$. Como $c \in [1,n-1]$, $sr^c \in D_n$. Por lo tanto $r^p\circ sr^q \in D_n$.
 >
-> Como se han descrito todos los casos de operación de dos elementos del conjunto, queda demostrada la clausura en $(D_n,\circ)$.
+> 	4. Sean $p,q \in [0,n-1]$. Tengamos $sr^p \circ r^q$. Sabemos que para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $sr^p \circ r^q$, obtenemos $ssr^{-p}sr^q=r^{-p}sr^q$. Sea $-p=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{-p}sr^q=r^{kn+c}sr^q=(r^n)^kr^csr^q=r^csr^q$. Como $c,q \in [1,n-1]$, en el caso anterior se demostró $r^c\circ sr^q \in D_n$. Por lo tanto $sr^p \circ r^q \in D_n$.
 >
-> 2. Por hipótesis, la operación $\circ$ es asociativa, por lo tanto hay asociatividad en $(D_n,\circ)$.
+> 	5. Sean $p,q \in [0,n-1]$. Tengamos $sr^p \circ sr^q$. Sabemos que para todo $z\in \mathbb{N}$ se cumple $r^z=sr^{-z}s$, y por lo tanto aplica para $p$ y $q$. Luego, $r^p=sr^{-p}s$. Sustituyendo en $sr^p \circ sr^q$, obtenemos $ssr^{-p}ssr^q=r^{-p}r^q$. Sea $-p=kn+c$, con $k \in \mathbb{Z}$ y $c \in [1,n-1]$ sin pérdida de generalidad. Luego: $r^{-p}r^q=r^{kn+c}r^q=(r^n)^kr^cr^q=r^cr^q$. Como $c,q \in [1,n-1]$, en el primer caso se demostró $r^c\circ r^q \in D_n$. Por lo tanto $sr^p \circ sr^q \in D_n$.
 >
-> 3. Para el neutro, por hipótesis $e$ es el neutro.
->
-> 4. Para el inverso, podemos dividir los miembros de $D_n$ en dos casos:
->
-> 4.1. Sea 
->
->4.2.
+> Como se han descrito todos los casos de operación de dos elementos del conjunto, queda demostrada la clausura en $(D_n,\circ)$. Como se comprobaron los 4 axiomas, $(D_n,\circ)$ es un grupo.
+
  

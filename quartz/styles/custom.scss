@@ -429,3 +429,45 @@ html body article :is(ol:has(ol), ol ol) > li {
 html body article :is(ol:has(ol), ol ol) > li::marker {
   content: counters(item-lista, ".") ". ";
 }
+
+// ═══════════════════════════════════════════════════════════════════
+//  Callouts plegables: que el titulo se vea pulsable
+//
+//  Un callout escrito como `> [!ejercicio]- Titulo` se pliega solo, y
+//  Quartz ya le pone la flecha y el manejador de clic. Lo unico que
+//  falta es la senal de que ahi se puede pulsar: el titulo se queda
+//  con el cursor de texto, asi que se cambia a mano.
+// ═══════════════════════════════════════════════════════════════════
+
+html body article .callout.is-collapsible > .callout-title {
+  cursor: pointer;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  Explorador sin cabecera
+//
+//  El explorador de la barra lateral viene con un boton-titulo
+//  ("Explorador" + flecha) que lo pliega entero. En un sitio de dos
+//  secciones no aporta: ocupa una linea y el arbol ya se entiende
+//  solo. Se oculta el boton de escritorio.
+//
+//  El boton de movil (`.mobile-explorer`, el icono de hamburguesa) NO
+//  se toca: ahi si hace falta, porque bajo 800px el explorador ocupa
+//  la pantalla completa y tiene que poder cerrarse. El titulo vive
+//  unicamente dentro del boton de escritorio, asi que en movil no
+//  aparecia de todos modos.
+//
+//  Plegar era la unica funcion del boton y no se guarda en ningun
+//  lado (solo el estado abierto/cerrado de cada CARPETA se persiste,
+//  en localStorage `fileTree`), asi que al ocultarlo el explorador
+//  queda siempre desplegado, sin riesgo de que alguien lo deje
+//  cerrado y no pueda volver a abrirlo.
+// ═══════════════════════════════════════════════════════════════════
+
+html body .explorer > button.desktop-explorer {
+  display: none;
+}
+
+html body .explorer > .explorer-content {
+  margin-top: 0;
+}

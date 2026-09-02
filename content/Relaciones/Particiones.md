@@ -38,7 +38,7 @@ Este teorema tiene muchas capas, ya que hay que demostrar que una relación de e
 >[!demostracion] Demostración
 > 1. Sea $A$ un conjunto no vacío, y $\sim$ una relación de equivalencia en el conjunto. Definimos la **clase de equivalencia** de $x$ como $[x]\coloneqq \{y\in A |\ x \sim y \}$. Sea $P_\sim=\{[x]\ |\ x \in A \}$.
 >
->     1. Para todo $x \in A$, $[x] \neq \emptyset$, ya que como $\sim$ es relación de equivalencia, $x \sim x$ y por definición de $[x]$, $x \in [x]$ y por lo tanto $[x]$ no es vacío.
+> 	   1. Para todo $x \in A$, $[x] \neq \emptyset$, ya que como $\sim$ es relación de equivalencia, $x \sim x$ y por definición de $[x]$, $x \in [x]$ y por lo tanto $[x]$ no es vacío.
 >
 >     2. Para todo $x \in A$, $x \in [x]$. Luego $x \in A \implies x \in [x]$, lo que es equivalente a $A \subseteq [x]$. Como se cumple para cada $[x] \in P_\sim$, $A \subseteq \bigcup\limits_{[x] \in P_\sim} [x]$. Además para cada $[x] \in P_\sim$, como la primera condición del constructor de conjuntos exige $y \in A$, tenemos $[x] \subseteq A$. Como aplica para cada $[x]$, $\bigcup\limits_{[x] \in P_\sim} [x] \subseteq A$. Por ambas propiedades, $\bigcup\limits_{[x] \in P_\sim} [x] = A$.
 >
@@ -48,7 +48,7 @@ Este teorema tiene muchas capas, ya que hay que demostrar que una relación de e
 >
 > 2. Sea $A$ un conjunto no vacío, y $P=\{A_1,A_2,...A_n\}$ una partición del conjunto. Definimos: para todo $x,y \in A$ $x\sim_P y \iff$ existe un $A_i \in P$ tal que $x \in A_i, y \in A_i$.
 >
->     1. Como $P$ es partición, para todo $x \in A$ existe un $A_i \in P$ tal que $x \in A_i$. Por idempotencia, $x \in A_i$ y $x \in A_i$. Por definición de la relación, $x\sim_P x$.
+> 	1. Como $P$ es partición, para todo $x \in A$ existe un $A_i \in P$ tal que $x \in A_i$. Por idempotencia, $x \in A_i$ y $x \in A_i$. Por definición de la relación, $x\sim_P x$.
 >
 >     2. Sean $x,y \in A$. Dejemos que $x\sim_P y$ sea cierto. Luego existe un $A_i \in P$ tal que $x \in A_i$,$y \in A_i$. Por conmutatividad, $y \in A_i$,$x \in A_i$. Por definición de la relación,  $y\sim_P x$. Luego  $x\sim_P y \implies  y\sim_P x$.
 >

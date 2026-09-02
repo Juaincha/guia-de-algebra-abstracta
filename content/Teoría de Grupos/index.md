@@ -8,5 +8,5 @@ Los grupos aparecen cuando uno intenta describir las simetrías de un objeto: la
 - [[Introducción]]
 - [[Definiciones de grupo]] 
 - [[Propiedades básicas]]
-### Parte 2: Grupos Notables
+### Parte 2: Grupos Importantes
 - [[Grupo diedral]]
