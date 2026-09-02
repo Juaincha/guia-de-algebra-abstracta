@@ -38,23 +38,23 @@ Este teorema tiene muchas capas, ya que hay que demostrar que una relación de e
 >[!demostracion] Demostración
 > 1. Sea $A$ un conjunto no vacío, y $\sim$ una relación de equivalencia en el conjunto. Definimos la **clase de equivalencia** de $x$ como $[x]\coloneqq \{y\in A |\ x \sim y \}$. Sea $P_\sim=\{[x]\ |\ x \in A \}$.
 >
-> 	   1. Para todo $x \in A$, $[x] \neq \emptyset$, ya que como $\sim$ es relación de equivalencia, $x \sim x$ y por definición de $[x]$, $x \in [x]$ y por lo tanto $[x]$ no es vacío.
+> 1.1. Para todo $x \in A$, $[x] \neq \emptyset$, ya que como $\sim$ es relación de equivalencia, $x \sim x$ y por definición de $[x]$, $x \in [x]$ y por lo tanto $[x]$ no es vacío.
 >
->     2. Para todo $x \in A$, $x \in [x]$. Luego $x \in A \implies x \in [x]$, lo que es equivalente a $A \subseteq [x]$. Como se cumple para cada $[x] \in P_\sim$, $A \subseteq \bigcup\limits_{[x] \in P_\sim} [x]$. Además para cada $[x] \in P_\sim$, como la primera condición del constructor de conjuntos exige $y \in A$, tenemos $[x] \subseteq A$. Como aplica para cada $[x]$, $\bigcup\limits_{[x] \in P_\sim} [x] \subseteq A$. Por ambas propiedades, $\bigcup\limits_{[x] \in P_\sim} [x] = A$.
+> 1.2. Para todo $x \in A$, $x \in [x]$. Luego $x \in A \implies x \in [x]$, lo que es equivalente a $A \subseteq [x]$. Como se cumple para cada $[x] \in P_\sim$, $A \subseteq \bigcup\limits_{[x] \in P_\sim} [x]$. Además para cada $[x] \in P_\sim$, como la primera condición del constructor de conjuntos exige $y \in A$, tenemos $[x] \subseteq A$. Como aplica para cada $[x]$, $\bigcup\limits_{[x] \in P_\sim} [x] \subseteq A$. Por ambas propiedades, $\bigcup\limits_{[x] \in P_\sim} [x] = A$.
 >
->     3. Sean $M,N \in P_\sim$. Luego pueden escribirse como $M=[m]$, $N=[n]$ para algunos $m,n \in A$. Supongamos $a \in [m]$ y $a \in [n]$. Luego por definición, $m \sim a$ y $n \sim a$. Por simetría y transitividad, $m \sim n$ y $n \sim m$. Ahora, $[n]= \{ k \in A \ | \ k \sim n\}$. Como $k\sim n$ y $n \sim m$, por transitividad $k \sim m$. Luego para todo $k \in A$, $k \sim n \iff k \sim m$. Luego $[m]=[n]$. es decir, si existe un $a \in A$ tal que $a \in [m]$ y $a \in [n]$, luego $[m]=[n]$. Por ley del contrarrecíproco, si  $[m]=[n]$, luego no existe un $a \in A$ tal que $a \in [m]$ y $a \in [n]$. Es decir, $[m] \cap [n] = \emptyset$. Sustituyendo con $M$ y $N$: para todo $M,N \in P_\sim$,  $M \neq N \implies  [m] \cap [n] = \emptyset$.
+> 1.3. Sean $M,N \in P_\sim$. Luego pueden escribirse como $M=[m]$, $N=[n]$ para algunos $m,n \in A$. Supongamos $a \in [m]$ y $a \in [n]$. Luego por definición, $m \sim a$ y $n \sim a$. Por simetría y transitividad, $m \sim n$ y $n \sim m$. Ahora, $[n]= \{ k \in A \ | \ k \sim n\}$. Como $k\sim n$ y $n \sim m$, por transitividad $k \sim m$. Luego para todo $k \in A$, $k \sim n \iff k \sim m$. Luego $[m]=[n]$. es decir, si existe un $a \in A$ tal que $a \in [m]$ y $a \in [n]$, luego $[m]=[n]$. Por ley del contrarrecíproco, si  $[m]=[n]$, luego no existe un $a \in A$ tal que $a \in [m]$ y $a \in [n]$. Es decir, $[m] \cap [n] = \emptyset$. Sustituyendo con $M$ y $N$: para todo $M,N \in P_\sim$,  $M \neq N \implies  [m] \cap [n] = \emptyset$.
 >
->     Verificadas las tres condiciones, $P_\sim$ es una partición.
+> Verificadas las tres condiciones, $P_\sim$ es una partición.
 >
 > 2. Sea $A$ un conjunto no vacío, y $P=\{A_1,A_2,...A_n\}$ una partición del conjunto. Definimos: para todo $x,y \in A$ $x\sim_P y \iff$ existe un $A_i \in P$ tal que $x \in A_i, y \in A_i$.
 >
-> 	1. Como $P$ es partición, para todo $x \in A$ existe un $A_i \in P$ tal que $x \in A_i$. Por idempotencia, $x \in A_i$ y $x \in A_i$. Por definición de la relación, $x\sim_P x$.
+> 2.1. Como $P$ es partición, para todo $x \in A$ existe un $A_i \in P$ tal que $x \in A_i$. Por idempotencia, $x \in A_i$ y $x \in A_i$. Por definición de la relación, $x\sim_P x$.
 >
->     2. Sean $x,y \in A$. Dejemos que $x\sim_P y$ sea cierto. Luego existe un $A_i \in P$ tal que $x \in A_i$,$y \in A_i$. Por conmutatividad, $y \in A_i$,$x \in A_i$. Por definición de la relación,  $y\sim_P x$. Luego  $x\sim_P y \implies  y\sim_P x$.
+> 2.2. Sean $x,y \in A$. Dejemos que $x\sim_P y$ sea cierto. Luego existe un $A_i \in P$ tal que $x \in A_i$,$y \in A_i$. Por conmutatividad, $y \in A_i$,$x \in A_i$. Por definición de la relación,  $y\sim_P x$. Luego  $x\sim_P y \implies  y\sim_P x$.
 >
->     3. Sean $x,y,z \in A$. Dejemos que $x\sim_P y$ sea cierto y que $y\sim_P z$ sea cierto. Luego existen $A_i,A_j \in P$ tal que $(x\in A_i, y\in A_i)$ y $(y\in A_j, z\in A_j)$. Como $P$ es partición, cada $k\in A$ pertenece a un único $A_l \in P$. Como $y\in A_i, y\in A_j$ entonces $A_i = A_j$. Llamemos $A_i=A_j=N$. Luego $(x\in N, y\in N)$ y $(y\in N, z\in N)$ lo cual es equivalente a $x,y,z \in N$. Esto implica $x \in N$, $z\in N$. Por definición de la relación, $x\sim_P z$. Luego $(x\sim_P y, y\sim_P z) \implies x\sim_P z$.
+> 2.3. Sean $x,y,z \in A$. Dejemos que $x\sim_P y$ sea cierto y que $y\sim_P z$ sea cierto. Luego existen $A_i,A_j \in P$ tal que $(x\in A_i, y\in A_i)$ y $(y\in A_j, z\in A_j)$. Como $P$ es partición, cada $k\in A$ pertenece a un único $A_l \in P$. Como $y\in A_i, y\in A_j$ entonces $A_i = A_j$. Llamemos $A_i=A_j=N$. Luego $(x\in N, y\in N)$ y $(y\in N, z\in N)$ lo cual es equivalente a $x,y,z \in N$. Esto implica $x \in N$, $z\in N$. Por definición de la relación, $x\sim_P z$. Luego $(x\sim_P y, y\sim_P z) \implies x\sim_P z$.
 >
->     Verificadas las tres condiciones, $\sim_P$ es una relación de equivalencia.
+> Verificadas las tres condiciones, $\sim_P$ es una relación de equivalencia.
 >
 >> Ahora viene la parte ingeniosa.
 >

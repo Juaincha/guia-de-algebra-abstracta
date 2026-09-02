@@ -393,41 +393,53 @@ html body article li > * + * {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-//  Numeracion jerarquica: 1. -> 1.1. -> 1.1.1.
+//  Sub-puntos "n.m" dentro de los callouts
 //
-//  Una sublista numerada se muestra por defecto como "1. 2. 3." otra
-//  vez, sin relacion visible con el paso del que cuelga. En una
-//  demostracion por casos eso se pierde: interesa leer "1.2." y saber
-//  de inmediato que es el segundo sub-paso del primer paso.
+//  Un parrafo de callout que empieza por dos enteros separados por un
+//  punto (1.1, 9.4, 2.18) se marca como sub-punto en quartz.ts, que le
+//  pone la clase `subpunto` y saca el numero a un <span> propio. Aqui
+//  se le da la forma: sangrado a la altura de una sublista, con el
+//  numero colgando a la izquierda como el marcador de un <li>.
 //
-//  `counters()` (en plural) concatena todas las instancias del
-//  contador que estan abiertas en ese punto del arbol, separadas por
-//  el punto: una sublista dentro del item 1 da "1.1", "1.2"...
+//  Se escribe pegado al margen del callout, sin sangria en el archivo:
 //
-//  Se aplica SOLO a listas que realmente tienen sublista
-//  (`ol:has(ol)`) y a las sublistas mismas. Una lista numerada normal
-//  conserva su marcador nativo, y con el su atributo `start` -- que
-//  los contadores CSS ignoran y que aparece cuando un parrafo del
-//  medio parte la lista en dos.
+//      > 1. Enunciado del paso
+//      >
+//      > 1.1. Primer sub-punto
 //
-//  Consecuencia al escribir: cada demostracion tiene que ser UNA sola
-//  lista. Los parrafos intermedios (un "Verificadas las tres
-//  condiciones...") van indentados dentro del item al que pertenecen,
-//  no al margen; si quedan al margen parten la lista y la numeracion
-//  vuelve a empezar en 1.
+//  La sangria es un margen izquierdo de 5rem (el nivel de una sublista)
+//  con `text-indent` NEGATIVO: solo la primera linea retrocede 2.5rem, y
+//  ahi es donde cae el numero. Las lineas siguientes quedan alineadas
+//  con el texto, igual que en un <li>.
+//
+//  NO se usa flexbox aunque parezca mas limpio: en un contenedor flex
+//  CADA elemento hijo es un item independiente, y KaTeX envuelve cada
+//  formula en un <span> propio. Con `display: flex` un sub-punto con
+//  varias formulas se rompia en columnas, con el texto y las formulas
+//  desalineados. El `min-width` del numero es lo que alinea el texto de
+//  todos los sub-puntos aunque las etiquetas midan distinto ("1.1." y
+//  "2.18."); si una etiqueta no cabe, la caja crece y solo esa primera
+//  linea queda algo mas a la derecha, sin solaparse nunca.
+//
+//  El margen va solo ABAJO (1.25rem, lo mismo que separa dos items de
+//  una lista). Tiene que ser solo abajo porque `.callout-content` es una
+//  rejilla (grid) y ahi los margenes NO colapsan: si se pusiera arriba y
+//  abajo, entre dos sub-puntos se sumarian y saldria el doble.
 // ═══════════════════════════════════════════════════════════════════
 
-html body article ol:has(ol),
-html body article ol ol {
-  counter-reset: item-lista;
+html body article .callout p.subpunto {
+  margin-block: 0 1.25rem;
+  margin-inline-start: 5rem;
+  text-indent: -2.5rem;
 }
 
-html body article :is(ol:has(ol), ol ol) > li {
-  counter-increment: item-lista;
-}
-
-html body article :is(ol:has(ol), ol ol) > li::marker {
-  content: counters(item-lista, ".") ". ";
+html body article .callout p.subpunto > .subpunto-num {
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 2.5rem;
+  padding-inline-end: 0.45rem;
+  text-indent: 0;
+  white-space: nowrap;
 }
 
 // ═══════════════════════════════════════════════════════════════════

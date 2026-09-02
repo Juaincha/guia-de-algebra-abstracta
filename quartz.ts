@@ -57,6 +57,124 @@ if (latex) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
+//  Sub-puntos "n.m" dentro de los callouts
+//
+//  En una demostracion por casos hace falta un segundo nivel: 1.1, 1.2,
+//  2.1... Escribirlo como sublista de Markdown funciona, pero es fragil:
+//  depende de una sangria exacta de 4 espacios que el editor de Obsidian
+//  convierte en tabulador en cuanto tocas la linea, y un tabulador mas
+//  espacios pasa de 6 columnas y Markdown lo lee como BLOQUE DE CODIGO.
+//  Asi es como se rompio la demostracion de Particiones.
+//
+//  Aqui la sangria la pone el sitio, no el archivo. Basta con escribir la
+//  linea pegada al margen del callout:
+//
+//      > 1. Enunciado del paso
+//      >
+//      > 1.1. Primer sub-punto
+//      >
+//      > 1.2. Segundo sub-punto
+//
+//  Cualquier parrafo de un callout que EMPIECE por dos enteros separados
+//  por un punto (1.1, 9.4, 2.18, con o sin punto final) se marca como
+//  sub-punto: el numero se saca a un <span> propio y el parrafo recibe la
+//  clase `subpunto`. La sangria y el numero colgante son CSS, en
+//  quartz/styles/custom.scss.
+//
+//  `n.m` nunca es un marcador de lista para Markdown (un marcador exige
+//  espacio despues del punto), asi que estas lineas llegan aqui como
+//  parrafos normales y no hay nada que deshacer.
+//
+//  Solo actua dentro de callouts y nunca en su titulo, para no tocar un
+//  parrafo del cuerpo que empiece por un decimal ("3.14 es una
+//  aproximacion de pi").
+// ════════════════════════════════════════════════════════════════════════
+
+const RE_SUBPUNTO = /^(\d+\.\d+)\.?(?:[ \t]+|$)/
+const RE_SUBPUNTO_SOLO = /^(\d+\.\d+)\.?$/
+
+type NodoHast = {
+  type: string
+  tagName?: string
+  value?: string
+  properties?: Record<string, unknown>
+  children?: NodoHast[]
+}
+
+function tieneClase(nodo: NodoHast | undefined, clase: string): boolean {
+  const cls = nodo?.properties?.className
+  return Array.isArray(cls) && cls.includes(clase)
+}
+
+function textoPlano(nodo: NodoHast): string {
+  if (nodo.type === "text") return nodo.value ?? ""
+  return (nodo.children ?? []).map(textoPlano).join("")
+}
+
+/** Devuelve la etiqueta ("1.1") si el parrafo empieza por n.m, y la consume. */
+function extraerEtiqueta(parrafo: NodoHast): string | undefined {
+  const hijos = parrafo.children ?? []
+  const primero = hijos[0]
+  if (!primero) return undefined
+
+  // Caso normal: "1.1. texto"
+  if (primero.type === "text") {
+    const m = RE_SUBPUNTO.exec(primero.value ?? "")
+    if (!m) return undefined
+    primero.value = (primero.value ?? "").slice(m[0].length)
+    if (primero.value === "") hijos.shift()
+    return m[1]
+  }
+
+  // Caso en negrita: "**1.1.** texto"
+  if (primero.type === "element" && primero.tagName === "strong") {
+    const m = RE_SUBPUNTO_SOLO.exec(textoPlano(primero).trim())
+    if (!m) return undefined
+    hijos.shift()
+    const siguiente = hijos[0]
+    if (siguiente?.type === "text") siguiente.value = (siguiente.value ?? "").replace(/^[ \t]+/, "")
+    return m[1]
+  }
+
+  return undefined
+}
+
+function marcarSubpuntos(nodo: NodoHast, dentroDeCallout: boolean): void {
+  const hijos = nodo.children
+  if (!Array.isArray(hijos)) return
+
+  // El titulo del callout tambien lleva un <p>; ahi no se toca nada.
+  if (tieneClase(nodo, "callout-title")) return
+
+  const dentro = dentroDeCallout || tieneClase(nodo, "callout")
+
+  for (const hijo of hijos) {
+    if (dentro && hijo.type === "element" && hijo.tagName === "p") {
+      const etiqueta = extraerEtiqueta(hijo)
+      if (etiqueta !== undefined) {
+        const props = (hijo.properties ??= {})
+        const cls = props.className
+        props.className = Array.isArray(cls) ? [...cls, "subpunto"] : ["subpunto"]
+        hijo.children!.unshift({
+          type: "element",
+          tagName: "span",
+          properties: { className: ["subpunto-num"] },
+          children: [{ type: "text", value: `${etiqueta}.` }],
+        })
+      }
+    }
+    marcarSubpuntos(hijo, dentro)
+  }
+}
+
+config.plugins.transformers.push({
+  name: "SubPuntos",
+  htmlPlugins() {
+    return [() => (arbol: NodoHast) => marcarSubpuntos(arbol, false)]
+  },
+} as never)
+
+// ════════════════════════════════════════════════════════════════════════
 //  Componente de navegación entre artículos (anterior / siguiente)
 //
 //  El orden de lectura de cada sección son los wikilinks de su index.md.
