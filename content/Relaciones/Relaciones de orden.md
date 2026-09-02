@@ -8,7 +8,7 @@ A diferencia de la relación de equivalencia, tenemos múltiples relaciones de o
 
 La idea de que el orden sea parcial es que no necesariamente todos los elementos son comparables. Manteniendo el ejemplo de los hermanos, si introducimos a Otto, que no es hermano del resto porque es un perro, no podemos establecer Otto $\preceq$ Max o Max $\preceq$ Otto. Aún así, todos viven en el conjunto de seres vivos.
 
-Los órdenes parciales viven en amplias ramas de las matemáticas. El más evidente es la relación "menor o igual" $\leq$. También la relación "subconjunto" $\subseteq$, la relación "subespacio vectorial" $\leq$ y la relación "divide a" $|$. Te invito a comprobar que las tres propiedades se mantienen para todos estos casos. La demostración se encuentra a continuación.
+Los órdenes parciales viven en amplias ramas de las matemáticas. El más evidente es la relación "menor o igual" $\leq$. También la relación "subconjunto" $\subseteq$ y la relación "divide a" $|$. Te invito a comprobar que las tres propiedades se mantienen para todos estos casos. La demostración se encuentra a continuación.
 
 
 >[!general] Menor o igual $\leq$
@@ -25,7 +25,7 @@ Los órdenes parciales viven en amplias ramas de las matemáticas. El más evide
 >>
 >> 3. Sean $a,b,c\in \mathbb{Z}$. Dejemos que $a\leq b$ y $b\leq c$. Luego, existen $k_1,k_2 \in \mathbb{N}_0$ tal que $a+k_1=b$ y $b+k_2=c$. Sustituyendo $b$ de la primera ecuación en la segunda, obtenemos $a+k_1+k_2=c$. Como  $k_1,k_2 \in \mathbb{N}_0$, $k_3=k_1+k_2 \in \mathbb{N}_0$. Luego tenemos $a+k_3=c$ con $k_3 \in \mathbb{N}_0$. Por definición, $a \leq c$. Por lo tanto $(a\leq b$ y $b\leq c) \implies a \leq c$.
 >>
->> Al cumplir las tres propiedaddes definitorias, $leq$ es una relación de orden parcial.
+>> Al cumplir las tres propiedades definitorias, $\leq$ es una relación de orden parcial.
 
 
 >[!general] Subconjunto $\subseteq$
