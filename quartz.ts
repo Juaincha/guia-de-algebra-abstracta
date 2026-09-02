@@ -175,6 +175,83 @@ config.plugins.transformers.push({
 } as never)
 
 // ════════════════════════════════════════════════════════════════════════
+//  Puntuacion pegada a las formulas
+//
+//  KaTeX no marca la formula como indivisible, asi que entre el final de
+//  un $...$ y el signo que viene detras hay un punto de corte valido. En
+//  lineas estrechas el navegador lo aprovecha y manda la coma o el punto
+//  solo a la linea siguiente. Medido sobre los articulos: pasaba en
+//  decenas de anchuras distintas en cada uno.
+//
+//  La solucion NO puede ser hacer la formula entera indivisible: las
+//  formulas largas SI deben poder partirse. Asi que se envuelve solo el
+//  conjunto formula+signo en un <span class="formula-pegada"> que lleva
+//  `white-space: nowrap`, y dentro se le devuelve `normal` a .katex (ver
+//  quartz/styles/custom.scss). El unico corte que queda prohibido es el
+//  de la juntura; por dentro la formula sigue partiendose igual.
+//
+//  Se hace tambien con el signo de apertura que va pegado por delante
+//  ("($x$"), para que no se quede huerfano al final de la linea.
+// ════════════════════════════════════════════════════════════════════════
+
+const RE_CIERRE = /^[,.;:!?)\]}»”…]+/
+const RE_APERTURA = /[([{«¿¡“]+$/
+
+function pegarPuntuacion(nodo: NodoHast): void {
+  const hijos = nodo.children
+  if (!Array.isArray(hijos)) return
+
+  for (const hijo of hijos) pegarPuntuacion(hijo)
+
+  for (let i = 0; i < hijos.length; i++) {
+    const formula = hijos[i]
+    if (!tieneClase(formula, "katex")) continue
+
+    const grupo: NodoHast[] = [formula]
+    let desde = i
+    let hasta = i
+
+    const previo = hijos[i - 1]
+    if (previo?.type === "text") {
+      const m = RE_APERTURA.exec(previo.value ?? "")
+      if (m) {
+        grupo.unshift({ type: "text", value: m[0] })
+        previo.value = (previo.value ?? "").slice(0, m.index)
+        if (previo.value === "") desde = i - 1
+      }
+    }
+
+    const siguiente = hijos[i + 1]
+    if (siguiente?.type === "text") {
+      const m = RE_CIERRE.exec(siguiente.value ?? "")
+      if (m) {
+        grupo.push({ type: "text", value: m[0] })
+        siguiente.value = (siguiente.value ?? "").slice(m[0].length)
+        if (siguiente.value === "") hasta = i + 1
+      }
+    }
+
+    if (grupo.length === 1) continue
+
+    const envoltura: NodoHast = {
+      type: "element",
+      tagName: "span",
+      properties: { className: ["formula-pegada"] },
+      children: grupo,
+    }
+    hijos.splice(desde, hasta - desde + 1, envoltura)
+    i = desde
+  }
+}
+
+config.plugins.transformers.push({
+  name: "PuntuacionPegada",
+  htmlPlugins() {
+    return [() => (arbol: NodoHast) => pegarPuntuacion(arbol)]
+  },
+} as never)
+
+// ════════════════════════════════════════════════════════════════════════
 //  Componente de navegación entre artículos (anterior / siguiente)
 //
 //  El orden de lectura de cada sección son los wikilinks de su index.md.

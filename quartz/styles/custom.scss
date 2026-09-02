@@ -483,3 +483,25 @@ html body .explorer > button.desktop-explorer {
 html body .explorer > .explorer-content {
   margin-top: 0;
 }
+
+// ═══════════════════════════════════════════════════════════════════
+//  Puntuacion pegada a las formulas
+//
+//  quartz.ts envuelve cada formula junto al signo que lleva pegado
+//  (la coma de "$ee=e$," o el parentesis de "($x$") en un
+//  .formula-pegada. El `nowrap` prohibe el unico corte que molestaba:
+//  el de la juntura entre la formula y el signo.
+//
+//  El `normal` de dentro es imprescindible: sin el, el nowrap se
+//  heredaria a toda la formula y una expresion larga dejaria de
+//  partirse, desbordando la caja en pantallas estrechas. Con el, por
+//  dentro se sigue partiendo igual que antes.
+// ═══════════════════════════════════════════════════════════════════
+
+html body article .formula-pegada {
+  white-space: nowrap;
+}
+
+html body article .formula-pegada .katex {
+  white-space: normal;
+}
