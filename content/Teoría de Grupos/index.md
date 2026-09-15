@@ -11,8 +11,8 @@ Los grupos aparecen cuando uno intenta describir las simetrías de un objeto: la
 ### Parte 2: Grupos Importantes
 - [[Grupo diedral]]
 - [[Grupo simétrico]]
-- [[Grupo aditivo de enteros mod n]]
+- [[Grupo aditivo de enteros mod n]] 🚧
 
 ### Parte 3: 
-- [[Biyectividad del producto y orden]]
-- [[Tablas de Cayley]]
+- [[Biyectividad del producto y orden]] 🚧
+- [[Tablas de Cayley]] 🚧
