@@ -2,11 +2,11 @@ A diferencia de la relación de equivalencia, tenemos múltiples relaciones de o
 
 >[!definicion] Definicióń
 > Un orden parcial en un conjunto $A$ es una relación $\preceq$ que satisface:
-> 1. Para todo $a \in A$, $a\preceq a$. Esta propiedad se conoce como **reflexividad.**
-> 2. Para todo $a,b \in A$, $(a \preceq b$ y $b \preceq a) \implies a=b$. Esta propiedad se llama **antisimetría.**
-> 3. Para todo $a,b,c \in A$, $(a \preceq b$ y $b \preceq c) \implies a \preceq c$. Esto es **transitividad.**
+> 1. Para todo $a \in A$, $a\preceq a$. Esta propiedad se conoce como **reflexividad**.
+> 2. Para todo $a,b \in A$, $(a \preceq b$ y $b \preceq a) \implies a=b$. Esta propiedad se llama **antisimetría**.
+> 3. Para todo $a,b,c \in A$, $(a \preceq b$ y $b \preceq c) \implies a \preceq c$. Esto es **transitividad**.
 
-La idea de que el orden sea parcial es que no necesariamente todos los elementos son comparables. Manteniendo el ejemplo de los hermanos, si introducimos a Otto, que no es hermano del resto porque es un perro, no podemos establecer Otto $\preceq$ Max o Max $\preceq$ Otto. Aún así, todos viven en el conjunto de seres vivos.
+La idea de que el orden sea parcial es que no necesariamente todos los elementos son comparables. Manteniendo el ejemplo de los hermanos, si introducimos a Otto, que no es hermano del resto porque es un perro, no podemos establecer Otto $\preceq$ Max o Max $\preceq$ Otto. Aun así, todos viven en el conjunto de seres vivos.
 
 Los órdenes parciales viven en amplias ramas de las matemáticas. El más evidente es la relación "menor o igual" $\leq$. También la relación "subconjunto" $\subseteq$ y la relación "divide a" $|$. Te invito a comprobar que las tres propiedades se mantienen para todos estos casos. La demostración se encuentra a continuación.
 
@@ -21,9 +21,9 @@ Los órdenes parciales viven en amplias ramas de las matemáticas. El más evide
 >>
 >> 1. Sea $a\in \mathbb{Z}$. Luego, con $k=0$, existe un $k \in \mathbb{N}_0$ tal que $a+k=a$. Por lo tanto $a\leq a$.
 >>
->>2. Sean $a,b\in \mathbb{Z}$. Dejemos que $a\leq b$ y $b\leq a$. Luego, existen $k_1,k_2 \in \mathbb{N}_0$ tal que $a+k_1=b$ y $b+k_2=a$. Sustituyendo $a$ de la segunda ecuación en la primera, obtenemos $b+k_2+k_1=b$, $k_1+k_2=0$. Como $k_1,k_2 \in \mathbb{N}_0$, la única forma de que su suma sea 0 es que $k_1=k_2=0$. Sustituyendo $k_1=0$ en la primera ecuación, obtenemos $a=b$. Por lo tanto $(a\leq b$ y $b\leq a) \implies a=b$.
+>>2. Sean $a,b\in \mathbb{Z}$. Dejemos que $a\leq b$ y $b\leq a$. Luego, existen $k_1,k_2 \in \mathbb{N}_0$ tales que $a+k_1=b$ y $b+k_2=a$. Sustituyendo $a$ de la segunda ecuación en la primera, obtenemos $b+k_2+k_1=b$, $k_1+k_2=0$. Como $k_1,k_2 \in \mathbb{N}_0$, la única forma de que su suma sea 0 es que $k_1=k_2=0$. Sustituyendo $k_1=0$ en la primera ecuación, obtenemos $a=b$. Por lo tanto $(a\leq b$ y $b\leq a) \implies a=b$.
 >>
->> 3. Sean $a,b,c\in \mathbb{Z}$. Dejemos que $a\leq b$ y $b\leq c$. Luego, existen $k_1,k_2 \in \mathbb{N}_0$ tal que $a+k_1=b$ y $b+k_2=c$. Sustituyendo $b$ de la primera ecuación en la segunda, obtenemos $a+k_1+k_2=c$. Como  $k_1,k_2 \in \mathbb{N}_0$, $k_3=k_1+k_2 \in \mathbb{N}_0$. Luego tenemos $a+k_3=c$ con $k_3 \in \mathbb{N}_0$. Por definición, $a \leq c$. Por lo tanto $(a\leq b$ y $b\leq c) \implies a \leq c$.
+>> 3. Sean $a,b,c\in \mathbb{Z}$. Dejemos que $a\leq b$ y $b\leq c$. Luego, existen $k_1,k_2 \in \mathbb{N}_0$ tales que $a+k_1=b$ y $b+k_2=c$. Sustituyendo $b$ de la primera ecuación en la segunda, obtenemos $a+k_1+k_2=c$. Como $k_1,k_2 \in \mathbb{N}_0$, $k_3=k_1+k_2 \in \mathbb{N}_0$. Luego tenemos $a+k_3=c$ con $k_3 \in \mathbb{N}_0$. Por definición, $a \leq c$. Por lo tanto $(a\leq b$ y $b\leq c) \implies a \leq c$.
 >>
 >> Al cumplir las tres propiedades definitorias, $\leq$ es una relación de orden parcial.
 

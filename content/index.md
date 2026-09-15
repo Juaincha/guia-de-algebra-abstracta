@@ -20,4 +20,4 @@ Qué es una relación, cómo se representa en diagramas y qué tipos existen. Es
 
 ### 2. [[Teoría de Grupos/index|Teoría de Grupos]]
 
-De las simetrías de un triángulo equilátero y del cubo Rubik a la definición axiomática de grupo, junto con los primeros teoremas que se desprenden de ella.
+De las simetrías de un triángulo equilátero y del cubo de Rubik a la definición axiomática de grupo, junto con los primeros teoremas que se desprenden de ella.

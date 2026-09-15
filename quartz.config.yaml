@@ -13,6 +13,9 @@ configuration:
     - private
     - templates
     - .obsidian
+    - .claude
+    - .vscode
+    - "**/*.bak*"
   theme:
     fontOrigin: googleFonts
     cdnCaching: true

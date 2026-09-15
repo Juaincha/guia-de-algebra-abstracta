@@ -1,7 +1,7 @@
 >[!definicion] Relación de equivalencia
 >Una relación de equivalencia en un conjunto no vacío $A$ es una relación binaria $\sim$ que satisface:
->1. Para todo $a \in A$ $a \sim a$. Esta propiedad se conoce como **reflexividad.**
->2. Para todo $a,b \in A$, $a \sim b \implies b \sim a$. Esta propiedad se conoce como **simetría.**
+>1. Para todo $a \in A$ $a \sim a$. Esta propiedad se conoce como **reflexividad**.
+>2. Para todo $a,b \in A$, $a \sim b \implies b \sim a$. Esta propiedad se conoce como **simetría**.
 >3. Para todo $a,b,c \in A$, ($a \sim b$ y $b \sim c) \implies a \sim c$. Esta propiedad se conoce como **transitividad**.
 
 La relación de equivalencia permite decir que dos cosas son equivalentes en ciertos contextos. La más evidente es la igualdad, ya que si $x=2$ entonces $x$ equivale a 2. Otro ejemplo es la semejanza de triángulos:
@@ -16,7 +16,7 @@ Pese a que los primeros tres triángulos son diferentes, ya sea por orientación
 >>La igualdad $=$ en $\mathbb{R}$ es una relación de equivalencia.
 >
 >>[!demostracion] Demostración
->>Sea $a,b,c \in a$. Por las propiedades definitorias de la igualdad, obtenemos directamente $a= a$, $a=b \implies b=a$, y  $(a=b$ y $b=c) \implies b=c$. No se puede trabajar mucho más.
+>>Sea $a,b,c \in a$. Por las propiedades definitorias de la igualdad, obtenemos directamente $a= a$, $a=b \implies b=a$, y $(a=b$ y $b=c) \implies b=c$. No se puede trabajar mucho más.
 
 
 >[!general] Semejanza de triángulos $\sim$
@@ -31,7 +31,7 @@ Pese a que los primeros tres triángulos son diferentes, ya sea por orientación
 >>
 >>2. Sean $\triangle ABC$, $\triangle DEF$ triángulos en el plano. Sea $\alpha$ el ángulo en $A$, $\beta$ el ángulo en $B$, $\gamma$ el ángulo en $C$, $\delta$ el ángulo en $D$, $\varepsilon$ el ángulo en $E$ y $\eta$ el ángulo en $F$. Dejemos que $\triangle ABC \sim \triangle DEF$ sea cierto. Luego por definición: $\alpha = \delta, \beta = \varepsilon, \gamma = \eta$. Por **simería** de la igualdad, lo cual se justifica porque la igualdad es una relación de equivalencia, tenemos: $\delta =\alpha, \varepsilon=\beta, \eta=\gamma$. Por último, nuevamente por definición obtenemos $\triangle DEF \sim \triangle ABC.$ Luego $\triangle ABC \sim \triangle DEF \implies \triangle DEF \sim \triangle ABC.$
 >>
->>3. Sean $\triangle ABC$, $\triangle DEF$, $\triangle GHI$ triángulos en el plano. Sea $\alpha$ el ángulo en $A$, $\beta$ el ángulo en $B$, $\gamma$ el ángulo en $C$, $\delta$ el ángulo en $D$, $\varepsilon$ el ángulo en $E$, $\eta$ el ángulo en $F$, $\theta$ el ángulo en $G$, $\lambda$ el ángulo en $H$ y $\iota$ el ángulo en $I$. Dejemos que $\triangle ABC \sim \triangle DEF$ sea cierto y $\triangle DEF \sim \triangle HIJ$ sea cierto. Luego por definición:  $\alpha = \delta, \beta = \varepsilon, \gamma = \eta$, $\delta =\theta, \varepsilon=\lambda, \eta=\iota$. Por **transitividad** de la igualdad, lo cual se justifica porque la igualdad es una relación de equivalencia, tenemos: $(\alpha = \delta, \delta =\theta) \implies \alpha=\theta$, $(\beta = \varepsilon, \varepsilon=\lambda) \implies \beta=\lambda$, $(\gamma = \eta, \eta=\iota) \implies \gamma=\iota$. Luego tenemos $\alpha=\theta, \beta=\lambda$ y $\gamma=\iota$. Por definición, $\triangle ABC \sim \triangle GHI$. Luego ( $\triangle ABC \sim \triangle DEF$, $\triangle DEF \sim \triangle GHI$)$\implies \triangle ABC \sim \triangle GHI$.
+>>3. Sean $\triangle ABC$, $\triangle DEF$, $\triangle GHI$ triángulos en el plano. Sea $\alpha$ el ángulo en $A$, $\beta$ el ángulo en $B$, $\gamma$ el ángulo en $C$, $\delta$ el ángulo en $D$, $\varepsilon$ el ángulo en $E$, $\eta$ el ángulo en $F$, $\theta$ el ángulo en $G$, $\lambda$ el ángulo en $H$ y $\iota$ el ángulo en $I$. Dejemos que $\triangle ABC \sim \triangle DEF$ sea cierto y $\triangle DEF \sim \triangle HIJ$ sea cierto. Luego por definición: $\alpha = \delta, \beta = \varepsilon, \gamma = \eta$, $\delta =\theta, \varepsilon=\lambda, \eta=\iota$. Por **transitividad** de la igualdad, lo cual se justifica porque la igualdad es una relación de equivalencia, tenemos: $(\alpha = \delta, \delta =\theta) \implies \alpha=\theta$, $(\beta = \varepsilon, \varepsilon=\lambda) \implies \beta=\lambda$, $(\gamma = \eta, \eta=\iota) \implies \gamma=\iota$. Luego tenemos $\alpha=\theta, \beta=\lambda$ y $\gamma=\iota$. Por definición, $\triangle ABC \sim \triangle GHI$. Luego ( $\triangle ABC \sim \triangle DEF$, $\triangle DEF \sim \triangle GHI$)$\implies \triangle ABC \sim \triangle GHI$.
 >>
 >>Reunidas las tres condiciones, la semejanza de triángulos en el plano es una relación de equivalencia.
 
@@ -46,7 +46,7 @@ Pese a que los primeros tres triángulos son diferentes, ya sea por orientación
 >>
 >>2. Sean $a,b\in \mathbb{Z}$. Dejemos que $a≡b\ (mod\ n)$ sea cierto. Luego existe un $k \in \mathbb{Z}$ tal que $b-a=kn$. Dejemos $c=-k$. Como $k \in \mathbb{Z}$, $c \in \mathbb{Z}$. Sustituyendo $k=-c$ en $b-a=kn$, obtenemos $b-a=-cn$. Multiplicando por $-1$ a ambos lados se obtiene $a-b=cn$, con $c \in \mathbb{Z}$. Por definición, $b≡a\ (mod\ n)$. Luego $a≡b\ (mod\ n) \implies b≡a\ (mod\ n)$.
 >>
->>3. Sean $a,b,c\in \mathbb{Z}$. Dejemos que $a≡b\ (mod\ n)$ sea cierto y que $b≡c\ (mod\ n)$ sea cierto. Por definición, existen $p,q \in \mathbb{Z}$ tal que $b-a=pn$ y $c-b=qn$. Despejando $b$ en la primera ecuación, obtenemos $b=a+pn$. Sustituyendo en la segunda ecuación, obtenemos $c-a-pn=qn$. Sumando a ambos lados $pn$ y factorizando por $n$, obtenemos. $c-a=(p+q)n$. Sea $k=p+q$. Como $p,q \in \mathbb{Z}$, luego $k \in \mathbb{Z}$. Sustituyendo, obtenemos $c-a=kn$. Luego por definición $a≡c\ (mod\ n)$. Es decir, ($a≡b\ (mod\ n), b≡c\ (mod\ n)$) $\implies a≡c\ (mod\ n)$.
+>>3. Sean $a,b,c\in \mathbb{Z}$. Dejemos que $a≡b\ (mod\ n)$ sea cierto y que $b≡c\ (mod\ n)$ sea cierto. Por definición, existen $p,q \in \mathbb{Z}$ tales que $b-a=pn$ y $c-b=qn$. Despejando $b$ en la primera ecuación, obtenemos $b=a+pn$. Sustituyendo en la segunda ecuación, obtenemos $c-a-pn=qn$. Sumando a ambos lados $pn$ y factorizando por $n$, obtenemos. $c-a=(p+q)n$. Sea $k=p+q$. Como $p,q \in \mathbb{Z}$, luego $k \in \mathbb{Z}$. Sustituyendo, obtenemos $c-a=kn$. Luego por definición $a≡c\ (mod\ n)$. Es decir, ($a≡b\ (mod\ n), b≡c\ (mod\ n)$) $\implies a≡c\ (mod\ n)$.
 >>
 >>Reunidas las tres condiciones, la congruencia módulo n es una relación de equivalencia.
 
