@@ -25,3 +25,8 @@ configurar-claude.ps1
 .vscode/
 *.bak
 *.bak-*
+
+# Copias de conflicto de Google Drive, p. ej. "index (conflict 2026-09-22-19-37-06).md".
+# Drive las crea cuando el mismo archivo se edita en dos equipos a la vez. Son
+# duplicados: sin esta línea, Quartz las publicaría como una página más del sitio.
+* (conflict *)*
