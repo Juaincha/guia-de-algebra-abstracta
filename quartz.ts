@@ -1,7 +1,7 @@
 import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
 import { PageTypes } from "./quartz/plugins"
-import { resolveRelative } from "@quartz-community/utils"
-import type { FullSlug } from "@quartz-community/types"
+import { resolveRelative, slugifyFilePath } from "@quartz-community/utils"
+import type { FilePath, FullSlug } from "@quartz-community/types"
 import type { BuildCtx } from "./quartz/util/ctx"
 import { h } from "preact"
 
@@ -54,6 +54,76 @@ if (latex) {
       ],
     }
   }
+}
+
+// ════════════════════════════════════════════════════════════════════════
+//  Figuras SVG insertas con ![[figura.svg|ancho]]
+//
+//  `@quartz-community/obsidian-flavored-markdown` convierte los embeds .svg
+//  en un <object data="figura.svg"> de HTML crudo. Dos problemas:
+//  - Como es HTML crudo, crawl-links no le corrige la ruta. Desde
+//    /Relaciones/Particiones el navegador la busca en /Relaciones/figura.svg,
+//    pero el SVG se publica en la raiz (como en la boveda): no se ve.
+//  - Pone height="auto", que no es valido en <object>.
+//  Asi que, ANTES de que el plugin procese los wikilinks, cambiamos cada
+//  embed .svg por un nodo `image` de Markdown, el mismo que el plugin arma
+//  para un .png. De ahi en adelante sigue el camino de los PNG: crawl-links
+//  resuelve la ruta relativa ("../figura.svg"), que sirve igual con --serve
+//  y bajo /guia-de-algebra-abstracta, y sale un <img width="ancho">.
+//  La sintaxis de los articulos no cambia, para que Obsidian los siga viendo.
+//
+//  Texto alternativo: lo que vaya antes del ancho (![[f.svg|texto|520]]),
+//  o, si no hay, el nombre del archivo con espacios en vez de guiones.
+// ════════════════════════════════════════════════════════════════════════
+
+// La misma expresion que usa el plugin para separar "texto|ancho" o "anchoxalto".
+const embedImagenRegex = /^(?<alt>(?!^\d*x?\d*$).*?)?(\|?\s*?(?<width>\d+)(x(?<height>\d+))?)?$/
+
+type NodoMdast = {
+  type: string
+  path?: string
+  alias?: string
+  embedded?: boolean
+  children?: NodoMdast[]
+  [clave: string]: unknown
+}
+
+function embedsSvgComoImagen(nodo: NodoMdast) {
+  const hijos = nodo.children
+  if (!hijos) return
+  for (let i = 0; i < hijos.length; i++) {
+    const hijo = hijos[i]
+    const ruta = hijo.path?.trim() ?? ""
+    if (hijo.type === "wikilink" && hijo.embedded && ruta.toLowerCase().endsWith(".svg")) {
+      const grupos = embedImagenRegex.exec(hijo.alias?.trim() ?? "")?.groups ?? {}
+      const nombre = ruta
+        .split("/")
+        .pop()!
+        .replace(/\.svg$/i, "")
+      const alt = grupos.alt?.trim() || nombre.replace(/[-_]+/g, " ")
+      const propiedades: Record<string, string> = { alt }
+      if (grupos.width) propiedades.width = grupos.width
+      if (grupos.height) propiedades.height = grupos.height
+      hijos[i] = {
+        type: "image",
+        url: slugifyFilePath(ruta as FilePath),
+        alt,
+        data: { hProperties: propiedades },
+      }
+    } else {
+      embedsSvgComoImagen(hijo)
+    }
+  }
+}
+
+const ofm = config.plugins.transformers.find((t) => t.name === "ObsidianFlavoredMarkdown")
+if (ofm?.markdownPlugins) {
+  const pluginsOriginales = ofm.markdownPlugins.bind(ofm)
+  // Los nodos `wikilink` salen del parser, asi que basta con correr primero.
+  ofm.markdownPlugins = (ctx: BuildCtx) => [
+    () => (arbol: NodoMdast) => embedsSvgComoImagen(arbol),
+    ...pluginsOriginales(ctx),
+  ]
 }
 
 // ════════════════════════════════════════════════════════════════════════
