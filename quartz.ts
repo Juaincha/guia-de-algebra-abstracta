@@ -4,6 +4,8 @@ import { resolveRelative, slugifyFilePath } from "@quartz-community/utils"
 import type { FilePath, FullSlug } from "@quartz-community/types"
 import type { BuildCtx } from "./quartz/util/ctx"
 import { h } from "preact"
+import fs from "fs/promises"
+import path from "path"
 
 const config = await loadQuartzConfig()
 const layoutBase = await loadQuartzLayout()
@@ -549,6 +551,31 @@ const layoutConSiguiente = {
 
 config.plugins.emitters = config.plugins.emitters.filter((e) => e.name !== "PageTypeDispatcher")
 config.plugins.emitters.push(PageTypes.PageTypeDispatcher(layoutConSiguiente as never))
+
+// ════════════════════════════════════════════════════════════════════════
+//  Verificacion de Google Search Console
+//
+//  Google pide servir un archivo exacto en la raiz del sitio:
+//  https://juaincha.github.io/guia-de-algebra-abstracta/google20ef52b731812a8b.html
+//  Ponerlo en la boveda NO sirve: Quartz le quita el .html al publicarlo.
+//  Ponerlo en quartz/static/ tampoco: sale en /static/. Por eso se escribe
+//  aqui, igual que hace el plugin cname con su archivo.
+//
+//  NO BORRAR: Google revisa este archivo cada cierto tiempo, y si
+//  desaparece la propiedad deja de estar verificada.
+// ════════════════════════════════════════════════════════════════════════
+
+const VERIFICACION_GOOGLE = "google20ef52b731812a8b.html"
+
+config.plugins.emitters.push({
+  name: "VerificacionGoogle",
+  async emit(ctx: BuildCtx) {
+    const destino = path.join(ctx.argv.output, VERIFICACION_GOOGLE)
+    await fs.writeFile(destino, `google-site-verification: ${VERIFICACION_GOOGLE}`)
+    return [destino as FilePath]
+  },
+  async *partialEmit() {},
+} as never)
 
 export default config
 
