@@ -1,3 +1,6 @@
+---
+description: Qué es una relación de equivalencia (reflexiva, simétrica y transitiva), con la igualdad, la semejanza de triángulos y la congruencia módulo n como ejemplos.
+---
 >[!definicion] Relación de equivalencia
 >Una relación de equivalencia en un conjunto no vacío $A$ es una relación binaria $\sim$ que satisface:
 >1. Para todo $a \in A$, $a \sim a$. Esta propiedad se conoce como **reflexividad**.

@@ -1,3 +1,6 @@
+---
+description: La definición de grupo con sus cuatro axiomas, la bilateralidad del neutro y del inverso y las versiones lateral izquierda, derecha y bilateral, con ejercicios resueltos.
+---
 > [!definicion] Definición
 > Un grupo es un conjunto $G$ junto a una operación binaria $·$ que satisface:
 > 1. Para todo $a,b \in G$ tenemos $a·b \in G$. Esta propiedad se conoce como **clausura**.

@@ -1,3 +1,6 @@
+---
+description: "El grupo diedral, formado por las simetrías de un polígono regular de n lados: rotaciones, reflexiones y cómo se componen."
+---
 El grupo diedral $(D_n,\circ)$ es el grupo de simetrías de un polígono regular de $n$ lados. Consideremos un $n$-gono y fijémonos en sus vértices. Luego, una simetría es una transformación del polígono que mantiene su forma general pero que varía la posición de sus vértices. Las dos simetrías básicas que cumplen esto son la rotación y la reflexión. Generalmente, nombramos los vértices del polígono en sentido antihorario, en orden alfabético o numérico.
 
 ![[file_00000000c140820ea282cff9fd083d8a.png|400]]

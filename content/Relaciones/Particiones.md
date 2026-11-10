@@ -1,3 +1,6 @@
+---
+description: Qué es una partición de un conjunto, cómo se caracteriza con tres condiciones y por qué cada relación de equivalencia corresponde a una partición.
+---
 Un concepto muy relevante para las relaciones de equivalencia son las particiones. Se definen de la siguiente forma:
 
 >[!definicion] Definición

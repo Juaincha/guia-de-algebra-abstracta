@@ -1,3 +1,6 @@
+---
+description: Qué es un orden parcial (reflexivo, antisimétrico y transitivo), con el menor o igual, la inclusión de conjuntos y la divisibilidad como ejemplos.
+---
 Las relaciones de orden permiten definir un sentido de orden en una estructura. Antes de la relación de orden, no se sabe bien qué va antes de qué. En general, se entiende que una relación de orden $\preceq$ relaciona dos elementos $a$ y $b$, de forma que $a \preceq b$ significa que $a$ precede a $b$, y que $b$ sucede a $a$. Por ejemplo, si establecemos que Max nació primero, Martina después y Nicolás último y los tres son hermanos, luego podemos establecer que Nicolás precede a Martina, Martina precede a Max y Nicolás precede a Max. Simbólicamente, Nicolás $\preceq$ Martina, Martina $\preceq$ Max y Nicolás $\preceq$ Max. Formalizando esta idea:
 
 >[!definicion] Definicióń

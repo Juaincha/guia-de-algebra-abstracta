@@ -1,3 +1,6 @@
+---
+description: El grupo simétrico, formado por todas las permutaciones de un conjunto de n elementos, con su notación en matrices y en ciclos.
+---
 El grupo simétrico $(S_n,\circ)$ consiste en el grupo de todas las permutaciones de un conjunto de n elementos. Por ejemplo, si tenemos un conjunto de 3 pelotas:
 
 ![[grok_1788357790189.jpg|550]]

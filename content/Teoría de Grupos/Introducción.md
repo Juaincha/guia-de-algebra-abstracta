@@ -1,3 +1,6 @@
+---
+description: Qué estudia la teoría de grupos, a partir de las simetrías de un triángulo equilátero y las cuatro propiedades que tienen en común.
+---
 La teoría de grupos es un área de las matemáticas que estudia estructuras llamadas **grupos**, que son interesantes porque pueden representar conjuntos de simetrías y sus composiciones.
 
 Por ejemplo, al estudiar las simetrías de un triángulo equilátero notamos que podemos rotarlo 120° en sentido antihorario, rotarlo 840° en sentido horario, reflejarlo respecto al eje vertical, etc. Todas estas transformaciones son simetrías porque, después de aplicarlas, el triángulo vuelve a ocupar exactamente el mismo lugar. Aun así, podemos distinguir una transformación de otra si numeramos los vértices.

@@ -1,3 +1,6 @@
+---
+description: "Las propiedades básicas de un grupo, demostradas paso a paso: unicidad del neutro y del inverso, inverso del producto, inverso del inverso y leyes de exponentes."
+---
 Una vez demostradas las propiedades bilaterales del neutro y del inverso, es momento de describir el resto de propiedades. En todo el artículo, $(G,·)$ es un grupo.
 
 >[!general] Unicidad del neutro
