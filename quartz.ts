@@ -127,6 +127,52 @@ if (ofm?.markdownPlugins) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
+//  Enlaces a articulos que todavia no existen
+//
+//  Un wikilink a un archivo que no esta publicado (los marcados con 🚧 en
+//  los indices, cuyo borrador vive en private/Borradores/) sale de
+//  LinkProcessing como un <a> normal que da 404. Aqui se reemplaza por un
+//  <span class="enlace-pendiente"> con el mismo texto: el lector no llega a
+//  un 404 y Google no rastrea un enlace roto. El estilo va en custom.scss.
+//
+//  "Existe" = su slug esta en ctx.allSlugs (todo lo que el build encontro
+//  en content/, sin lo que excluyen los ignorePatterns, como private/).
+//  Ojo: un archivo con draft: true SI esta en allSlugs, asi que su enlace
+//  seguiria saliendo como <a>.
+// ════════════════════════════════════════════════════════════════════════
+
+type NodoEnlace = {
+  type: string
+  tagName?: string
+  properties?: Record<string, unknown>
+  children?: NodoEnlace[]
+}
+
+function desenlazarPendientes(nodo: NodoEnlace, slugs: Set<string>) {
+  for (const hijo of nodo.children ?? []) {
+    if (hijo.type !== "element") continue
+    const clases = hijo.properties?.className
+    const esInterno = Array.isArray(clases) && clases.includes("internal")
+    const destino = hijo.properties?.["data-slug"]
+    if (hijo.tagName === "a" && esInterno && typeof destino === "string" && !slugs.has(destino)) {
+      hijo.tagName = "span"
+      hijo.properties = { className: ["enlace-pendiente"] }
+    }
+    desenlazarPendientes(hijo, slugs)
+  }
+}
+
+const procesadorEnlaces = config.plugins.transformers.find((t) => t.name === "LinkProcessing")
+if (procesadorEnlaces?.htmlPlugins) {
+  const pluginsOriginales = procesadorEnlaces.htmlPlugins.bind(procesadorEnlaces)
+  // Corre DESPUES de los originales, que son los que ponen data-slug.
+  procesadorEnlaces.htmlPlugins = (ctx: BuildCtx) => [
+    ...pluginsOriginales(ctx),
+    () => (arbol: NodoEnlace) => desenlazarPendientes(arbol, new Set<string>(ctx.allSlugs)),
+  ]
+}
+
+// ════════════════════════════════════════════════════════════════════════
 //  Sub-puntos "n.m" dentro de los callouts
 //
 //  En una demostracion por casos hace falta un segundo nivel: 1.1, 1.2,

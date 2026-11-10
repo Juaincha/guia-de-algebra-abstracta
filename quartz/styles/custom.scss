@@ -544,3 +544,8 @@ html body article p:has(> img:only-child) + p:has(> em:only-child) {
   font-size: 0.9em;
   color: color-mix(in srgb, var(--text-muted) 60%, var(--text-faint));
 }
+
+/* Enlaces a articulos aun no publicados (ver desenlazarPendientes en quartz.ts) */
+.enlace-pendiente {
+  color: var(--gray);
+}
