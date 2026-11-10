@@ -4,11 +4,21 @@
 >2. Para todo $a,b \in A$, $a \sim b \implies b \sim a$. Esta propiedad se conoce como **simetría**.
 >3. Para todo $a,b,c \in A$, $(a \sim b$ y $b \sim c) \implies a \sim c$. Esta propiedad se conoce como **transitividad**.
 
+![[relaciones-de-equivalencia-transitividad.svg|360]]
+
+*Transitividad: si $a \sim b$ y $b \sim c$, entonces también $a \sim c$ (línea punteada).*
+
 La relación de equivalencia permite decir que dos cosas son equivalentes en ciertos contextos. La más evidente es la igualdad, ya que si $x=2$ entonces $x$ equivale a 2. Otro ejemplo es la semejanza de triángulos:
 
-![[Pasted image 20260823140032.png]]
+![[relaciones-de-equivalencia-triangulos-semejantes.svg|600]]
+
+*Tres triángulos semejantes y uno que **no** lo es. Los arcos del mismo color marcan ángulos iguales.*
 
 Pese a que los tres primeros triángulos son diferentes, ya sea por orientación o tamaño, tienen los mismos ángulos. Por lo tanto, son semejantes. El cuarto, en cambio, no lo es. En este caso, preguntar $X \sim \triangle ABC$ para un triángulo $\triangle ABC$ dado tiene infinitas respuestas para $X$, y todos ellos son equivalentes a $\triangle ABC$. Un último ejemplo tiene que ver con aritmética modular: si $x \equiv 2 \pmod{3}$ entonces $x$ puede ser $\dots, -4, -1, 2, 5, 8, 11, \dots$. Las tres son relaciones de equivalencia, ¡y lo demostramos a continuación!
+
+![[relaciones-de-equivalencia-modulo-3.svg|640]]
+
+*Los enteros $x$ con $x \equiv 2 \pmod{3}$ están separados por saltos de $3$.*
 
 >[!general] Igualdad $=$
 >
@@ -26,7 +36,11 @@ Pese a que los tres primeros triángulos son diferentes, ya sea por orientación
 >
 >>[!demostracion] Demostración
 >>Definamos la semejanza de triángulos como $\triangle ABC \sim \triangle A'B'C' \Longleftrightarrow \alpha = \alpha', \beta = \beta', \gamma = \gamma'$ como se muestra en la imagen.
->>![[Pasted image 20260823154241.png]]
+>>
+>>![[relaciones-de-equivalencia-angulos-correspondientes.svg|520]]
+>>
+>>*Ángulos correspondientes de $\triangle ABC$ y $\triangle A'B'C'$.*
+>>
 >>1. Sea $\triangle ABC$ triángulo en el plano. Sea $\alpha$ el ángulo en $A$, $\beta$ el ángulo en $B$ y $\gamma$ el ángulo en $C$. Por **reflexividad** de la igualdad, $\alpha = \alpha, \beta = \beta, \gamma = \gamma$. Luego, por definición de la relación, $\triangle ABC \sim \triangle ABC$.
 >>
 >>2. Sean $\triangle ABC$, $\triangle DEF$ triángulos en el plano. Sean $\alpha, \beta, \gamma$ los ángulos en $A, B, C$ y $\delta, \varepsilon, \eta$ los ángulos en $D, E, F$, respectivamente. Supongamos que $\triangle ABC \sim \triangle DEF$. Luego por definición: $\alpha = \delta, \beta = \varepsilon, \gamma = \eta$. Por **simetría** de la igualdad, lo cual se justifica porque la igualdad es una relación de equivalencia, tenemos: $\delta =\alpha, \varepsilon=\beta, \eta=\gamma$. Por último, nuevamente por definición obtenemos $\triangle DEF \sim \triangle ABC$. Luego $\triangle ABC \sim \triangle DEF \implies \triangle DEF \sim \triangle ABC$.
