@@ -3,7 +3,7 @@ description: El grupo simétrico, formado por todas las permutaciones de un conj
 ---
 El grupo simétrico $(S_n,\circ)$ consiste en el grupo de todas las permutaciones de un conjunto de n elementos. Por ejemplo, si tenemos un conjunto de 3 pelotas:
 
-![[grok_1788357790189.jpg|550]]
+![[grok_1788357790189.jpg|Las seis formas de ordenar en fila una pelota roja, una azul y una verde|550]]
 
 Este es el conjunto de todas las permutaciones del conjunto. Por combinatoria, sabemos que el grupo simétrico de $n$ elementos tiene $n!$ permutaciones, por lo que $S_n$ tiene $n!$ elementos. Pero realmente los elementos de $S_n$ no son las formas en que se organizan las pelotas: son los movimientos que se realizaron. Por ejemplo, si elegimos la primera combinación de pelotas como el estado base, la acción de no alterar esa combinación es un elemento de $S_n$. La acción de intercambiar la primera pelota con la segunda es otro elemento de $S_n$. La accón de intercambiar una posición a la derecha cada pelota, de manera que la última vuelve al inicio, también es un elemento de $S_n$. De este modo, las pelotas sirven solo para visualizar las acciones, pero realmente cada elemento de $S_n$ es una forma de reordenar los elementos de cualquier conjunto de $n$ elementos. Como no importa qué conjunto estamos reordenando, por simplicidad se prefiere trabajar con números naturales. Por ejemplo, podemos decir que el grupo $S_3$ mueve los elementos de $\{1,2,3\}$.
 

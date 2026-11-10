@@ -8,7 +8,7 @@ Un concepto muy relevante para las relaciones de equivalencia son las particione
 
 De esta forma, una partición subdivide a $A$ en conjuntos disjuntos. Por ejemplo, una partición de $A= \{a,b,c,d\}$ es $P_1=\{\{a,b\},\{c,d\} \}$. Otra partición posible de $A$ es $P_2=\{\{a\},\{b\},\{c\},\{d\} \}$. Un último ejemplo es $P_3 = \{\{a,b,c\},\{d\}\}$.
 
-![[particiones-tres-ejemplos.svg|520]]
+![[particiones-tres-ejemplos.svg|El conjunto A con sus elementos a, b, c y d, y tres formas de dividirlo en partes, cada una encerrada en una elipse de color|520]]
 
 *El conjunto $A$ y tres de sus particiones.*
 
@@ -22,7 +22,7 @@ Podemos reducir esta definición, escrita en palabras, a tres condiciones:
 
 El punto 2 significa que la unión de todos los conjuntos que hay dentro de $P$ es igual a $A$.
 
-![[particiones-no-ejemplos.svg|640]]
+![[particiones-no-ejemplos.svg|Tres colecciones de subconjuntos de A que no son particiones: una incluye un conjunto vacío, otra deja fuera a d y en otra dos partes se superponen en b|640]]
 
 *Colecciones de subconjuntos de $A=\{a,b,c,d\}$ que **no** son particiones: la primera contiene a $\emptyset$, la segunda deja a $d$ fuera de todos sus miembros y en la tercera $b$ está en dos miembros.*
 
@@ -44,7 +44,7 @@ Te preguntarás, ¿qué relevancia tienen las particiones en un artículo de rel
 >1. Toda relación de equivalencia $\sim$ en $A$ determina una partición única $P_{\sim}$ de $A$.
 >2. Toda partición $P$ de $A$ determina una relación de equivalencia única $\sim_P$ en $A$.
 
-![[particiones-correspondencia.svg|620]]
+![[particiones-correspondencia.svg|Los números del 1 al 9 agrupados según su resto al dividir por 3, primero unidos por líneas y luego encerrados en elipses de colores|620]]
 
 *Teorema de correspondencia en $A=\{1,2,\dots,9\}$.*
 
@@ -99,6 +99,6 @@ Por último, es relevante hablar del conjunto cociente.
 
 Luego $A/\sim$ es la partición de $A$ que corresponde a $\sim$. En el ejemplo anterior, $\mathbb{Z} /\equiv_5 \ = \{ [0],[1],[2],[3],[4] \}$, donde $\equiv_n$ significa $\equiv \pmod{n}$.
 
-![[particiones-modulo-5.svg|420]]
+![[particiones-modulo-5.svg|Los enteros separados en cinco clases de colores según su resto al dividir por 5, todas dentro de una elipse que representa a los enteros|420]]
 
 *El conjunto cociente $\mathbb{Z}/\equiv_5\ = \{[0],[1],[2],[3],[4]\}$.*

@@ -3,7 +3,7 @@ description: "El grupo diedral, formado por las simetrías de un polígono regul
 ---
 El grupo diedral $(D_n,\circ)$ es el grupo de simetrías de un polígono regular de $n$ lados. Consideremos un $n$-gono y fijémonos en sus vértices. Luego, una simetría es una transformación del polígono que mantiene su forma general pero que varía la posición de sus vértices. Las dos simetrías básicas que cumplen esto son la rotación y la reflexión. Generalmente, nombramos los vértices del polígono en sentido antihorario, en orden alfabético o numérico.
 
-![[file_00000000c140820ea282cff9fd083d8a.png|400]]
+![[file_00000000c140820ea282cff9fd083d8a.png|Un pentágono regular con los vértices A, B, C, D y E marcados en distintos colores|400]]
 
 Para encadenar varias simetrías, podemos considerar que cada simetría es una función que toma como entrada el polígono y da como salida el polígono con los vértices alterados. Por esto, la composición de simetrías se hace de derecha a izquierda, igual que la composición de funciones. Por ejemplo, hacer la simetría $a$ y después la simetría $b$ es igual a hacer la simetría $b \circ a$. Si llamamos $r$ a la rotación más pequeña en sentido antihorario que preserva la forma del polígono, notamos que esta mueve cada vértice una posición en sentido antihorario. Si hacemos dos veces esta rotación, $r \circ r=r^2$ mueve cada vértice dos posiciones en sentido antihorario. De esta forma, $r^k$ mueve cada vértice $k$ posiciones en sentido antihorario. Como el polígono tiene $n$ vértices, $r^n$ es equivalente a no hacer nada. Si llamamos $e$ a la simetría de no hacer nada, tenemos $r^n=e$. Además, como rotar en sentido antihorario y luego en sentido horario equivale a no hacer nada, podemos decir que rotar en sentido horario es $r^{-1}$. Pero como $r^n=e$, $r^{n-1}\circ r=e$ y por lo tanto $r^{-1}=r^{n-1}$.
 
@@ -15,7 +15,7 @@ Con todo esto, el conjunto de todas las rotaciones y reflexiones del $n$-gono es
 
 Falta una propiedad fundamental del grupo diedral que es más fácil de explicar visualmente.
 
-![[b411bf87-e444-4119-8988-c20d0bfe6596.jpg|600]]
+![[b411bf87-e444-4119-8988-c20d0bfe6596.jpg|Un pentágono al que se le aplica una reflexión, una rotación y otra reflexión, y que termina igual que con una rotación en sentido contrario|600]]
 
 Al reflejar, rotar y volver a reflejar, obtenemos lo mismo que rotar en el sentido contrario. Es decir, $srs=r^{-1}$. Con esto tenemos tres propiedades fundamentales de las rotaciones y reflexiones: $r^n=e$, $s^2=e$ y $srs=r^{-1}$, con las cuales se puede describir completamente el grupo diedral.
 

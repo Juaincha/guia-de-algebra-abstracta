@@ -7,19 +7,19 @@ description: Qué es una relación de equivalencia (reflexiva, simétrica y tran
 >2. Para todo $a,b \in A$, $a \sim b \implies b \sim a$. Esta propiedad se conoce como **simetría**.
 >3. Para todo $a,b,c \in A$, $(a \sim b$ y $b \sim c) \implies a \sim c$. Esta propiedad se conoce como **transitividad**.
 
-![[relaciones-de-equivalencia-transitividad.svg|360]]
+![[relaciones-de-equivalencia-transitividad.svg|Tres puntos a, b y c en triángulo: a está unido con b, b con c, y una línea punteada une a con c|360]]
 
 *Transitividad: si $a \sim b$ y $b \sim c$, entonces también $a \sim c$ (línea punteada).*
 
 La relación de equivalencia permite decir que dos cosas son equivalentes en ciertos contextos. La más evidente es la igualdad, ya que si $x=2$ entonces $x$ equivale a 2. Otro ejemplo es la semejanza de triángulos:
 
-![[relaciones-de-equivalencia-triangulos-semejantes.svg|600]]
+![[relaciones-de-equivalencia-triangulos-semejantes.svg|Tres triángulos de distinto tamaño y orientación que tienen los mismos ángulos, marcados con arcos de colores, y un cuarto con ángulos distintos|600]]
 
 *Tres triángulos semejantes y uno que **no** lo es. Los arcos del mismo color marcan ángulos iguales.*
 
 Pese a que los tres primeros triángulos son diferentes, ya sea por orientación o tamaño, tienen los mismos ángulos. Por lo tanto, son semejantes. El cuarto, en cambio, no lo es. En este caso, preguntar $X \sim \triangle ABC$ para un triángulo $\triangle ABC$ dado tiene infinitas respuestas para $X$, y todos ellos son equivalentes a $\triangle ABC$. Un último ejemplo tiene que ver con aritmética modular: si $x \equiv 2 \pmod{3}$ entonces $x$ puede ser $\dots, -4, -1, 2, 5, 8, 11, \dots$. Las tres son relaciones de equivalencia, ¡y lo demostramos a continuación!
 
-![[relaciones-de-equivalencia-modulo-3.svg|640]]
+![[relaciones-de-equivalencia-modulo-3.svg|Una recta numérica en la que se destacan menos 4, menos 1, 2, 5, 8 y 11, cada uno a un salto de 3 del anterior|640]]
 
 *Los enteros $x$ con $x \equiv 2 \pmod{3}$ están separados por saltos de $3$.*
 
@@ -40,7 +40,7 @@ Pese a que los tres primeros triángulos son diferentes, ya sea por orientación
 >>[!demostracion] Demostración
 >>Definamos la semejanza de triángulos como $\triangle ABC \sim \triangle A'B'C' \Longleftrightarrow \alpha = \alpha', \beta = \beta', \gamma = \gamma'$ como se muestra en la imagen.
 >>
->>![[relaciones-de-equivalencia-angulos-correspondientes.svg|520]]
+>>![[relaciones-de-equivalencia-angulos-correspondientes.svg|Dos triángulos semejantes de distinto tamaño, ABC y A'B'C', con cada par de ángulos correspondientes marcado del mismo color|520]]
 >>
 >>*Ángulos correspondientes de $\triangle ABC$ y $\triangle A'B'C'$.*
 >>
