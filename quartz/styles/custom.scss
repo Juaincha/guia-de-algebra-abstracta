@@ -503,3 +503,44 @@ html body article .katex .puntuacion-pegada {
   font-family: var(--font-interface);
   font-size: calc(1em / 1.21);
 }
+
+// ═══════════════════════════════════════════════════════════════════
+//  Pie de figura pegado a la imagen
+//
+//  Una figura se escribe en el articulo como
+//
+//      ![[figura.svg|ancho]]
+//
+//      *Pie de la figura en cursiva.*
+//
+//  y la linea en blanco produce DOS parrafos: <p><img></p> y luego
+//  <p><em>...</em></p>. Con los margenes normales entre parrafos el pie
+//  quedaba lejos de la imagen. Aqui se reconoce ese par y se junta.
+//
+//  El pie se identifica por su posicion, no por una clase: es un
+//  parrafo cuya UNICA etiqueta hija es un <em> y que va JUSTO DESPUES
+//  de un parrafo cuya unica etiqueta hija es un <img>. Un parrafo en
+//  cursiva en cualquier otro lugar no cambia. (Limite de CSS: el texto
+//  suelto no cuenta para :only-child, asi que "*pie* y algo mas" contaria
+//  como pie. En la practica los pies van enteros en cursiva.)
+//
+//  Funciona igual dentro de un callout. Ahi .callout-content es una
+//  rejilla y los margenes no colapsan, pero como el de la imagen va
+//  casi a cero y el del pie a 0.3rem, la suma es la misma.
+//
+//  COLOR. El tema pinta el cuerpo con --text-muted y su gris
+//  secundario es --text-faint, pero este solo es demasiado tenue en
+//  claro (#ababab sobre blanco, contraste ~2.3:1). Se mezclan los dos:
+//  queda un tono entre ambos, distinto del cuerpo y legible en claro y
+//  en oscuro. No se usa --lightgray: el tema lo deja casi igual al fondo.
+// ═══════════════════════════════════════════════════════════════════
+
+html body article p:has(> img:only-child):has(+ p > em:only-child) {
+  margin-bottom: 0.1rem;
+}
+
+html body article p:has(> img:only-child) + p:has(> em:only-child) {
+  margin-top: 0.3rem;
+  font-size: 0.9em;
+  color: color-mix(in srgb, var(--text-muted) 60%, var(--text-faint));
+}
