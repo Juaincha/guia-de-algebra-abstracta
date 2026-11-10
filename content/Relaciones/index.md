@@ -8,4 +8,4 @@ Si la relación es $\sim$, la flecha de $a$ hacia $b$ indica $a \sim b$. En este
 
 - [[Relaciones de equivalencia]]
 - [[Particiones]]
-- [[Relaciones de orden]]
+- [[Relaciones de orden]] 🚧
