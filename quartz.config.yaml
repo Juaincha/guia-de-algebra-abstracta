@@ -12,9 +12,7 @@ configuration:
   ignorePatterns:
     - private
     - templates
-    - .obsidian
-    - .claude
-    - .vscode
+    - "**/.*"
     - "**/*.bak*"
   theme:
     fontOrigin: googleFonts
@@ -315,7 +313,7 @@ plugins:
         categoryId: DIC_kwDOUCH8hM4DEWHf
         # pathname: el hilo se asocia a la ruta de la pagina, no a la URL
         # completa. Sobrevive a un cambio de dominio; se rompe si se mueve
-        # el articulo de carpeta. Ver PENDIENTES/CLAUDE.md.
+        # el articulo de carpeta.
         mapping: pathname
         strict: true
         lang: es

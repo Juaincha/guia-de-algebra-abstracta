@@ -14,16 +14,7 @@ replit.nix
 quartz/cli/tui/dist/
 .turbo/
 
-# Configuración local de Claude Code (no publicar)
-.claude/
-CLAUDE.md
-CLAUDE-CODE-SETUP.md
-PENDIENTES.md
-claude-memoria/
-claude-herramientas/
-configurar-claude.ps1
-
-# Ruido del editor y de Claude Code dentro de la bóveda (content/)
+# Archivos del editor y respaldos
 .vscode/
 *.bak
 *.bak-*
