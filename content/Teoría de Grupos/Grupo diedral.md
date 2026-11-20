@@ -3,11 +3,17 @@ description: "El grupo diedral, formado por las simetrías de un polígono regul
 ---
 El grupo diedral $(D_n,\circ)$ es el grupo de simetrías de un polígono regular de $n$ lados. Consideremos un $n$-gono y fijémonos en sus vértices. Luego, una simetría es una transformación del polígono que mantiene su forma general pero que varía la posición de sus vértices. Las dos simetrías básicas que cumplen esto son la rotación y la reflexión. Generalmente, nombramos los vértices del polígono en sentido antihorario, en orden alfabético o numérico.
 
-![[file_00000000c140820ea282cff9fd083d8a.png|Un pentágono regular con los vértices A, B, C, D y E marcados en distintos colores|400]]
+![[grupo-diedral-pentagono.svg|Un pentágono regular con los vértices A, B, C, D y E en sentido antihorario, cada uno de un color|280]]
+
+*Un pentágono regular con sus vértices nombrados en sentido antihorario.*
 
 Para encadenar varias simetrías, podemos considerar que cada simetría es una función que toma como entrada el polígono y da como salida el polígono con los vértices alterados. Por esto, la composición de simetrías se hace de derecha a izquierda, igual que la composición de funciones. Por ejemplo, hacer la simetría $a$ y después la simetría $b$ es igual a hacer la simetría $b \circ a$. Si llamamos $r$ a la rotación más pequeña en sentido antihorario que preserva la forma del polígono, notamos que esta mueve cada vértice una posición en sentido antihorario. Si hacemos dos veces esta rotación, $r \circ r=r^2$ mueve cada vértice dos posiciones en sentido antihorario. De esta forma, $r^k$ mueve cada vértice $k$ posiciones en sentido antihorario. Como el polígono tiene $n$ vértices, $r^n$ es equivalente a no hacer nada. Si llamamos $e$ a la simetría de no hacer nada, tenemos $r^n=e$. Además, como rotar en sentido antihorario y luego en sentido horario equivale a no hacer nada, podemos decir que rotar en sentido horario es $r^{-1}$. Pero como $r^n=e$, $r^{n-1}\circ r=e$ y por lo tanto $r^{-1}=r^{n-1}$.
 
 Ahora, si llamamos $s_A$ a la reflexión respecto al eje que pasa por el vértice $A$ y el centro, notamos que reflejar dos veces no hace nada. Es decir, $s_A^2=e$. Lo mismo ocurre con cada vértice: $s_B^2=e$, $s_C^2=e$, etc. También podemos reflejar respecto al eje que pasa por el medio de una arista y el centro. Si llamamos $s_{AB}$ a la reflexión por el eje que pasa por el punto medio de la arista $\overline{AB}$ y el centro, nuevamente $s^2_{AB}=e$.
+
+![[grupo-diedral-rotacion-y-reflexiones.svg|El pentágono con una flecha de giro de 72 grados y dos ejes punteados, uno por A y otro por el punto medio de AB|300]]
+
+*La rotación $r$ gira el pentágono 72° en sentido antihorario. La reflexión $s_A$ es respecto al eje que pasa por $A$, y $s_{AB}$, respecto al que pasa por el punto medio de $\overline{AB}$.*
 
 Una observación importante es que reflejar a través del eje que pasa por cualquier vértice y el centro es equivalente a hacer una serie de rotaciones y después reflejar a través del eje que pasa por $A$ y el centro. Por ejemplo, en el pentágono de la figura, $s_B = s_A \circ r^{3}$ (¡verifícalo tú mismo!). Para evitar trabajar con tantos símbolos, no se escribe el símbolo de composición y se asume que si dos elementos están juntos es porque hay que hacer su composición. Esto se llama yuxtaposición. Luego tenemos $s_B=s_A \: r^{3}$. De esta misma forma, podemos obtener $s_C =s_A \: r$, $s_{AB}=s_Ar^4$, etc. Esto no es una demostración, pero se intuye que todas las reflexiones se pueden escribir como combinación de rotaciones y $s_A$. Por eso, lo que se suele hacer es olvidar el resto de reflexiones y llamar $s_A=s$.
 
@@ -15,7 +21,9 @@ Con todo esto, el conjunto de todas las rotaciones y reflexiones del $n$-gono es
 
 Falta una propiedad fundamental del grupo diedral que es más fácil de explicar visualmente.
 
-![[b411bf87-e444-4119-8988-c20d0bfe6596.jpg|Un pentágono al que se le aplica una reflexión, una rotación y otra reflexión, y que termina igual que con una rotación en sentido contrario|600]]
+![[grupo-diedral-srs.svg|Pentágonos que pasan por una reflexión, una rotación y otra reflexión, y abajo por una sola rotación, con íconos bajo las flechas|640]]
+
+*Arriba se aplican $s$, $r$ y $s$, en ese orden, y abajo se aplica $r^{-1}$. Los dos caminos terminan igual, así que $srs=r^{-1}$.*
 
 Al reflejar, rotar y volver a reflejar, obtenemos lo mismo que rotar en el sentido contrario. Es decir, $srs=r^{-1}$. Con esto tenemos tres propiedades fundamentales de las rotaciones y reflexiones: $r^n=e$, $s^2=e$ y $srs=r^{-1}$, con las cuales se puede describir completamente el grupo diedral.
 
@@ -31,6 +39,10 @@ Hasta ahora no se ha demostrado ninguna de estas afirmaciones. Hay varias formas
 
 >[!demostracion] Demostración
 > Se utiliza $e_N$ en vez de $e$ como neutro para no confundirlo con el número de Euler. Representemos $P$ en el plano complejo. Situemos un vértice, al cual llamaremos vértice principal, en $1$. Representaremos el polígono de manera tal que todos sus vértices yazcan en la circunferencia unitaria de ecuación $z=e^{i\theta}$, donde $\theta$ es de la forma $\frac{2\pi k}{n}$, con $0 \leq k \leq n-1$. Decimos que la posición del vértice es $k$. Definimos $R_{360^\circ/n}: \mathbb{C} \rightarrow \mathbb{C}$ tal que, para todo $z \in \mathbb{C}$, $R_{360^\circ/n}(z)=z·e^{2\pi i/n}$. Esto efectivamente es una rotación, ya que si $z=e^{2\pi ik/n}$, entonces $R_{360^\circ/n}(z)=e^{2\pi ik/n}·e^{2\pi i/n}=e^{2\pi(k+1) i/n}$. Para $0 \leq k \leq n-2$, cada $k+1$ representa el vértice en la siguiente posición. Para $k=n-1$, $e^{2\pi(k+1) i/n}=e^{2\pi n i/n}=e^{2\pi i}=e^{0i}$, por lo que va a $k=0$. Es decir, cada vértice va a la posición siguiente en sentido antihorario.
+>
+>![[grupo-diedral-plano-complejo.svg|Un pentágono inscrito en la circunferencia unitaria del plano complejo, con un vértice en 1 y una flecha de giro de 72 grados|380]]
+>
+>*El pentágono en el plano complejo. Sus vértices están en la circunferencia unitaria, con el vértice principal en $1$, y $R_{360^\circ/n}$ los gira 72° en sentido antihorario.*
 >
 > Ahora, definimos $S: \mathbb{C} \rightarrow \mathbb{C}$ tal que, para todo $z \in \mathbb{C}$, $S(z)=e^{-i\theta}$, donde $\theta$ es el ángulo polar de $z$. Esto corresponde a una reflexión a través del eje formado por el vértice principal y el origen, es decir, el eje horizontal, porque $e^{-i\theta}=cos(-\theta)+isen(-\theta)=cos(\theta)-isen(\theta)$. Como la parte imaginaria cambia de signo, estamos reflejando respecto al eje real. Con estas dos funciones:
 >
