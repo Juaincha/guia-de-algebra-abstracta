@@ -70,7 +70,7 @@ De esta forma, $a^n=a·a·a···a$, $n$ veces. Para demostrar las propiedades d
 >>
 >> Sea $P(k)$ verdadera, con $k\in \mathbb{N}$. Tengamos ${(a^{-1})}^{k+1}$. Por definición, ${(a^{-1})}^{k+1}=a^{-1}·{(a^{-1})}^k$. Como $P(k)$ es verdadera, ${(a^{-1})}^k={(a^k)}^{-1}$. Sustituyendo, obtenemos $a^{-1}·{(a^k)}^{-1}$. Por el inverso del producto, $a^{-1}·{(a^k)}^{-1}={(a^k·a)}^{-1}$. Por suma de exponentes, ${(a^k·a)}^{-1}={(a^{k+1})}^{-1}$. Por lo tanto obtenemos ${(a^{-1})}^{k+1}={(a^{k+1})}^{-1}$, por lo que $P(k+1)$ es verdadera. Como $P(1)$ es verdadera y $P(k) \implies P(k+1)$, por inducción, para todo $n \in \mathbb{N}$, ${(a^{-1})}^n={(a^n)}^{-1}$. Como $a\in G$ es arbitrario, para todo $a\in G$, $n \in \mathbb{N}$, ${(a^{-1})}^n={(a^n)}^{-1}$.
 
-### Potencias con exponente entero
+## Potencias con exponente entero
 
 Con estas dos propiedades es natural extender los exponentes a todos los enteros de la siguiente forma:
 

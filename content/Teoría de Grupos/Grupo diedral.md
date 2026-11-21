@@ -33,7 +33,7 @@ Falta una propiedad fundamental del grupo diedral que es más fácil de explicar
 
 Al reflejar, rotar y volver a reflejar, obtenemos lo mismo que rotar en el sentido contrario. Es decir, $srs=r^{-1}$. Con esto tenemos tres propiedades fundamentales de las rotaciones y reflexiones: $r^n=e$, $s^2=e$ y $srs=r^{-1}$, con las cuales se puede describir completamente el grupo diedral.
 
-### Demostración con números complejos
+## Demostración con números complejos
 
 Hasta ahora no se ha demostrado ninguna de estas afirmaciones. Hay varias formas de demostrar las tres propiedades fundamentales, pero prefiero hacerlo utilizando números complejos.
 
