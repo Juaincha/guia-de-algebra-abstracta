@@ -1,6 +1,8 @@
 ---
 description: Qué es una relación de equivalencia (reflexiva, simétrica y transitiva), con la igualdad, la semejanza de triángulos y la congruencia módulo n como ejemplos.
 ---
+## Definición
+
 >[!definicion] Relación de equivalencia
 >Una relación de equivalencia en un conjunto no vacío $A$ es una relación binaria $\sim$ que satisface:
 >1. Para todo $a \in A$, $a \sim a$. Esta propiedad se conoce como **reflexividad**.
@@ -10,6 +12,8 @@ description: Qué es una relación de equivalencia (reflexiva, simétrica y tran
 ![[relaciones-de-equivalencia-transitividad.svg|Tres puntos a, b y c en triángulo: a está unido con b, b con c, y una línea punteada une a con c|360]]
 
 *Transitividad: si $a \sim b$ y $b \sim c$, entonces también $a \sim c$ (línea punteada).*
+
+## Ejemplos
 
 La relación de equivalencia permite decir que dos cosas son equivalentes en ciertos contextos. La más evidente es la igualdad, ya que si $x=2$ entonces $x$ equivale a 2. Otro ejemplo es la semejanza de triángulos:
 
@@ -22,6 +26,8 @@ Pese a que los tres primeros triángulos son diferentes, ya sea por orientación
 ![[relaciones-de-equivalencia-modulo-3.svg|Una recta numérica en la que se destacan menos 4, menos 1, 2, 5, 8 y 11, cada uno a un salto de 3 del anterior|640]]
 
 *Los enteros $x$ con $x \equiv 2 \pmod{3}$ están separados por saltos de $3$.*
+
+## Demostración de los ejemplos
 
 >[!general] Igualdad $=$
 >
@@ -66,6 +72,8 @@ Pese a que los tres primeros triángulos son diferentes, ya sea por orientación
 >>3. Sean $a,b,c\in \mathbb{Z}$. Supongamos que $a \equiv b \pmod{n}$ y $b \equiv c \pmod{n}$. Por definición, existen $p,q \in \mathbb{Z}$ tales que $b-a=pn$ y $c-b=qn$. Despejando $b$ en la primera ecuación, obtenemos $b=a+pn$. Sustituyendo en la segunda ecuación, obtenemos $c-a-pn=qn$. Sumando a ambos lados $pn$ y factorizando por $n$, obtenemos $c-a=(p+q)n$. Sea $k=p+q$. Como $p,q \in \mathbb{Z}$, $k \in \mathbb{Z}$. Sustituyendo, obtenemos $c-a=kn$. Luego por definición $a \equiv c \pmod{n}$. Es decir, ($a \equiv b \pmod{n}, b \equiv c \pmod{n}$) $\implies a \equiv c \pmod{n}$.
 >>
 >>Reunidas las tres condiciones, la congruencia módulo $n$ es una relación de equivalencia.
+
+## Ejercicios
 
 Hay muchas otras relaciones de equivalencia. ¡Aquí te dejamos algunas para que las demuestres por tu cuenta!
 

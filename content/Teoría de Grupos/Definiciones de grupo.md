@@ -1,6 +1,8 @@
 ---
 description: La definición de grupo con sus cuatro axiomas, la bilateralidad del neutro y del inverso y las versiones lateral izquierda, derecha y bilateral, con ejercicios resueltos.
 ---
+## Definición
+
 > [!definicion] Definición
 > Un grupo es un conjunto $G$ junto a una operación binaria $·$ que satisface:
 > 1. Para todo $a,b \in G$ tenemos $a·b \in G$. Esta propiedad se conoce como **clausura**.
@@ -23,6 +25,8 @@ Una operación binaria es simplemente una operación que toma dos elementos y en
 >
 >>[!demostracion] Demostración
 >> Sea $a \in G$. Por el axioma de **inverso**, existe un $b\in G$ tal que $b·a=e_1$, tal que según el axioma del **neutro**, $e_1 \in G$ existe y satisface $e_1·a=a$. Tengamos $a·e_1$. Sustituyendo $e_1=b·a$, $a·e_1=a·(b·a)$. Por axioma de **asociatividad**, $a·(b·a)=(a·b)·a$. Por el teorema de **bilateralidad del inverso**, $a·b=e_1$. Sustituyendo, $(a·b)·a=e_1·a=a$. Por transitividad, $a·e_1=a$. Además, por axioma del **neutro** $e_1·a=a$. Como $a\in G$ es arbitrario, existe un $e_1 \in G$ tal que para todo $a\in G$, $e_1·a=a·e_1=a$.
+
+## Tres definiciones equivalentes
 
 En la definición de grupo presentada anteriormente, se definieron el inverso y el neutro por la izquierda. Acabamos de mostrar que con esa definición se puede demostrar la bilateralidad tanto del inverso como del neutro, y es trivial que dada la bilateralidad del inverso y del neutro se obtiene la propiedad lateral del inverso y del neutro. Luego, podemos afirmar que definir los grupos con inverso y neutro por la izquierda es **equivalente** a definir los grupos con inverso y neutro bilateral.
 
@@ -62,6 +66,8 @@ Una vez sacado esto de encima, podemos establecer que estas tres definiciones de
 
 A veces puede ser útil usar ya sea la definición por la izquierda o la definición por la derecha para identificar un grupo, ya que en ocasiones puede ser más fácil identificar propiedades por un lado que por el otro.
 
+## Ejemplos de demostraciones de grupo
+
 Ahora vamos a practicar cómo demostrar si ciertos conjuntos con una operación son grupos o no. Para demostrar que una estructura es un grupo se deben verificar los cuatro axiomas, y para demostrar que no es un grupo se debe refutar al menos un axioma.
 
 >[!ejercicio] Ejercicio
@@ -85,12 +91,18 @@ Ahora vamos a practicar cómo demostrar si ciertos conjuntos con una operación 
 >>[!demostracion]- Solución
 >> Sabemos que si $a,b,c \in \mathbb{Z}$ tenemos $a+b \in \mathbb{Z}$, por lo que se cumple la clausura, y $(a+b)+c=a+(b+c)$, por lo que hay asociatividad. Ahora al igual que con $\mathbb{N}_0$, existe un $e \in \mathbb{Z}$ tal que, para todo $a \in \mathbb{Z}$, $a+e=a$ con $e=0$. De este modo, existe el neutro. Por último, para todo $a \in \mathbb{Z}$, $-a \in \mathbb{Z}$ por lo que para todo $a \in \mathbb{Z}$ existe un $b \in \mathbb{Z}$ tal que $a+b=0$, con $b=-a$, de modo que existe el inverso. Al satisfacer los axiomas, $(\mathbb{Z},+)$ es un grupo.
 
+## Grupos abelianos
+
 Una propiedad adicional que suele ser interesante de estudiar es la **conmutatividad**.
 
 >[!definicion] Definición
 > Un grupo $G$ se dice **abeliano** o conmutativo si para todo $a,b\in G$ se cumple que $a·b=b·a$.
 >
 > Se dice que $a\in G$ conmuta con $b\in G$ si $a·b=b·a$.
+
+![[definiciones-de-grupo-cubo-no-abeliano.svg|Cinco cubos de tres por tres, uno a la izquierda y dos filas de dos unidas por flechas R y U, que terminan con colores distintos|600]]
+
+*En el cubo de Rubik, girar $R$ y luego $U$ no deja el cubo igual que girar $U$ y luego $R$. Por eso el grupo del cubo **no** es abeliano.*
 
 >[!ejercicio] Ejercicio
 > Demuestra que $(\mathbb{R} \setminus \{0\},·)$ es un grupo abeliano.

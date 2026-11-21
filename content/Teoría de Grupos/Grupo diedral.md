@@ -7,7 +7,11 @@ El grupo diedral $(D_n,\circ)$ es el grupo de simetrías de un polígono regular
 
 *Un pentágono regular con sus vértices nombrados en sentido antihorario.*
 
+## Rotaciones
+
 Para encadenar varias simetrías, podemos considerar que cada simetría es una función que toma como entrada el polígono y da como salida el polígono con los vértices alterados. Por esto, la composición de simetrías se hace de derecha a izquierda, igual que la composición de funciones. Por ejemplo, hacer la simetría $a$ y después la simetría $b$ es igual a hacer la simetría $b \circ a$. Si llamamos $r$ a la rotación más pequeña en sentido antihorario que preserva la forma del polígono, notamos que esta mueve cada vértice una posición en sentido antihorario. Si hacemos dos veces esta rotación, $r \circ r=r^2$ mueve cada vértice dos posiciones en sentido antihorario. De esta forma, $r^k$ mueve cada vértice $k$ posiciones en sentido antihorario. Como el polígono tiene $n$ vértices, $r^n$ es equivalente a no hacer nada. Si llamamos $e$ a la simetría de no hacer nada, tenemos $r^n=e$. Además, como rotar en sentido antihorario y luego en sentido horario equivale a no hacer nada, podemos decir que rotar en sentido horario es $r^{-1}$. Pero como $r^n=e$, $r^{n-1}\circ r=e$ y por lo tanto $r^{-1}=r^{n-1}$.
+
+## Reflexiones
 
 Ahora, si llamamos $s_A$ a la reflexión respecto al eje que pasa por el vértice $A$ y el centro, notamos que reflejar dos veces no hace nada. Es decir, $s_A^2=e$. Lo mismo ocurre con cada vértice: $s_B^2=e$, $s_C^2=e$, etc. También podemos reflejar respecto al eje que pasa por el medio de una arista y el centro. Si llamamos $s_{AB}$ a la reflexión por el eje que pasa por el punto medio de la arista $\overline{AB}$ y el centro, nuevamente $s^2_{AB}=e$.
 
@@ -19,6 +23,8 @@ Una observación importante es que reflejar a través del eje que pasa por cualq
 
 Con todo esto, el conjunto de todas las rotaciones y reflexiones del $n$-gono es $\{e,r,r^2,...,s_A,s_{AB},...\}=\{e,r,r^2,...r^{n-1},s,sr,sr^2,...sr^{n-1}\}$. Las potencias de $r$ llegan hasta $r^{n-1}$ porque $r^n=e$ y, por lo tanto, para cualquier $k$, $r^{n+k}=r^k$, de modo que ir más allá de $r^{n-1}$ da una potencia de $r$ que ya había aparecido en el conjunto.
 
+## Propiedad mixta
+
 Falta una propiedad fundamental del grupo diedral que es más fácil de explicar visualmente.
 
 ![[grupo-diedral-srs.svg|Pentágonos que pasan por una reflexión, una rotación y otra reflexión, y abajo por una sola rotación, con íconos bajo las flechas|640]]
@@ -26,6 +32,8 @@ Falta una propiedad fundamental del grupo diedral que es más fácil de explicar
 *Arriba se aplican $s$, $r$ y $s$, en ese orden, y abajo se aplica $r^{-1}$. Los dos caminos terminan igual, así que $srs=r^{-1}$.*
 
 Al reflejar, rotar y volver a reflejar, obtenemos lo mismo que rotar en el sentido contrario. Es decir, $srs=r^{-1}$. Con esto tenemos tres propiedades fundamentales de las rotaciones y reflexiones: $r^n=e$, $s^2=e$ y $srs=r^{-1}$, con las cuales se puede describir completamente el grupo diedral.
+
+### Demostración con números complejos
 
 Hasta ahora no se ha demostrado ninguna de estas afirmaciones. Hay varias formas de demostrar las tres propiedades fundamentales, pero prefiero hacerlo utilizando números complejos.
 
@@ -53,6 +61,8 @@ Hasta ahora no se ha demostrado ninguna de estas afirmaciones. Hay varias formas
 >3. $SR_{360^\circ/n}S=S \circ R_{360^\circ/n} \circ S(z)$. Sea $z=e^{i\theta}$. Luego, $S \circ R_{360^\circ/n} \circ S(z) = S \circ R_{360^\circ/n}(e^{-i\theta})=S(e^{-i\theta}·e^{2\pi i/n})=S(e^{i((2\pi /n)-\theta)})=e^{-i((2\pi /n)-\theta)}=e^{i((\theta-2\pi /n))}=z·e^{-i2\pi /n}$. Para verificar que es el inverso, podemos componer con $R_{360^\circ/n}$. $SR_{360^\circ/n}S \circ R_{360^\circ/n}(z)=SR_{360^\circ/n}S(e^{i\theta}·e^{2\pi i/n})= SR_{360^\circ/n} S(e^{i((2\pi /n)+\theta)})=e^{i((2\pi /n)+\theta)}·e^{-i2\pi /n}=e^{i((2\pi /n)+\theta -(2\pi /n))}=e^{i\theta}=z$. Luego $(SR_{360^\circ/n}S) R_{360^\circ/n}=e_N$, por lo que $SR_{360^\circ/n}S=(R_{360^\circ/n})^{-1}$.
 >
 > Con esto, se obtiene $({R_{360^\circ/n}})^n=e_N$, $S^2=e_N$ y $SR_{360^\circ/n}S=(R_{360^\circ/n})^{-1}$.
+
+## Por qué es un grupo
 
 Ahora viene la parte más importante: demostrar que, a partir de las relaciones $r^n=e$, $s^2=e$ y $srs=r^{-1}$, el conjunto $D_n$ es un grupo.
 
@@ -91,6 +101,8 @@ Ahora viene la parte más importante: demostrar que, a partir de las relaciones 
 >
 > Como se han cubierto todos los casos de operación de dos elementos del conjunto, queda demostrada la clausura en $(D_n,\circ)$. Comprobados los cuatro axiomas, $(D_n,\circ)$ es un grupo.
 
+## Consecuencias
+
 Este teorema nos permitió concluir varios resultados del grupo diedral:
 
 - $r^k=sr^{-k}s$
@@ -99,6 +111,8 @@ Este teorema nos permitió concluir varios resultados del grupo diedral:
 - $(sr^k)^{-1}=sr^k$
 
 También nos deja algunos resultados más profundos. Como la demostración se hizo de forma abstracta sin recurrir a las propiedades geométricas de $r$ y $s$, las tres propiedades fundamentales, $r^n=e$, $s^2=e$ y $srs=r^{n-1}$, bastan para que $D_n$ sea un grupo. En particular, cualquier combinación de rotaciones y reflexiones siempre resulta en una rotación o una reflexión, y las simetrías de un polígono regular obedecen las leyes de la teoría de grupos, por lo que se pueden usar todas las propiedades que vimos en capítulos anteriores. Para mantener la práctica, te dejo un ejercicio sobre este grupo.
+
+## Ejercicio
 
 >[!ejercicio] Ejercicio
 > Tengamos $(D_n,\circ)$ con $n$ par mayor que $2$. Demuestra que para todo $a\in D_n$, se cumple que $ar^{n/2}=r^{n/2}a$. Es decir, $r^{n/2}$ conmuta con todo elemento de $D_n$.

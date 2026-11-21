@@ -9,9 +9,13 @@ El grupo simétrico $(S_n,\circ)$ consiste en el grupo de todas las permutacione
 
 Este es el conjunto de todas las permutaciones del conjunto. Por combinatoria, sabemos que un conjunto de $n$ elementos tiene $n!$ permutaciones, por lo que $S_n$ tiene $n!$ elementos. Pero realmente los elementos de $S_n$ no son las formas en que se ordenan las figuras, sino los movimientos que las reordenan. Por ejemplo, si elegimos el primer orden de las figuras como el estado base, la acción de no alterar esa combinación es un elemento de $S_n$. La acción de intercambiar la primera figura con la segunda es otro elemento de $S_n$. La acción de mover cada figura una posición a la derecha, de manera que la última vuelve al inicio, también es un elemento de $S_n$. De este modo, las figuras sirven solo para visualizar las acciones, pero realmente cada elemento de $S_n$ es una forma de reordenar los elementos de cualquier conjunto de $n$ elementos. Como no importa qué conjunto estamos reordenando, por simplicidad se prefiere trabajar con números naturales. Por ejemplo, podemos decir que el grupo $S_3$ mueve los elementos de $\{1,2,3\}$.
 
+## Notación de matrices y de funciones
+
 Existen muchas notaciones para representar los elementos de $S_n$. La primera que utilizaremos los representa mediante matrices de $2 \times n$. Para representar el estado inicial del conjunto, escribimos los elementos de $\{1,2,\dots,n\}$ en la primera fila. Para representar el nuevo ordenamiento, los escribimos reordenados en la segunda fila. De este modo, $\sigma = \begin{pmatrix} 1 & 2 & 3 \\ 3 & 1 & 2 \end{pmatrix}$ representa la permutación que mueve todos los elementos de $\{1,2,3\}$ una posición a la derecha.
 
 Otra notación que se puede utilizar es representar las permutaciones como funciones con entrada y salida. Una permutación $\sigma$ que toma un ordenamiento $A$ y devuelve otro ordenamiento $B$ se puede representar como $\sigma(A)=B$. Luego podemos decir que $\sigma = \begin{pmatrix} 1 & 2 & 3 \\ 3 & 1 & 2 \end{pmatrix}$ equivale a $\sigma(1,2,3)=(3,1,2)$.
+
+## Composición
 
 Para la composición de permutaciones, las escribimos de derecha a izquierda, de modo que $\beta \circ \alpha$ significa hacer primero la permutación $\alpha$ y después la permutación $\beta$. Por ejemplo, sean $\alpha=\begin{pmatrix} 1 & 2 & 3 \\ 3 & 1 & 2 \end{pmatrix}$ y $\beta=\begin{pmatrix} 1 & 2 & 3 \\ 1 & 3 & 2 \end{pmatrix}$, y calculemos $\beta \circ \alpha$. La forma más segura es seguir a cada elemento, de derecha a izquierda. $\alpha$ manda el $1$ al $3$, y luego $\beta$ manda el $3$ al $2$, así que $\beta \circ \alpha$ manda el $1$ al $2$. Del mismo modo, $\alpha$ manda el $2$ al $1$ y $\beta$ deja el $1$ en su lugar, así que el $2$ va al $1$. Por último, $\alpha$ manda el $3$ al $2$ y $\beta$ manda el $2$ al $3$, así que el $3$ vuelve al $3$. Por lo tanto, $\beta \circ \alpha=\begin{pmatrix} 1 & 2 & 3 \\ 2 & 1 & 3 \end{pmatrix}$.
 
@@ -22,6 +26,8 @@ Para la composición de permutaciones, las escribimos de derecha a izquierda, de
 Para componer permutaciones con la notación de funciones, es mucho más simple. Tengamos el mismo ejemplo. Sean $\alpha(1,2,3) = (3,1,2)$ y $\beta(1,2,3) = (1,3,2)$. Como la función no depende del nombre de las variables, podemos decir $\beta(x,y,z) = (x,z,y)$. Luego, reordenar primero con $\alpha$ y después con $\beta$ queda como $\beta(\alpha(1,2,3))= \beta (3,1,2)=(3,2,1)$.
 
 Cambiando un poco la perspectiva, podemos ya sea tratar una permutación como una función que toma un ordenamiento y devuelve otro, o podemos tratarla como una función que toma los elementos del conjunto y los modifica. Por ejemplo, en la permutación $\alpha(1,2,3) = (3,1,2)$ podemos decir que el $1$ se convirtió en $3$, el $2$ se convirtió en $1$ y el $3$ se convirtió en $2$. Luego, $\alpha(1)=3$, $\alpha(2)=1$ y $\alpha(3)=2$. Esta visión es contraria a reordenar, ya que decir que el $1$ se convirtió en $3$ es lo mismo que decir que el $3$ se movió a la posición del $1$. Lo importante es que de ambas maneras obtenemos el mismo orden resultante. Usando ambas notaciones, podemos decir que $\alpha(1,2,3) = (\alpha(1),\alpha(2),\alpha(3))=(3,1,2)$. Eso sí, al componer las dos visiones dan resultados distintos. Como vimos, reordenar primero con $\alpha$ y después con $\beta$ da $(3,2,1)$, mientras que $\beta \circ \alpha$, siguiendo a cada elemento, da $(\beta(\alpha(1)),\beta(\alpha(2)),\beta(\alpha(3)))=(\beta(3),\beta(1),\beta(2))=(2,1,3)$. De ahora en adelante usaremos la visión de elementos, que es la que usa la notación de ciclos.
+
+## Notación de ciclos
 
 Por último, la notación más utilizada es la notación de ciclos. Escribimos $\sigma = (132)$ cuando queremos representar una permutación cíclica. Esto significa que cada elemento va al que lo sigue dentro del paréntesis, y el último va al primero, cerrando el ciclo. En este caso, $\sigma=(132)$ significa que el $1$ se transforma en $3$, el $3$ se transforma en $2$, y el $2$ se transforma en $1$, por lo que se cierra el ciclo. En notación de función, $\sigma(1,2,3) = (\sigma(1),\sigma(2),\sigma(3))=(3,1,2)$. Si es que hay elementos no mencionados, se asume que no se mueven. Por ejemplo, $(13)$ significa que el $1$ se transforma en $3$, el $3$ en $1$ y el $2$ se mantiene constante.
 
@@ -39,6 +45,8 @@ Hay un teorema llamado el **teorema de descomposición fundamental**, que establ
 
 Falta añadir que la permutación que no mueve a ningún elemento, o, dicho de otro modo, que transforma cada elemento a sí mismo, se llama identidad y se escribe $\mathrm{id}$.
 
+## Ejercicio
+
 >[!ejercicio] Ejercicio
 >Simplifica:
 > 1. $(123)(123)$
@@ -53,6 +61,8 @@ Falta añadir que la permutación que no mueve a ningún elemento, o, dicho de o
 >> 3. $(12)(23)(12)$. De derecha a izquierda, $(12)$ representa $1 \mapsto 2$, $2\mapsto 1$. $(23)$ representa $2 \mapsto 3$, $3 \mapsto 2$. Componiendo $(12) \circ (23) \circ (12)$: $1\mapsto 2 \mapsto 3\mapsto 3$, $2\mapsto 1 \mapsto 1 \mapsto 2$, $3 \mapsto 3 \mapsto 2 \mapsto 1$. Por lo tanto, $(12)(23)(12)$ representa $1\mapsto3$, $2\mapsto2$, $3\mapsto1$. De esta manera, $(12)(23)(12)=(13)$.
 >>
 >> 4. $(12)(23)(34)$. De derecha a izquierda, $(34)$ representa $3\mapsto4$, $4\mapsto3$, $(23)$ representa $2\mapsto3$, $3\mapsto2$ y $(12)$ representa $1\mapsto2$, $2\mapsto1$. Componiendo: $1\mapsto1 \mapsto1 \mapsto2$, $2\mapsto 2\mapsto 3\mapsto 3$, $3\mapsto4 \mapsto4 \mapsto4$, $4\mapsto 3 \mapsto2 \mapsto1$. De este modo, $1\mapsto 2$, $2 \mapsto 3$, $3 \mapsto 4$ y $4 \mapsto1$. Por lo tanto $(12)(23)(34)=(1234)$.
+
+## Por qué es un grupo
 
 Luego de esta introducción, es momento de interpretar las permutaciones de un conjunto como un grupo.
 

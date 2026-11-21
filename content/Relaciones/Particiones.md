@@ -1,6 +1,8 @@
 ---
 description: Qué es una partición de un conjunto, cómo se caracteriza con tres condiciones y por qué cada relación de equivalencia corresponde a una partición.
 ---
+## Definición
+
 Un concepto muy relevante para las relaciones de equivalencia son las particiones. Se definen de la siguiente forma:
 
 >[!definicion] Definición
@@ -11,6 +13,8 @@ De esta forma, una partición subdivide a $A$ en conjuntos disjuntos. Por ejempl
 ![[particiones-tres-ejemplos.svg|El conjunto A con sus elementos a, b, c y d, y tres formas de dividirlo en partes, cada una encerrada en una elipse de color|520]]
 
 *El conjunto $A$ y tres de sus particiones.*
+
+## Las tres condiciones
 
 Podemos reducir esta definición, escrita en palabras, a tres condiciones:
 
@@ -37,7 +41,9 @@ El punto 2 significa que la unión de todos los conjuntos que hay dentro de $P$ 
 >
 >Habiendo verificado las dos direcciones, la definición de partición se cumple si y solo si se verifican las tres propiedades.
 
-Te preguntarás, ¿qué relevancia tienen las particiones en un artículo de relaciones de equivalencia? Bueno, ahora viene la parte interesante. Este es el teorema de correspondencia.
+## El teorema de correspondencia
+
+Ahora viene la conexión entre particiones y relaciones de equivalencia. Este es el teorema de correspondencia:
 
 >[!teorema] Teorema
 >Sea $A$ un conjunto no vacío. Luego:
@@ -81,7 +87,7 @@ Este teorema tiene muchas capas, ya que hay que demostrar que una relación de e
 >
 > Como $g \circ f(\sim) = \, \sim$ para toda $\sim \in \mathcal{R}$ y $f \circ g(P)=P$ para toda $P \in \mathcal{P}$, $f$ es una biyección entre $\mathcal{R}$ y $\mathcal{P}$, con inversa $g$. Es decir, hay una correspondencia uno a uno entre relaciones de equivalencia y particiones. Por lo tanto, cada relación de equivalencia determina una única partición y cada partición determina una única relación de equivalencia.
 
-
+## Clases de equivalencia
 
 Con esta intuición, podemos hablar de la relación de equivalencia determinada por una partición, o de la partición determinada por una relación de equivalencia. En la demostración anterior, se definió el concepto de **clase de equivalencia**. Como se demostró que el conjunto de todas las clases de equivalencia de $A$ define la partición de $A$ determinada por una cierta relación de equivalencia, ahora podemos afirmar:
 
@@ -92,12 +98,12 @@ Con esta intuición, podemos hablar de la relación de equivalencia determinada 
 
 Para aterrizar esto, podemos pensar en la relación de equivalencia $\equiv \pmod{5}$. Como $0 \equiv 5 \pmod{5}$, $0 \equiv 10 \pmod{5}$, $0 \equiv 15 \pmod{5}$, etc., podemos establecer: $[0]= \{\dots,-10,-5,0,5,10,15,\dots\}$. Además, $0 \equiv 5k \pmod{5}$, $1 \equiv 5k+1 \pmod{5}$, $2 \equiv 5k+2 \pmod{5}$, $3 \equiv 5k+3 \pmod{5}$ y $4 \equiv 5k+4 \pmod{5}$ para todo $k\in \mathbb{Z}$, y todo número entero se puede escribir de una de estas cinco formas. Luego todo entero pertenece a $[0],[1],[2],[3]$ o $[4]$. Con esto concluimos que la partición determinada por $\equiv \pmod{5}$ es $\{ [0],[1],[2],[3],[4] \}$.
 
-Por último, es relevante hablar del conjunto cociente.
+## Conjunto cociente
 
 >[!definicion] Definición
 > Sea $A$ un conjunto no vacío y $\sim$ una relación de equivalencia en el conjunto. El conjunto cociente $A/\sim$ está dado por: $A/\sim \ \coloneqq \{ [x] \mid x \in A \}$
 
-Luego $A/\sim$ es la partición de $A$ que corresponde a $\sim$. En el ejemplo anterior, $\mathbb{Z} /\equiv_5 \ = \{ [0],[1],[2],[3],[4] \}$, donde $\equiv_n$ significa $\equiv \pmod{n}$.
+Es decir, $A/\sim$ es la partición de $A$ dada por $\sim$. En el ejemplo anterior, $\mathbb{Z} /\equiv_5 \ = \{ [0],[1],[2],[3],[4] \}$, donde $\equiv_n$ significa $\equiv \pmod{n}$.
 
 ![[particiones-modulo-5.svg|Los enteros separados en cinco clases de colores según su resto al dividir por 5, todas dentro de una elipse que representa a los enteros|420]]
 

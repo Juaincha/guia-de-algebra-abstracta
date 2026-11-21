@@ -3,6 +3,8 @@ description: "Las propiedades básicas de un grupo, demostradas paso a paso: uni
 ---
 Una vez demostradas las propiedades bilaterales del neutro y del inverso, es momento de describir el resto de propiedades. En todo el artículo, $(G,·)$ es un grupo.
 
+## Unicidad del neutro y del inverso
+
 >[!general] Unicidad del neutro
 >>[!teorema] Teorema
 >> Existe un único $e \in G$ tal que, para todo $a \in G$, $e·a=a$.
@@ -17,7 +19,9 @@ Una vez demostradas las propiedades bilaterales del neutro y del inverso, es mom
 >>[!demostracion] Demostración
 >> Sea $a \in G$. Sean $b_1,b_2 \in G$ tales que $b_1·a=e$ y $b_2·a=e$. Como ambos productos son iguales a $e$, obtenemos $b_1·a=b_2·a$. Multiplicando a ambos lados por $b_1$ por la derecha, obtenemos $(b_1·a)·b_1=(b_2·a)·b_1$. Por el axioma de **asociatividad**, $(b_1·a)·b_1=b_1·(a·b_1)$ y $(b_2·a)·b_1=b_2·(a·b_1)$. Por **bilateralidad del inverso**, $a·b_1=e$, $a·b_2=e$. Sustituyendo, obtenemos $b_1·(a·b_1)=b_1·e=b_1$ y $b_2·(a·b_1)=b_2·e=b_2$. Por transitividad, $b_1=b_2$. Como dos inversos cualesquiera son iguales, existe un único $a^{-1}$ tal que $a^{-1}·a=e$.
 
-De ahora en adelante, se obviarán la clausura y la asociatividad, y no se pondrán paréntesis para separar operaciones de grupo. También se obviará que $a^{-1}$ es inverso de $a$, y no se citará cada axioma. Añadimos ahora un par de propiedades del inverso:
+## Propiedades del inverso
+
+De ahora en adelante, se obviarán la clausura y la asociatividad, y no se pondrán paréntesis para separar operaciones de grupo. También se obviará que $a^{-1}$ es inverso de $a$, y no se citará cada axioma. Ahora añadimos un par de propiedades del inverso:
 
 >[!general] Inverso del inverso
 >>[!teorema] Teorema
@@ -33,7 +37,13 @@ De ahora en adelante, se obviarán la clausura y la asociatividad, y no se pondr
 >>[!demostracion] Demostración
 >> Sean $a,b \in G$. Como $(a·b)^{-1}$ es inverso de $a·b$, tenemos $(a·b)^{-1}·a·b=e$. Multiplicando a ambos lados por $b^{-1}$ por la derecha: $(a·b)^{-1}·a·b·b^{-1}=e·b^{-1}$, luego $(a·b)^{-1}·a=b^{-1}$. Multiplicando a ambos lados por $a^{-1}$ por la derecha: $(a·b)^{-1}·a·a^{-1}=b^{-1}·a^{-1}$, luego $(a·b)^{-1}=b^{-1}·a^{-1}$. Por lo tanto, para todo $a,b \in G$, $(a·b)^{-1}=b^{-1}·a^{-1}$.
 
-Estas propiedades serán muy útiles más adelante. Para hablar de una multiplicación iterada de un mismo elemento, podemos definir exponentes de la siguiente manera:
+![[propiedades-basicas-inverso-del-producto.svg|Tres cubos en fila, con flechas R y U de ida, flechas naranjas U prima y R prima de vuelta e íconos de giro|600]]
+
+*Para deshacer $R$ seguido de $U$, primero se aplica $U'$ y luego $R'$, es decir, se deshace primero el último giro.*
+
+## Potencias
+
+Para hablar de una multiplicación iterada de un mismo elemento, podemos definir exponentes de la siguiente manera:
 
 >[!definicion] Definición
 > Para todo $a \in G$, $n \in \mathbb{N}$, definimos $a^1=a$ y $a^{n+1}=a·a^n$.
@@ -47,6 +57,10 @@ De esta forma, $a^n=a·a·a···a$, $n$ veces. Para demostrar las propiedades d
 >>[!demostracion] Demostración
 >> Sean $a \in G$ y $n \in \mathbb{N}$, y para cada $m \in \mathbb{N}$ consideremos $P(m): a^m·a^n=a^{m+n}$. $P(1): a^1·a^n=a^{1+n}$, y por definición $a^1=a$. Luego $P(1): a^1·a^n=a·a^n=a^{1+n}$. Como $1+n=n+1$, $a·a^n=a^{n+1}$. Luego por definición, $P(1)$ es verdadera. Ahora, sea $P(k)$ verdadera, con $k \in \mathbb{N}$. Luego, $a^k·a^n=a^{k+n}$. Multiplicando a ambos lados por $a$ por la izquierda, obtenemos $a·a^k·a^n=a·a^{k+n}$. Por definición, $a·a^k=a^{k+1}$ y $a·a^{k+n}=a^{k+n+1}$. Como $k+n+1=k+1+n$, obtenemos $a·a^{k+n}=a^{k+1+n}$. Sustituyendo en la ecuación: $a^{k+1}·a^n=a^{k+1+n}$, y justamente $P(k+1): a^{k+1}·a^n=a^{k+1+n}$. Por lo tanto $P(k+1)$ es verdadera. Como $P(1)$ es verdadera y $P(k) \implies P(k+1)$, por inducción, para todo $m \in \mathbb{N}$, $a^m·a^n=a^{m+n}$. Como $a$ y $n$ son arbitrarios, para todo $a \in G$, $m,n \in \mathbb{N}$, $a^m·a^n=a^{m+n}$.
 
+![[propiedades-basicas-suma-de-exponentes.svg|Dos rectas numéricas, arriba tres saltos turquesa y dos azules de 0 a 10, y abajo cinco saltos verdes de 0 a 10|600]]
+
+*En $(\mathbb{Z},+)$, con $a=2$, la potencia $a^n$ es sumar $2$ consigo mismo $n$ veces. Tres saltos y luego dos llegan al mismo punto que cinco saltos, así que $a^3·a^2=a^5$.*
+
 >[!general] Inversos con exponentes
 >>[!teorema] Teorema
 >> Para todo $a\in G$, $n \in \mathbb{N}$, ${(a^{-1})}^n={(a^n)}^{-1}$.
@@ -56,10 +70,16 @@ De esta forma, $a^n=a·a·a···a$, $n$ veces. Para demostrar las propiedades d
 >>
 >> Sea $P(k)$ verdadera, con $k\in \mathbb{N}$. Tengamos ${(a^{-1})}^{k+1}$. Por definición, ${(a^{-1})}^{k+1}=a^{-1}·{(a^{-1})}^k$. Como $P(k)$ es verdadera, ${(a^{-1})}^k={(a^k)}^{-1}$. Sustituyendo, obtenemos $a^{-1}·{(a^k)}^{-1}$. Por el inverso del producto, $a^{-1}·{(a^k)}^{-1}={(a^k·a)}^{-1}$. Por suma de exponentes, ${(a^k·a)}^{-1}={(a^{k+1})}^{-1}$. Por lo tanto obtenemos ${(a^{-1})}^{k+1}={(a^{k+1})}^{-1}$, por lo que $P(k+1)$ es verdadera. Como $P(1)$ es verdadera y $P(k) \implies P(k+1)$, por inducción, para todo $n \in \mathbb{N}$, ${(a^{-1})}^n={(a^n)}^{-1}$. Como $a\in G$ es arbitrario, para todo $a\in G$, $n \in \mathbb{N}$, ${(a^{-1})}^n={(a^n)}^{-1}$.
 
+### Potencias con exponente entero
+
 Con estas dos propiedades es natural extender los exponentes a todos los enteros de la siguiente forma:
 
 >[!definicion] Definición
 > Para todo $a \in G$, $n \in \mathbb{Z}$, definimos $a^1=a$, $a^{n+1}=a·a^n$, y para $n>0$, $a^{-n}={(a^n)}^{-1}={(a^{-1})}^n$.
+
+![[propiedades-basicas-potencias-enteras.svg|Semirrecta que parte de un punto blanco en 0, con saltos azules que se alargan desde 1 y naranjas que se acortan hacia 0|640]]
+
+*Las potencias de $a=2$ en $(\mathbb{R}^+,·)$. Cada salto azul multiplica por $a$ y cada salto naranja multiplica por $a^{-1}=\frac{1}{2}$, así que los saltos naranjas se acercan al $0$ sin llegar nunca a él.*
 
 De este modo, con $n=-1$, obtenemos $a^{-1+1}=a·a^{-1}$, por lo que $a^0=e$. Además, te invito a verificar y a demostrar que las propiedades anteriores se extienden a todo $n\in \mathbb{Z}$. Seguimos con las propiedades:
 
