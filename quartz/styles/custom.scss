@@ -549,3 +549,47 @@ html body article p:has(> img:only-child) + p:has(> em:only-child) {
 .enlace-pendiente {
   color: var(--gray);
 }
+
+/* Indice del articulo dentro del explorador (ver IndiceEnExplorador en quartz.ts) */
+html body .indice-articulo {
+  list-style: none;
+  margin: 0.2rem 0 0.5rem 0.15rem;
+  padding: 0 0 0 0.7rem;
+  border-left: 1px solid rgb(128 128 128 / 35%);
+
+  li {
+    margin: 0;
+  }
+
+  .nivel-3 {
+    padding-left: 0.75rem;
+  }
+
+  a {
+    display: block;
+    padding: 0.12rem 0;
+    font-size: 0.85em;
+    line-height: 1.35;
+    color: var(--gray);
+    background-color: transparent;
+  }
+
+  a.actual {
+    color: var(--secondary);
+  }
+
+  /* Solo con mouse: en pantallas tactiles el hover se queda pegado. */
+  @media (hover: hover) {
+    a:hover {
+      color: var(--secondary);
+    }
+  }
+}
+
+/* En el telefono la barra superior (menu, buscador, tema) queda fija al hacer
+   scroll: los saltos a un encabezado dejan libre su alto. */
+@media all and (max-width: 800px) {
+  html body .center article :is(h2, h3, h4)[id] {
+    scroll-margin-top: 1.5rem;
+  }
+}

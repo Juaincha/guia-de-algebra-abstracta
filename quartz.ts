@@ -525,11 +525,126 @@ function plegarComentarios(componentes: unknown[]): unknown[] {
   })
 }
 
+// ════════════════════════════════════════════════════════════════════════
+//  Indice del articulo dentro del explorador
+//
+//  Bajo el articulo abierto en la barra izquierda se cuelga un punteo con
+//  sus encabezados ## y ###, como si el articulo fuera la raiz. Solo
+//  aparece en el articulo abierto, y si no tiene encabezados no se agrega
+//  nada. Las paginas de indice no lo llevan: el explorador las muestra como
+//  carpetas y no les pone la clase `active`.
+//
+//  Es JavaScript del navegador porque el explorador tambien lo es: se
+//  dibuja (y se redibuja en cada navegacion) a partir de contentIndex.json.
+//  Un MutationObserver espera a que termine y entonces cuelga la lista.
+//
+//  FRAGIL, como el sortFn del explorer: depende de que el explorador marque
+//  el articulo abierto con `a.active` dentro de un <li>. Si tras actualizar
+//  Quartz el punteo desaparece, revisar eso primero. No usa el plugin
+//  table-of-contents (sigue desactivado).
+//
+//  Los estilos estan en custom.scss (.indice-articulo).
+// ════════════════════════════════════════════════════════════════════════
+
+const SCRIPT_INDICE_EXPLORADOR = `
+(() => {
+  const CLASE = "indice-articulo"
+  let encabezados = []
+  let enlaces = []
+
+  function marcarActual() {
+    if (!encabezados.length) return
+    // Con el menu del telefono abierto, Quartz bloquea el scroll y desplaza la
+    // pagina: las posiciones no sirven, se conserva la marca anterior.
+    if (document.documentElement.classList.contains("mobile-no-scroll")) return
+    let actual = 0
+    encabezados.forEach((h, i) => {
+      if (h.getBoundingClientRect().top <= 120) actual = i
+    })
+    // Al final de la pagina, la ultima seccion puede ser corta y no llegar
+    // arriba: se marca igual.
+    const alFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4
+    if (alFinal) actual = encabezados.length - 1
+    enlaces.forEach((a, i) => a.classList.toggle("actual", i === actual))
+  }
+
+  function construir() {
+    const activos = [...document.querySelectorAll("a.nav-file-title.active")]
+    for (const ul of document.querySelectorAll("." + CLASE)) {
+      const sigue = activos.some((a) => a.parentElement === ul.parentElement)
+      if (!sigue || ul.dataset.ruta !== location.pathname) ul.remove()
+    }
+    encabezados = [...document.querySelectorAll(".center > article h2[id], .center > article h3[id]")]
+    enlaces = []
+    if (!encabezados.length) return
+    for (const activo of activos) {
+      const li = activo.parentElement
+      let ul = li.querySelector(":scope > ." + CLASE)
+      if (!ul) {
+        ul = document.createElement("ul")
+        ul.className = CLASE
+        ul.dataset.ruta = location.pathname
+        for (const h of encabezados) {
+          const copia = h.cloneNode(true)
+          copia.querySelectorAll("[role=anchor], .katex-mathml").forEach((n) => n.remove())
+          const item = document.createElement("li")
+          item.className = "nivel-" + h.tagName.slice(1)
+          const a = document.createElement("a")
+          a.href = "#" + h.id
+          a.innerHTML = copia.innerHTML
+          a.addEventListener("click", (e) => {
+            // En el telefono el explorador es un menu que tapa el articulo.
+            // Se toma el control del salto (el navegador y el router de Quartz
+            // lo calcularian con el menu todavia abierto): se cierra el menu,
+            // se espera su animacion (200 ms) y se salta de una vez. El
+            // espacio para la barra superior lo deja scroll-margin-top.
+            if (!document.documentElement.classList.contains("mobile-no-scroll")) return
+            e.preventDefault()
+            e.stopPropagation()
+            li.closest(".explorer")?.querySelector(".mobile-explorer")?.click()
+            setTimeout(() => {
+              h.scrollIntoView({ behavior: "instant" })
+              history.replaceState(history.state, "", "#" + h.id)
+            }, 250)
+          })
+          item.appendChild(a)
+          ul.appendChild(item)
+        }
+        li.appendChild(ul)
+      }
+      enlaces.push(...ul.querySelectorAll("a"))
+    }
+    marcarActual()
+  }
+
+  let pendiente = false
+  const programar = () => {
+    if (pendiente) return
+    pendiente = true
+    requestAnimationFrame(() => {
+      pendiente = false
+      construir()
+    })
+  }
+  new MutationObserver(programar).observe(document.body, { childList: true, subtree: true })
+  document.addEventListener("nav", programar)
+  window.addEventListener("scroll", marcarActual, { passive: true })
+  programar()
+})()
+`
+
+const IndiceEnExplorador = Object.assign(() => null, {
+  afterDOMLoaded: SCRIPT_INDICE_EXPLORADOR,
+})
+
 type Capa = Record<string, unknown>
 
 function ajustarAfterBody(capa: Capa, conBoton: boolean): Capa {
   const previos = plegarComentarios((capa.afterBody ?? []) as unknown[])
-  return { ...capa, afterBody: conBoton ? [SiguienteArticulo, ...previos] : previos }
+  return {
+    ...capa,
+    afterBody: conBoton ? [SiguienteArticulo, IndiceEnExplorador, ...previos] : previos,
+  }
 }
 
 // `loadQuartzConfig` ya construyo internamente el PageTypeDispatcher con el
